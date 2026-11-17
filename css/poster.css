@@ -129,7 +129,7 @@
   border-radius: calc(var(--radius-lg) - 4px);
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-  background-color: #0F0A24;
+  background-color: #FAF4E8;
 }
 
 .invitation-poster-img {
