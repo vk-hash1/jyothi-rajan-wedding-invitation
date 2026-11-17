@@ -1,6 +1,10 @@
 # ✨ Jyothi & Rajan — Enchanted Celestial Wedding Invitation
 
+[![Live Site](https://img.shields.io/badge/Live_Site-Vercel-success?style=for-the-badge&logo=vercel)](https://jyothi-rajan-wedding-invitation.vercel.app/)
+
 An interactive, royal celestial wedding invitation web experience designed for **Jyothi Kumari & Rajan Sharma** celebrating their auspicious union on **Wednesday, 9 December 2026** at **Bardahia, Marhaura, Chhapra, Bihar**.
+
+🔗 **Live Website:** [https://jyothi-rajan-wedding-invitation.vercel.app](https://jyothi-rajan-wedding-invitation.vercel.app)
 
 ---
 
