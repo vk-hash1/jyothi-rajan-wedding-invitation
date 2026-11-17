@@ -220,6 +220,7 @@ export class OpeningTransition {
     this.transitionFX = null;
     this.isUnfolded = false;
     this.isAnimating = false;
+    this.panelsPrepared = false;
 
     this.init();
   }
@@ -231,6 +232,34 @@ export class OpeningTransition {
     if (this.canvas) {
       this.atmosphereEngine = new LandingAtmosphere(this.canvas);
     }
+
+    // Pre-prepare split panel snapshots so clicking "आमंत्रण खोलें" starts immediately with 0ms delay
+    if (typeof requestIdleCallback !== 'undefined') {
+      requestIdleCallback(() => this.prepareSplitPanels(), { timeout: 400 });
+    } else {
+      setTimeout(() => this.prepareSplitPanels(), 150);
+    }
+
+    // Refresh snapshots if user toggles language
+    const langBtnEn = document.getElementById('landing-lang-btn-en');
+    const langBtnHi = document.getElementById('landing-lang-btn-hi');
+    if (langBtnEn) {
+      langBtnEn.addEventListener('click', () => {
+        setTimeout(() => this.prepareSplitPanels(), 60);
+      });
+    }
+    if (langBtnHi) {
+      langBtnHi.addEventListener('click', () => {
+        setTimeout(() => this.prepareSplitPanels(), 60);
+      });
+    }
+
+    // Refresh snapshots on screen resize or device orientation rotation
+    window.addEventListener('resize', () => {
+      if (!this.isUnfolded && !this.isAnimating) {
+        this.prepareSplitPanels();
+      }
+    });
 
     // Bind Unfold Trigger on the action button
     this.unfoldBtn.addEventListener('click', (e) => {
@@ -294,6 +323,51 @@ export class OpeningTransition {
     window.addEventListener('pagehide', onPageHide);
   }
 
+  prepareSplitPanels() {
+    if (this.isUnfolded) return;
+    const splitContainer = document.getElementById('landing-split-container');
+    const panelUR = document.getElementById('split-panel-ur');
+    const panelLL = document.getElementById('split-panel-ll');
+    if (!splitContainer || !panelUR || !panelLL || !this.stage) return;
+
+    const clipUR = panelUR.querySelector('.split-panel-clip') || panelUR;
+    const clipLL = panelLL.querySelector('.split-panel-clip') || panelLL;
+    clipUR.innerHTML = '';
+    clipLL.innerHTML = '';
+
+    // Clone resting stage into both diagonal panels
+    const cloneUR = this.stage.cloneNode(true);
+    const cloneLL = this.stage.cloneNode(true);
+    cloneUR.removeAttribute('id');
+    cloneLL.removeAttribute('id');
+
+    // Add static snapshot class so all child animations in the clones are paused
+    // This allows the browser to create a single GPU-cached texture per panel!
+    cloneUR.classList.add('split-stage-snapshot');
+    cloneLL.classList.add('split-stage-snapshot');
+
+    // Copy star canvas if rendered
+    const origCanvas = this.stage.querySelector('#celestial-stars-canvas');
+    if (origCanvas && origCanvas.width > 0 && origCanvas.height > 0) {
+      const cUR = cloneUR.querySelector('canvas');
+      const cLL = cloneLL.querySelector('canvas');
+      if (cUR) {
+        cUR.width = origCanvas.width;
+        cUR.height = origCanvas.height;
+        try { cUR.getContext('2d').drawImage(origCanvas, 0, 0); } catch (_) {}
+      }
+      if (cLL) {
+        cLL.width = origCanvas.width;
+        cLL.height = origCanvas.height;
+        try { cLL.getContext('2d').drawImage(origCanvas, 0, 0); } catch (_) {}
+      }
+    }
+
+    clipUR.appendChild(cloneUR);
+    clipLL.appendChild(cloneLL);
+    this.panelsPrepared = true;
+  }
+
   resumeLandingAnimations() {
     if (this.isUnfolded) return;
 
@@ -352,50 +426,32 @@ export class OpeningTransition {
       this.unfoldBtn.classList.add('is-clicked');
     }
 
-    // 3. Divide Landing Page into Two Diagonal Panels & Animate Both Sliding Away
+    // 3. Immediately pause background atmosphere canvas to eliminate competing GPU/thread work
+    if (this.atmosphereEngine) {
+      this.atmosphereEngine.pause();
+    }
+
+    // 4. Ensure split panels are prepared (instantaneous if pre-prepared)
+    if (!this.panelsPrepared) {
+      this.prepareSplitPanels();
+    }
+
     const splitContainer = document.getElementById('landing-split-container');
     const panelUR = document.getElementById('split-panel-ur');
     const panelLL = document.getElementById('split-panel-ll');
     const fxCanvas = document.getElementById('transition-fx-canvas');
 
-    if (splitContainer && panelUR && panelLL && this.stage) {
-      const clipUR = panelUR.querySelector('.split-panel-clip') || panelUR;
-      const clipLL = panelLL.querySelector('.split-panel-clip') || panelLL;
-      clipUR.innerHTML = '';
-      clipLL.innerHTML = '';
-
-      // Clone resting stage into both diagonal panels (100% original unzoomed position)
-      const cloneUR = this.stage.cloneNode(true);
-      const cloneLL = this.stage.cloneNode(true);
-      cloneUR.removeAttribute('id');
-      cloneLL.removeAttribute('id');
-
-      // Copy star canvas pixels onto cloned canvases to preserve star field
-      const origCanvas = this.stage.querySelector('#celestial-stars-canvas');
-      if (origCanvas) {
-        const cUR = cloneUR.querySelector('canvas');
-        const cLL = cloneLL.querySelector('canvas');
-        if (cUR) {
-          cUR.width = origCanvas.width;
-          cUR.height = origCanvas.height;
-          try { cUR.getContext('2d').drawImage(origCanvas, 0, 0); } catch (_) {}
-        }
-        if (cLL) {
-          cLL.width = origCanvas.width;
-          cLL.height = origCanvas.height;
-          try { cLL.getContext('2d').drawImage(origCanvas, 0, 0); } catch (_) {}
-        }
+    if (splitContainer && panelUR && panelLL) {
+      // Immediately hide original landing stage so only the split panels remain visible
+      if (this.stage) {
+        this.stage.style.display = 'none';
+        this.stage.style.visibility = 'hidden';
       }
 
-      clipUR.appendChild(cloneUR);
-      clipLL.appendChild(cloneLL);
-
-      // Immediately hide original landing stage so it does NOT stay behind the parting panels
-      this.stage.style.display = 'none';
-      this.stage.style.visibility = 'hidden';
-
-      // Make container transparent so main website underneath is revealed through parting rift
-      this.openingContainer.classList.add('is-splitting');
+      // Make overlay container transparent so main website underneath is revealed through parting rift
+      if (this.openingContainer) {
+        this.openingContainer.classList.add('is-splitting');
+      }
 
       // Activate split container
       splitContainer.classList.add('is-active');
@@ -406,19 +462,13 @@ export class OpeningTransition {
         this.transitionFX.startBurst();
       }
 
-      // Force layout calculation so initial transform translate3d(0, 0, 0) is committed
-      void panelUR.offsetWidth;
-
-      // Start both diagonal sections moving simultaneously in opposite directions on next frame
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          panelUR.classList.add('is-sliding');
-          panelLL.classList.add('is-sliding');
-        });
-      });
+      // Start both diagonal sections moving immediately on frame 0 (Zero delay, zero hesitation)
+      panelUR.classList.add('is-sliding');
+      panelLL.classList.add('is-sliding');
     }
 
-    // 4. Reveal homepage and restore normal interaction once sections have exited (1.6s)
+    // 5. Reveal homepage and restore normal interaction once sections have cleanly exited
+    // Panels clear the screen completely at ~1.15s; overlay dismissed at 1.4s with ZERO jump
     setTimeout(() => {
       // Restore normal page scrolling immediately
       document.documentElement.classList.remove('opening-active');
@@ -443,10 +493,6 @@ export class OpeningTransition {
         this.transitionFX = null;
       }
 
-      if (this.atmosphereEngine) {
-        this.atmosphereEngine.pause();
-      }
-
       this.isAnimating = false;
 
       // Focus Transfer for Accessibility
@@ -459,6 +505,6 @@ export class OpeningTransition {
           focusTarget.focus();
         }
       }
-    }, 1600);
+    }, 1400);
   }
 }

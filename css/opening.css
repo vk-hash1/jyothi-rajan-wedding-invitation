@@ -67,9 +67,9 @@ body.opening-active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   box-sizing: border-box;
-  padding: clamp(14px, 2.4vh, 22px) clamp(12px, 3.2vw, 20px) clamp(10px, 1.8vh, 16px);
+  padding: clamp(14px, 2.2vh, 24px) clamp(12px, 3.2vw, 22px) clamp(24px, 4.2vh, 44px);
   background: radial-gradient(circle at 50% 38%, #281350 0%, #150930 45%, #0B041C 75%, #060210 100%);
   border: 1px solid rgba(229, 193, 108, 0.45);
   box-shadow: none;
@@ -90,7 +90,7 @@ body.opening-active {
     box-shadow:
       0 20px 60px rgba(0, 0, 0, 0.9),
       0 0 50px rgba(135, 80, 220, 0.25);
-    padding: clamp(16px, 2.6vh, 26px) clamp(22px, 3.2vw, 36px) clamp(12px, 2vh, 20px);
+    padding: clamp(18px, 2.6vh, 28px) clamp(22px, 3.2vw, 36px) clamp(26px, 4.5vh, 48px);
   }
 }
 
@@ -149,15 +149,31 @@ body.opening-active {
 }
 
 @keyframes cloudDriftLeft {
-  0% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-8px) scale(1.03); }
-  100% { transform: translateY(0) scale(1); }
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-8px) scale(1.03);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
 }
 
 @keyframes cloudDriftRight {
-  0% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-10px) scale(1.03); }
-  100% { transform: translateY(0) scale(1); }
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-10px) scale(1.03);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* Realistic Animated Sparkling Stars (Glint & Flare) */
@@ -168,9 +184,7 @@ body.opening-active {
   pointer-events: none;
   z-index: 5;
   background: radial-gradient(circle, #ffffff 18%, rgba(255, 240, 200, 0.9) 45%, rgba(255, 215, 120, 0.3) 70%, transparent 80%);
-  clip-path: polygon(
-    50% 0%, 57% 43%, 100% 50%, 57% 57%, 50% 100%, 43% 57%, 0% 50%, 43% 43%
-  );
+  clip-path: polygon(50% 0%, 57% 43%, 100% 50%, 57% 57%, 50% 100%, 43% 57%, 0% 50%, 43% 43%);
   filter: drop-shadow(0 0 6px rgba(255, 240, 180, 0.95)) drop-shadow(0 0 12px rgba(230, 190, 255, 0.6));
   animation: realStarSparkle 3.6s ease-in-out infinite;
 }
@@ -203,23 +217,29 @@ body.opening-active {
 }
 
 @keyframes realStarSparkle {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.25;
     transform: scale(0.6) rotate(0deg);
   }
+
   45% {
     opacity: 0.45;
     transform: scale(0.85) rotate(8deg);
   }
+
   50% {
     opacity: 1;
     transform: scale(1.25) rotate(18deg);
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1)) drop-shadow(0 0 18px rgba(255, 225, 140, 0.95));
   }
+
   55% {
     opacity: 0.85;
     transform: scale(1.1) rotate(14deg);
   }
+
   70% {
     opacity: 0.35;
     transform: scale(0.7) rotate(4deg);
@@ -286,30 +306,79 @@ body.opening-active {
 }
 
 @keyframes diyaFloatLeft {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-5px) rotate(1.2deg); }
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-5px) rotate(1.2deg);
+  }
 }
 
 @keyframes diyaFloatRight {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-5px) rotate(-1.2deg); }
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-5px) rotate(-1.2deg);
+  }
 }
 
 @keyframes diyaFlameFlicker {
-  0%, 100% { transform: translateX(-50%) scale(1) translate(0, 0); opacity: 0.95; filter: drop-shadow(0 0 5px rgba(255, 200, 80, 0.9)); }
-  25% { transform: translateX(-50%) scale(0.96, 1.06) translate(-0.4px, -0.8px); opacity: 1; filter: drop-shadow(0 0 7px rgba(255, 220, 100, 1)); }
-  50% { transform: translateX(-50%) scale(1.04, 0.94) translate(0.4px, 0.4px); opacity: 0.88; filter: drop-shadow(0 0 4px rgba(255, 180, 60, 0.8)); }
-  75% { transform: translateX(-50%) scale(0.98, 1.03) translate(-0.2px, -0.4px); opacity: 0.98; filter: drop-shadow(0 0 8px rgba(255, 230, 110, 0.95)); }
+
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1) translate(0, 0);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 5px rgba(255, 200, 80, 0.9));
+  }
+
+  25% {
+    transform: translateX(-50%) scale(0.96, 1.06) translate(-0.4px, -0.8px);
+    opacity: 1;
+    filter: drop-shadow(0 0 7px rgba(255, 220, 100, 1));
+  }
+
+  50% {
+    transform: translateX(-50%) scale(1.04, 0.94) translate(0.4px, 0.4px);
+    opacity: 0.88;
+    filter: drop-shadow(0 0 4px rgba(255, 180, 60, 0.8));
+  }
+
+  75% {
+    transform: translateX(-50%) scale(0.98, 1.03) translate(-0.2px, -0.4px);
+    opacity: 0.98;
+    filter: drop-shadow(0 0 8px rgba(255, 230, 110, 0.95));
+  }
 }
 
 @keyframes diyaGlowPulse {
-  0% { transform: translateX(-50%) scale(0.92); opacity: 0.65; }
-  100% { transform: translateX(-50%) scale(1.12); opacity: 0.95; }
+  0% {
+    transform: translateX(-50%) scale(0.92);
+    opacity: 0.65;
+  }
+
+  100% {
+    transform: translateX(-50%) scale(1.12);
+    opacity: 0.95;
+  }
 }
 
 @keyframes diyaReflectPulse {
-  0% { transform: scaleX(0.92); opacity: 0.5; }
-  100% { transform: scaleX(1.08); opacity: 0.85; }
+  0% {
+    transform: scaleX(0.92);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scaleX(1.08);
+    opacity: 0.85;
+  }
 }
 
 /* ==========================================================================
@@ -399,10 +468,10 @@ body.opening-active {
   border: none;
   color: #EDE3D5;
   font-family: inherit;
-  font-size: clamp(0.72rem, 0.68rem + 0.2vw, 0.82rem);
+  font-size: clamp(0.78rem, 0.74rem + 0.2vw, 0.88rem);
   font-weight: 500;
   cursor: pointer;
-  padding: 2px 7px;
+  padding: 3px 8px;
   border-radius: 4px;
   transition: all 0.2s ease;
   line-height: 1.4;
@@ -436,7 +505,7 @@ body.opening-active {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: clamp(0px, 0.4vh, 6px);
+  margin-top: clamp(2px, 0.6vh, 8px);
 }
 
 .landing-ganesha-wrap {
@@ -457,8 +526,15 @@ body.opening-active {
 }
 
 @keyframes ganeshaHalo {
-  0% { transform: scale(0.92); opacity: 0.6; }
-  100% { transform: scale(1.1); opacity: 0.95; }
+  0% {
+    transform: scale(0.92);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: scale(1.1);
+    opacity: 0.95;
+  }
 }
 
 .landing-ganesha-img {
@@ -473,17 +549,17 @@ body.opening-active {
 
 .landing-shlok {
   font-family: 'Noto Serif Devanagari', serif;
-  font-size: clamp(0.85rem, 1.8vh, 1.05rem);
+  font-size: clamp(0.96rem, 2.05vh, 1.18rem);
   font-weight: 600;
   color: #FFF3CE;
   letter-spacing: 0.12em;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 12px rgba(245, 215, 130, 0.35);
-  margin-bottom: clamp(1px, 0.3vh, 4px);
+  margin-bottom: clamp(2px, 0.4vh, 5px);
 }
 
 .landing-subtitle {
   font-family: 'Cinzel', 'Noto Serif Devanagari', serif;
-  font-size: clamp(0.66rem, 1.3vh, 0.82rem);
+  font-size: clamp(0.76rem, 1.55vh, 0.92rem);
   font-weight: 700;
   color: #E8D3A8;
   letter-spacing: 0.22em;
@@ -494,7 +570,7 @@ body.opening-active {
 html[lang="hi"] .landing-subtitle {
   font-family: 'Noto Serif Devanagari', serif;
   letter-spacing: 0.12em;
-  font-size: clamp(0.74rem, 1.4vh, 0.88rem);
+  font-size: clamp(0.84rem, 1.65vh, 0.98rem);
 }
 
 /* ==========================================================================
@@ -503,13 +579,13 @@ html[lang="hi"] .landing-subtitle {
 .landing-center-section {
   position: relative;
   z-index: 15;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   min-height: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: clamp(2px, 0.6vh, 6px) 0;
+  margin: clamp(4px, 1.2vh, 14px) 0;
 }
 
 .landing-crest-wrap {
@@ -521,29 +597,26 @@ html[lang="hi"] .landing-subtitle {
   animation: crestBreathe 7s ease-in-out infinite alternate;
 }
 
-.crest-halo-glow {
-  position: absolute;
-  inset: -20px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(145, 85, 225, 0.35) 0%, rgba(95, 45, 165, 0.15) 50%, transparent 75%);
-  filter: blur(18px);
-}
-
 .landing-crest-img {
   position: relative;
-  max-height: clamp(130px, 26vh, 230px);
+  max-height: clamp(230px, 39vh, 375px);
+  max-width: min(86vw, 340px);
   width: auto;
-  max-width: min(72vw, 240px);
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 18px rgba(165, 110, 235, 0.3));
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.5));
   user-select: none;
   pointer-events: none;
 }
 
 @keyframes crestBreathe {
-  0% { transform: scale(1); filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 15px rgba(165, 110, 235, 0.25)); }
-  100% { transform: scale(1.025); filter: drop-shadow(0 12px 34px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 28px rgba(185, 130, 255, 0.45)); }
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.025);
+  }
 }
 
 /* ==========================================================================
@@ -558,17 +631,18 @@ html[lang="hi"] .landing-subtitle {
   align-items: center;
   text-align: center;
   width: 100%;
-  margin-bottom: clamp(2px, 0.5vh, 6px);
+  margin-top: clamp(4px, 1vh, 12px);
+  margin-bottom: clamp(4px, 1vh, 12px);
 }
 
 .landing-date {
   font-family: 'Cinzel', 'Noto Serif Devanagari', serif;
-  font-size: clamp(0.82rem, 1.7vh, 1.02rem);
+  font-size: clamp(0.95rem, 2.05vh, 1.16rem);
   font-weight: 600;
   color: #FFF9ED;
   letter-spacing: 0.04em;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 10px rgba(245, 215, 140, 0.35);
-  margin-bottom: clamp(2px, 0.4vh, 4px);
+  margin-bottom: clamp(3px, 0.5vh, 6px);
 }
 
 html[lang="hi"] .landing-date {
@@ -578,14 +652,14 @@ html[lang="hi"] .landing-date {
 
 .landing-venue {
   font-family: 'Cinzel', 'Noto Serif Devanagari', serif;
-  font-size: clamp(0.64rem, 1.3vh, 0.78rem);
+  font-size: clamp(0.74rem, 1.5vh, 0.88rem);
   font-weight: 500;
   color: #EBDCF5;
   letter-spacing: 0.08em;
   line-height: 1.35;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
-  margin-bottom: clamp(5px, 1.1vh, 10px);
-  max-width: 440px;
+  margin-bottom: clamp(7px, 1.3vh, 13px);
+  max-width: min(90vw, 480px);
 }
 
 html[lang="hi"] .landing-venue {
@@ -599,13 +673,13 @@ html[lang="hi"] .landing-venue {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: clamp(7px, 1.3vh, 11px) clamp(22px, 5.5vw, 36px);
+  padding: clamp(9px, 1.6vh, 13px) clamp(26px, 6vw, 42px);
   background: linear-gradient(135deg, #FFEAB5 0%, #E8C16A 40%, #B88A2E 80%, #F5D688 100%);
   color: #381E05;
   border: 1.5px solid #FFF8DC;
   border-radius: 9999px;
   font-family: 'Cinzel', 'Noto Serif Devanagari', serif;
-  font-size: clamp(0.78rem, 1.5vh, 0.92rem);
+  font-size: clamp(0.88rem, 1.8vh, 1.05rem);
   font-weight: 700;
   letter-spacing: 0.08em;
   box-shadow:
@@ -652,12 +726,15 @@ html[lang="hi"] .landing-unfold-btn {
 }
 
 @keyframes unfoldBtnPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow:
       0 8px 24px rgba(0, 0, 0, 0.6),
       0 0 20px rgba(232, 193, 106, 0.4),
       inset 0 1px 2px #FFFFFF;
   }
+
   50% {
     box-shadow:
       0 10px 28px rgba(0, 0, 0, 0.65),
@@ -673,11 +750,11 @@ html[lang="hi"] .landing-unfold-btn {
   justify-content: center;
   gap: 2px;
   font-family: 'Cinzel', 'Noto Serif Devanagari', serif;
-  font-size: clamp(0.72rem, 1.3vh, 0.82rem);
+  font-size: clamp(0.82rem, 1.55vh, 0.94rem);
   font-weight: 500;
   letter-spacing: 0.04em;
   color: #FFF2D6;
-  margin-top: clamp(4px, 0.8vh, 8px);
+  margin-top: clamp(6px, 1.1vh, 10px);
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.95);
   background: rgba(30, 10, 50, 0.65);
   border: 1px solid rgba(235, 205, 130, 0.45);
@@ -686,7 +763,7 @@ html[lang="hi"] .landing-unfold-btn {
     0 0 12px rgba(232, 193, 106, 0.2);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  padding: 3px 14px 5px;
+  padding: 4px 16px 6px;
   border-radius: 20px;
   max-width: fit-content;
   opacity: 0.95;
@@ -699,7 +776,7 @@ html[lang="hi"] .landing-unfold-btn {
 
 .tap-pointer-icon {
   display: block;
-  font-size: 1.25em;
+  font-size: 1.35em;
   line-height: 1;
   margin-bottom: -1px;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
@@ -729,22 +806,28 @@ html[lang="hi"] .landing-unfold-btn {
 html[lang="hi"] .landing-tap-text {
   font-family: 'Noto Serif Devanagari', serif;
   letter-spacing: 0.02em;
-  font-size: clamp(0.78rem, 0.74rem + 0.18vw, 0.88rem);
+  font-size: clamp(0.88rem, 0.84rem + 0.18vw, 0.98rem);
 }
 
 @keyframes tapHintFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-5px);
   }
 }
 
 @keyframes fingerPointBounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0) scale(1);
   }
+
   50% {
     transform: translateY(-4px) scale(1.18);
   }
@@ -764,10 +847,12 @@ html[lang="hi"] .landing-tap-text {
     transform: scale(1);
     box-shadow: 0 0 0 0 rgba(255, 225, 120, 0.9), 0 0 30px rgba(255, 200, 80, 0.8);
   }
+
   50% {
     transform: scale(0.96);
     box-shadow: 0 0 0 25px rgba(255, 225, 120, 0.4), 0 0 50px rgba(255, 200, 80, 0.6);
   }
+
   100% {
     transform: scale(1.02);
     box-shadow: 0 0 0 50px rgba(255, 225, 120, 0), 0 0 70px rgba(255, 200, 80, 0);
@@ -788,12 +873,13 @@ html[lang="hi"] .landing-tap-text {
   height: 100dvh;
   pointer-events: none;
   z-index: 25;
-  display: none;
+  display: block;
+  visibility: hidden;
   overflow: hidden;
 }
 
 .landing-split-container.is-active {
-  display: block;
+  visibility: visible;
 }
 
 /* Common Full-screen Split Panel Base (Opaque, Zero Opacity Fade) */
@@ -805,10 +891,12 @@ html[lang="hi"] .landing-tap-text {
   height: 100dvh;
   overflow: hidden;
   pointer-events: none;
-  opacity: 1 !important; /* STRICTLY NO OPACITY FADE */
+  opacity: 1 !important;
+  /* STRICTLY NO OPACITY FADE */
   transform: translate3d(0, 0, 0);
   will-change: transform;
-  transition: transform 1.6s cubic-bezier(0.4, 0, 0.2, 1);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Clipped Content Container for Each Panel */
@@ -825,13 +913,21 @@ html[lang="hi"] .landing-tap-text {
   display: flex;
   align-items: center;
   justify-content: center;
-  will-change: clip-path;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .split-panel-clip .landing-stage {
   pointer-events: none;
   margin: auto;
   opacity: 1 !important;
+}
+
+/* Freeze child animations in cloned split panels to eliminate repaint lag */
+.split-stage-snapshot,
+.split-stage-snapshot * {
+  animation: none !important;
+  transition: none !important;
 }
 
 /* Top / Upper-Left Diagonal Panel (/ Orientation: Bottom-Left to Top-Right):
@@ -845,7 +941,17 @@ html[lang="hi"] .landing-tap-text {
 
 .split-panel-ur.is-sliding,
 .split-panel-top.is-sliding {
-  transform: translate3d(-150vw, -150vh, 0);
+  animation: slideSplitUR 1.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes slideSplitUR {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-140vw, -115vh, 0);
+  }
 }
 
 /* Bottom / Lower-Right Diagonal Panel (/ Orientation: Bottom-Left to Top-Right):
@@ -859,7 +965,17 @@ html[lang="hi"] .landing-tap-text {
 
 .split-panel-ll.is-sliding,
 .split-panel-bottom.is-sliding {
-  transform: translate3d(150vw, 150vh, 0);
+  animation: slideSplitLL 1.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes slideSplitLL {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(140vw, 115vh, 0);
+  }
 }
 
 /* ==========================================================================
@@ -874,6 +990,8 @@ html[lang="hi"] .landing-tap-text {
   height: 100%;
   pointer-events: none;
   z-index: 10;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .seam-border-svg {
@@ -888,34 +1006,33 @@ html[lang="hi"] .landing-tap-text {
 /* 1. Soft Golden Outer Glow Layer
    Slightly brighter when split begins, then gradually fades as panels slide apart */
 .seam-line-glow {
-  stroke: rgba(235, 195, 115, 0.75);
+  stroke: rgba(235, 195, 115, 0.85);
   stroke-width: 3.5px;
   stroke-linecap: round;
-  filter: drop-shadow(0 0 5px rgba(255, 225, 130, 0.85)) drop-shadow(0 0 12px rgba(225, 175, 80, 0.5)) drop-shadow(0 0 20px rgba(185, 135, 235, 0.3));
-  opacity: 0.95;
-  will-change: opacity, filter;
+  filter: drop-shadow(0 0 6px rgba(255, 225, 130, 0.9)) drop-shadow(0 0 14px rgba(225, 175, 80, 0.6));
+  opacity: 1;
+  will-change: opacity;
 }
 
 .split-panel.is-sliding .seam-line-glow {
-  animation: seamBorderGlowFade 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: seamBorderGlowFade 1.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @keyframes seamBorderGlowFade {
   0% {
     opacity: 1;
-    filter: drop-shadow(0 0 6px rgba(255, 235, 150, 0.95)) drop-shadow(0 0 14px rgba(235, 185, 90, 0.65)) drop-shadow(0 0 24px rgba(195, 145, 245, 0.35));
   }
-  25% {
-    opacity: 0.9;
-    filter: drop-shadow(0 0 5px rgba(255, 225, 130, 0.85)) drop-shadow(0 0 12px rgba(225, 175, 80, 0.5));
+
+  20% {
+    opacity: 0.95;
   }
-  65% {
-    opacity: 0.55;
-    filter: drop-shadow(0 0 3px rgba(255, 215, 120, 0.55)) drop-shadow(0 0 8px rgba(215, 165, 70, 0.35));
+
+  60% {
+    opacity: 0.6;
   }
+
   100% {
     opacity: 0.2;
-    filter: drop-shadow(0 0 2px rgba(255, 215, 120, 0.3)) drop-shadow(0 0 4px rgba(215, 165, 70, 0.15));
   }
 }
 
@@ -935,13 +1052,13 @@ html[lang="hi"] .landing-tap-text {
   stroke-linecap: round;
   stroke-dasharray: 240 1450;
   stroke-dashoffset: 240;
-  filter: drop-shadow(0 0 4px #FFF8E7) drop-shadow(0 0 10px rgba(225, 175, 255, 0.85)) drop-shadow(0 0 18px rgba(255, 215, 120, 0.6));
+  filter: drop-shadow(0 0 4px #FFF8E7) drop-shadow(0 0 8px rgba(255, 215, 120, 0.7));
   opacity: 0;
   will-change: stroke-dashoffset, opacity;
 }
 
 .split-panel.is-sliding .seam-line-shimmer {
-  animation: seamShimmerTravel 1.6s cubic-bezier(0.2, 0.7, 0.35, 1) forwards;
+  animation: seamShimmerTravel 1.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @keyframes seamShimmerTravel {
@@ -949,12 +1066,15 @@ html[lang="hi"] .landing-tap-text {
     stroke-dashoffset: 240;
     opacity: 0;
   }
-  12% {
+
+  10% {
     opacity: 0.95;
   }
-  80% {
-    opacity: 0.85;
+
+  75% {
+    opacity: 0.8;
   }
+
   100% {
     stroke-dashoffset: -1450;
     opacity: 0;
@@ -976,6 +1096,7 @@ html[lang="hi"] .landing-tap-text {
    11. ACCESSIBILITY & PREFERS-REDUCED-MOTION
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
+
   .cinematic-opening,
   .landing-stage,
   .landing-cloud,
@@ -988,7 +1109,9 @@ html[lang="hi"] .landing-tap-text {
   .landing-unfold-btn,
   .landing-tap-text,
   .tap-pointer-icon,
-  .split-panel {
+  .split-panel,
+  .seam-line-glow,
+  .seam-line-shimmer {
     animation: none !important;
     transition: none !important;
   }
