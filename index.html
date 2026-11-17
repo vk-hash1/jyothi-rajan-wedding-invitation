@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ज्योति कुमारी एवं राजन शर्मा का पावन वैवाहिक उत्सव – 9 दिसंबर 2026। सादर आमंत्रण।">
+  <meta name="theme-color" content="#0B0E21">
+  <link rel="icon" type="image/svg+xml" href="assets/vectors/favicon.svg">
+  <title>ज्योति कुमारी एवं राजन शर्मा | शुभ विवाह उत्सव</title>
+
+  <!-- Google Fonts: Cormorant Garamond, Noto Serif Devanagari & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Noto+Serif+Devanagari:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/opening.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/countdown.css">
+  <link rel="stylesheet" href="css/couple.css">
+  <link rel="stylesheet" href="css/events.css">
+  <link rel="stylesheet" href="css/venue.css">
+  <link rel="stylesheet" href="css/poster.css">
+  <link rel="stylesheet" href="css/music.css">
+  <link rel="stylesheet" href="css/i18n.css">
+</head>
+
+<body>
+
+  <!-- ========================================================================
+       ACCESSIBLE BILINGUAL LANGUAGE SWITCHER (ENGLISH | हिन्दी)
+       Accessible celestial capsule fixed near top
+       ======================================================================== -->
+  <aside class="lang-switcher-container" aria-label="Language selection">
+    <div class="lang-switcher-pill" role="radiogroup" aria-label="Choose language / भाषा चुनें">
+      <button type="button" id="lang-btn-en" class="lang-pill-btn" role="radio" aria-checked="false"
+        aria-label="Switch to English" data-lang="en">
+        <span class="lang-text">English</span>
+      </button>
+      <span class="lang-pill-divider" aria-hidden="true">|</span>
+      <button type="button" id="lang-btn-hi" class="lang-pill-btn is-active" role="radio" aria-checked="true"
+        aria-label="हिन्दी में बदलें" data-lang="hi">
+        <span class="lang-text">हिन्दी</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       REDESIGNED CELESTIAL LANDING & OPENING EXPERIENCE
+       Follows exact approved reference design on both mobile and desktop
+       ======================================================================== -->
+  <div id="cinematic-opening" class="cinematic-opening" role="dialog" aria-modal="true"
+    aria-label="Wedding Celebration Opening Invitation">
+
+    <!-- Atmospheric Desktop Background Scenery Extension -->
+    <div class="landing-desktop-scenery" aria-hidden="true"></div>
+
+    <!-- Centered Portrait Stage (9:16 Aspect Ratio) -->
+    <div id="landing-stage" class="landing-stage">
+
+      <!-- 1. High-Res Enchanted Celestial Backdrop Scene -->
+      <img src="assets/images/landing/landing-enchanted-celestial.jpg"
+        alt="Enchanted Dream Celestial Wedding Atmosphere" class="landing-scenery-backdrop" aria-hidden="true">
+
+      <!-- 2. Animated Pulsing Moon Glow & Atmospheric Corona -->
+      <div class="landing-moon-corona" aria-hidden="true">
+        <div class="moon-halo-inner"></div>
+        <div class="moon-halo-outer"></div>
+      </div>
+
+      <!-- 3. Layered Ethereal Drifting Clouds -->
+      <div class="landing-clouds-drift cloud-layer-1" aria-hidden="true"></div>
+      <div class="landing-clouds-drift cloud-layer-2" aria-hidden="true"></div>
+
+      <!-- 4. Interactive Stars, Shooting Stars & Stardust Canvas -->
+      <canvas id="celestial-stars-canvas" class="landing-stars-canvas" aria-hidden="true"></canvas>
+
+      <!-- 5. Floating Diyas & Water Shimmer Layer (At the base) -->
+      <div class="landing-water-stage" aria-hidden="true">
+        <!-- Water ripple light shimmer -->
+        <div class="water-shimmer-fx"></div>
+
+        <!-- Left Diya Flame Glow & Water Reflection -->
+        <div class="diya-glow-fx diya-left-glow">
+          <div class="diya-flame-core"></div>
+          <div class="diya-reflection-bar"></div>
+        </div>
+
+        <!-- Mid Diya Flame Glow & Reflection -->
+        <div class="diya-glow-fx diya-mid-glow">
+          <div class="diya-flame-core"></div>
+          <div class="diya-reflection-bar"></div>
+        </div>
+
+        <!-- Right Diya Flame Glow & Reflection -->
+        <div class="diya-glow-fx diya-right-glow">
+          <div class="diya-flame-core"></div>
+          <div class="diya-reflection-bar"></div>
+        </div>
+
+        <!-- Foreground Lotus Gentle Float Effect -->
+        <div class="lotus-float-fx"></div>
+      </div>
+
+      <!-- 6. Top Controls Bar: Language Switcher & Circular Music Button -->
+      <header class="landing-top-bar">
+        <!-- Language Switcher Pill -->
+        <div class="landing-lang-pill" role="radiogroup" aria-label="Language selection / भाषा चुनें">
+          <button type="button" id="landing-lang-btn-en" class="landing-lang-btn" role="radio" aria-checked="false"
+            aria-label="Switch to English" data-lang="en">
+            English
+          </button>
+          <span class="landing-lang-divider" aria-hidden="true">|</span>
+          <button type="button" id="landing-lang-btn-hi" class="landing-lang-btn is-active" role="radio"
+            aria-checked="true" aria-label="हिन्दी में बदलें" data-lang="hi">
+            हिन्दी
+          </button>
+        </div>
+      </header>
+
+      <!-- 7. Breathing Golden Aura around the Celestial Monogram -->
+      <div class="landing-monogram-aura" aria-hidden="true"></div>
+
+      <!-- 8. Central Invitation Content Stack (Positioned below the golden monogram) -->
+      <div class="landing-content-stack">
+        <!-- Auspicious Ganesha Shlok (Accessible to screen readers; visual is in the artwork) -->
+        <div id="opening-shlok" class="sr-only" lang="sa">॥ श्री गणेशाय नमः ॥</div>
+
+        <!-- Accessible Hidden Heading for SEO & Screen Readers -->
+        <h1 id="opening-couple-names" class="sr-only">ज्योति कुमारी एवं राजन शर्मा</h1>
+
+        <!-- Lead Invitation Announcement -->
+        <p id="opening-lead" class="landing-invitation-lead">
+          सपरिवार आपका स्नेहिल अभिनन्दन करते हैं,<br>एवं विवाह के इस मांगलिक अवसर पर सादर आमंत्रित करते हैं
+        </p>
+
+        <!-- Auspicious Wedding Date Cartouche (Royal Filigree Edition) -->
+        <div id="opening-date" class="landing-date-cartouche" role="status"
+          aria-label="शुभ विवाह तिथि: बुधवार, 9 दिसंबर 2026">
+          <!-- Left Filigree Flourish -->
+          <span class="cartouche-floret floret-left" aria-hidden="true">
+            <svg viewBox="0 0 32 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="cartoucheGoldLeft" x1="100%" y1="50%" x2="0%" y2="50%">
+                  <stop offset="0%" stop-color="#FFE8B0" />
+                  <stop offset="45%" stop-color="#E5C16C" />
+                  <stop offset="85%" stop-color="#B88A36" />
+                  <stop offset="100%" stop-color="#FFE094" />
+                </linearGradient>
+              </defs>
+              <path d="M32 22H9M9 22L14 18M9 22L14 26" stroke="url(#cartoucheGoldLeft)" stroke-width="1.3"
+                stroke-linecap="round" />
+              <polygon points="3,22 6.5,20.2 10,22 6.5,23.8" fill="url(#cartoucheGoldLeft)" />
+              <circle cx="6.5" cy="22" r="1.1" fill="#FFFBE6" />
+              <path d="M30 11C23 11 17 7.5 13 12C10 16 13 20 17 19C22 18 23 13 22 8C21 4 16 1 11.5 2C7 3 3.5 7.5 3.5 13"
+                stroke="url(#cartoucheGoldLeft)" stroke-width="1.4" stroke-linecap="round" />
+              <circle cx="11.5" cy="2" r="1.3" fill="url(#cartoucheGoldLeft)" />
+              <circle cx="5.5" cy="5.5" r="1" fill="url(#cartoucheGoldLeft)" />
+              <circle cx="3.5" cy="13" r="1.1" fill="url(#cartoucheGoldLeft)" />
+              <path
+                d="M30 33C23 33 17 36.5 13 32C10 28 13 24 17 25C22 26 23 31 22 36C21 40 16 43 11.5 42C7 41 3.5 36.5 3.5 31"
+                stroke="url(#cartoucheGoldLeft)" stroke-width="1.4" stroke-linecap="round" />
+              <circle cx="11.5" cy="42" r="1.3" fill="url(#cartoucheGoldLeft)" />
+              <circle cx="5.5" cy="38.5" r="1" fill="url(#cartoucheGoldLeft)" />
+              <circle cx="3.5" cy="31" r="1.1" fill="url(#cartoucheGoldLeft)" />
+            </svg>
+          </span>
+
+          <!-- Top Center Diamond Finial -->
+          <span class="cartouche-diamond diamond-top" aria-hidden="true"></span>
+
+          <!-- Inner Cartouche Content (Calendar Icon + Dynamic Date Text) -->
+          <div class="cartouche-inner">
+            <svg class="gold-calendar-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true">
+              <defs>
+                <linearGradient id="goldCalGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#FFF3CE" />
+                  <stop offset="35%" stop-color="#F5D07A" />
+                  <stop offset="75%" stop-color="#E2B748" />
+                  <stop offset="100%" stop-color="#C29326" />
+                </linearGradient>
+              </defs>
+              <rect x="6.5" y="1.5" width="2" height="3.5" rx="1" fill="url(#goldCalGrad)" />
+              <rect x="15.5" y="1.5" width="2" height="3.5" rx="1" fill="url(#goldCalGrad)" />
+              <rect x="3" y="4" width="18" height="17" rx="3.5" stroke="url(#goldCalGrad)" stroke-width="1.6"
+                fill="rgba(255, 230, 160, 0.06)" />
+              <path d="M3 9H21" stroke="url(#goldCalGrad)" stroke-width="1.4" />
+              <rect x="6.2" y="11.6" width="2.4" height="2.1" rx="0.6" fill="url(#goldCalGrad)" />
+              <rect x="10.8" y="11.6" width="2.4" height="2.1" rx="0.6" fill="url(#goldCalGrad)" />
+              <rect x="15.4" y="11.6" width="2.4" height="2.1" rx="0.6" fill="url(#goldCalGrad)" />
+              <rect x="6.2" y="15.6" width="2.4" height="2.1" rx="0.6" fill="url(#goldCalGrad)" />
+              <rect x="10.8" y="15.6" width="2.4" height="2.1" rx="0.6" fill="url(#goldCalGrad)" />
+              <rect x="15.4" y="15.6" width="2.4" height="2.1" rx="0.6" fill="url(#goldCalGrad)" />
+            </svg>
+            <span id="opening-date-text" class="cartouche-date-text">बुधवार, 9 दिसंबर 2026</span>
+          </div>
+
+          <!-- Bottom Center Diamond Finial -->
+          <span class="cartouche-diamond diamond-bottom" aria-hidden="true"></span>
+
+          <!-- Right Filigree Flourish (Symmetrical) -->
+          <span class="cartouche-floret floret-right" aria-hidden="true">
+            <svg viewBox="0 0 32 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="cartoucheGoldRight" x1="0%" y1="50%" x2="100%" y2="50%">
+                  <stop offset="0%" stop-color="#FFE8B0" />
+                  <stop offset="45%" stop-color="#E5C16C" />
+                  <stop offset="85%" stop-color="#B88A36" />
+                  <stop offset="100%" stop-color="#FFE094" />
+                </linearGradient>
+              </defs>
+              <path d="M0 22H23M23 22L18 18M23 22L18 26" stroke="url(#cartoucheGoldRight)" stroke-width="1.3"
+                stroke-linecap="round" />
+              <polygon points="29,22 25.5,20.2 22,22 25.5,23.8" fill="url(#cartoucheGoldRight)" />
+              <circle cx="25.5" cy="22" r="1.1" fill="#FFFBE6" />
+              <path d="M2 11C9 11 15 7.5 19 12C22 16 19 20 15 19C10 18 9 13 10 8C11 4 16 1 20.5 2C25 3 28.5 7.5 28.5 13"
+                stroke="url(#cartoucheGoldRight)" stroke-width="1.4" stroke-linecap="round" />
+              <circle cx="20.5" cy="2" r="1.3" fill="url(#cartoucheGoldRight)" />
+              <circle cx="26.5" cy="5.5" r="1" fill="url(#cartoucheGoldRight)" />
+              <circle cx="28.5" cy="13" r="1.1" fill="url(#cartoucheGoldRight)" />
+              <path
+                d="M2 33C9 33 15 36.5 19 32C22 28 19 24 15 25C10 26 9 31 10 36C11 40 16 43 20.5 42C25 41 28.5 36.5 28.5 31"
+                stroke="url(#cartoucheGoldRight)" stroke-width="1.4" stroke-linecap="round" />
+              <circle cx="20.5" cy="42" r="1.3" fill="url(#cartoucheGoldRight)" />
+              <circle cx="26.5" cy="38.5" r="1" fill="url(#cartoucheGoldRight)" />
+              <circle cx="28.5" cy="31" r="1.1" fill="url(#cartoucheGoldRight)" />
+            </svg>
+          </span>
+        </div>
+
+        <!-- Luminous "Unfold the Celebration" Action Button -->
+        <div class="landing-action-wrap">
+          <button type="button" id="btn-unfold-invitation" class="landing-unfold-btn"
+            aria-label="उत्सव का साक्षी बनें एवं निमंत्रण पत्र देखें">
+            <span class="btn-sparkle" aria-hidden="true">✨</span>
+            <span id="unfold-btn-text">उत्सव का साक्षी बनें</span>
+            <span class="btn-chevron" aria-hidden="true">∨</span>
+          </button>
+
+          <!-- Floating Interactive Tap Instruction -->
+          <div id="landing-tap-instruction" class="landing-tap-instruction" role="button" tabindex="0"
+            aria-label="निमंत्रण पत्र देखने के लिए यहाँ टैप करें">
+            <span class="tap-hand-icon" aria-hidden="true">👆</span>
+            <span id="landing-tap-text">निमंत्रण पत्र देखने के लिए यहाँ टैप करें</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       FLOATING AUDIO PLAYER BUTTON (UNIFIED CLICKABLE PILL)
+       ======================================================================== -->
+  <button type="button" id="floating-audio-player" class="floating-audio-player" aria-label="पृष्ठभूमि संगीत बजाएं"
+    aria-pressed="false">
+    <!-- Golden Circular Disc with Play / Pause Icon -->
+    <span class="audio-icon-disc" aria-hidden="true">
+      <!-- Play Icon -->
+      <svg class="icon-play" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+      <!-- Pause Icon (hidden initially) -->
+      <svg class="icon-pause" viewBox="0 0 24 24" style="display: none;">
+        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+      </svg>
+    </span>
+
+    <!-- Animated Equalizer Bars -->
+    <span class="audio-equalizer" aria-hidden="true">
+      <span class="equalizer-bar bar-1"></span>
+      <span class="equalizer-bar bar-2"></span>
+      <span class="equalizer-bar bar-3"></span>
+      <span class="equalizer-bar bar-4"></span>
+    </span>
+
+    <!-- Action Text -->
+    <span id="audio-label" class="audio-label">मांगलिक धुन सुनें</span>
+  </button>
+
+  <!-- ========================================================================
+       MAIN WEBSITE CONTENT
+       ======================================================================== -->
+  <main id="main-content">
+
+    <!-- ====================================================================
+         ENHANCED CELESTIAL HERO SECTION (CINEMATIC ENCHANTED DREAM)
+         ==================================================================== -->
+    <header id="hero-section" class="hero-section">
+      <!-- Dedicated High-Performance Animated Stars & Shooting Star Canvas -->
+      <canvas id="hero-stars-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+
+      <!-- Layered Atmospheric Nebula Clouds -->
+      <div class="hero-nebula nebula-1" aria-hidden="true"></div>
+      <div class="hero-nebula nebula-2" aria-hidden="true"></div>
+      <div class="hero-nebula nebula-3" aria-hidden="true"></div>
+
+      <!-- Glowing Celestial Moon with Lunar Corona -->
+      <div class="hero-celestial-moon" aria-hidden="true">
+        <img src="assets/vectors/moon-crescent.svg" alt="Celestial Moon" width="140" height="140">
+      </div>
+
+      <!-- Rotating Celestial Mandala & Sacred Halo Stage (Directly Behind Names) -->
+      <div class="hero-halo-stage" aria-hidden="true">
+        <div class="hero-halo-core-glow"></div>
+        <div class="hero-mandala-outer">
+          <img src="assets/vectors/mandala-celestial.svg" alt="" width="820" height="820">
+        </div>
+        <div class="hero-mandala-inner">
+          <img src="assets/vectors/mandala-celestial.svg" alt="" width="540" height="540">
+        </div>
+      </div>
+
+      <!-- Soft Cloud Mist Silhouette at the Base -->
+      <div class="hero-mist-horizon" aria-hidden="true"></div>
+
+      <!-- Hero Content Container -->
+      <div class="hero-container">
+        <!-- Auspicious Ganesha & Sanskrit Invocations -->
+        <div class="hero-auspicious-block">
+          <img src="assets/vectors/ganesha-silver.svg" alt="Auspicious Lord Ganesha" class="hero-ganesha-emblem"
+            width="95" height="110">
+          <div class="hero-shlok" lang="sa">॥ श्री गणेशाय नमः ॥</div>
+          <p id="hero-tagline" class="hero-tagline">॥ शुभ विवाह • मांगलिक मिलन ॥</p>
+        </div>
+
+        <!-- Lead Invitation Note -->
+        <p id="hero-invitation-subtext" class="hero-invitation-subtext">
+          परमपिता परमेश्वर की असीम अनुकम्पा से, दो परिवारों का स्नेहिल मिलन एवं दो आत्माओं का पावन वैवाहिक गठबंधन।
+        </p>
+
+        <!-- Ornate Celestial JR Floral Monogram Crest -->
+        <div class="hero-monogram-container">
+          <picture>
+            <source srcset="assets/images/jr-floral-monogram.webp" type="image/webp">
+            <img src="assets/images/jr-floral-monogram.png" alt="ज्योति एवं राजन मांगलिक पुष्प स्वर्ण प्रतीक चिह्न"
+              class="hero-monogram-img" width="280" height="187" loading="eager" decoding="async">
+          </picture>
+        </div>
+
+        <!-- Visual Centrepiece: Couple Names -->
+        <div class="hero-names-wrapper">
+          <h1 id="hero-couple-title" class="hero-couple-title">
+            <span>ज्योति</span>
+            <span class="hero-connector-amp">संग</span>
+            <span>राजन</span>
+          </h1>
+        </div>
+
+        <!-- Elegant Wedding Date & Destination Cartouche -->
+        <div class="hero-date-cartouche">
+          <div class="hero-date-main-row">
+            <span class="hero-date-star-flourish" aria-hidden="true">✦</span>
+            <span id="hero-date" class="hero-date-text">बुधवार, 9 दिसंबर 2026</span>
+            <span class="hero-date-star-flourish" aria-hidden="true">✦</span>
+          </div>
+          <div id="hero-date-sub-row" class="hero-date-sub-row">
+            <span id="hero-sub-rite">शुभ विवाह</span>
+            <span class="hero-date-sub-divider" aria-hidden="true"></span>
+            <span id="hero-location">बरदहिया, छपरा, बिहार</span>
+          </div>
+        </div>
+
+        <!-- Animated Scroll Indicator -->
+        <div>
+          <a href="#countdown-section" class="hero-scroll-cue" aria-label="मांगलिक उत्सव का क्रम देखें">
+            <span class="hero-scroll-icon" aria-hidden="true"></span>
+            <span id="hero-scroll-cue-text">मांगलिक उत्सव का क्रम देखें</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ====================================================================
+         CELESTIAL COUNTDOWN CLOCK SECTION
+         ==================================================================== -->
+    <section id="countdown-section" class="countdown-section">
+      <div class="countdown-container">
+        <div class="countdown-header">
+          <span class="countdown-auspicious-tag">
+            <span>✨</span>
+            <span id="countdown-eyebrow-text">Celestial Countdown</span>
+            <span>✨</span>
+          </span>
+          <h2 id="countdown-title" class="countdown-title text-gradient-lilac">Counting Down to the Divine Union</h2>
+          <p id="countdown-subtitle" class="countdown-subtitle">
+            Every passing moment brings us closer to the sacred vows beneath the starlit heavens on 9 December 2026.
+          </p>
+        </div>
+
+        <!-- 4 Glassmorphic Countdown Pods -->
+        <div id="countdown-grid" class="countdown-grid" role="timer" aria-live="off"
+          aria-label="Countdown to 9 December 2026">
+          <!-- Days Pod -->
+          <div class="countdown-pod">
+            <div id="countdown-days" class="countdown-number">--</div>
+            <div id="countdown-label-days" class="countdown-label">Days</div>
+          </div>
+
+          <!-- Hours Pod -->
+          <div class="countdown-pod">
+            <div id="countdown-hours" class="countdown-number">--</div>
+            <div id="countdown-label-hours" class="countdown-label">Hours</div>
+          </div>
+
+          <!-- Minutes Pod -->
+          <div class="countdown-pod">
+            <div id="countdown-minutes" class="countdown-number">--</div>
+            <div id="countdown-label-minutes" class="countdown-label">Minutes</div>
+          </div>
+
+          <!-- Seconds Pod -->
+          <div class="countdown-pod">
+            <div id="countdown-seconds" class="countdown-number">--</div>
+            <div id="countdown-label-seconds" class="countdown-label">Seconds</div>
+          </div>
+        </div>
+
+        <!-- Completed Celebration State Banner -->
+        <div id="countdown-completed" class="countdown-completed-banner">
+          🌟 The Auspicious Wedding Day has arrived! Welcome to the celebration of Jyothi &amp; Rajan! 🌟
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         COUPLE PRESENTATION SPOTLIGHT
+         ==================================================================== -->
+    <section id="couple-section" class="couple-section">
+      <div class="couple-container">
+        <div class="couple-section-header">
+          <span class="couple-eyebrow">
+            <span>🌙</span>
+            <span id="couple-eyebrow-text">The Couple</span>
+            <span>⭐</span>
+          </span>
+          <h2 id="couple-section-title" class="couple-section-title text-gradient-lilac">Two Souls, One Divine Journey
+          </h2>
+          <p id="couple-section-subtitle" class="couple-section-subtitle">
+            “When souls connect in starlight, destiny weaves an eternal tapestry of love, friendship, and sacred
+            devotion.”
+          </p>
+        </div>
+
+        <!-- Couple Cards Showcase Grid -->
+        <div class="couple-showcase-grid">
+          <!-- Bride Card -->
+          <article class="couple-profile-card card-bride">
+            <!-- Arched Celestial Photo Frame -->
+            <div class="couple-image-frame">
+              <img id="spotlight-bride-photo" src="assets/images/references/bride-lehenga.jpg"
+                alt="Jyothi Kumari – The Bride">
+            </div>
+
+            <span id="bride-role-tag" class="couple-role-tag">The Bride</span>
+            <h3 id="spotlight-bride-name" class="couple-name">Jyothi Kumari</h3>
+            <p id="bride-heritage-line" class="couple-heritage-line">Daughter of Auspicious Lineage</p>
+            <p id="bride-blessing-quote" class="couple-blessing-quote">
+              “In your eyes, I found my celestial home; in your heart, my eternal peace.”
+            </p>
+          </article>
+
+          <!-- Center Union Monogram & Starlight Divider -->
+          <div class="couple-center-divider" aria-hidden="true">
+            <div class="couple-center-line"></div>
+            <div id="couple-center-monogram" class="couple-center-monogram">J &amp; R</div>
+            <div class="couple-center-line"></div>
+          </div>
+
+          <!-- Groom Card -->
+          <article class="couple-profile-card card-groom">
+            <!-- Arched Celestial Photo Frame -->
+            <div class="couple-image-frame">
+              <img id="spotlight-groom-photo" src="assets/images/references/groom-sherwani.jpg"
+                alt="Rajan Sharma – The Groom">
+            </div>
+
+            <span id="groom-role-tag" class="couple-role-tag">The Groom</span>
+            <h3 id="spotlight-groom-name" class="couple-name">Rajan Sharma</h3>
+            <p id="groom-heritage-line" class="couple-heritage-line">Son of Auspicious Lineage</p>
+            <p id="groom-blessing-quote" class="couple-blessing-quote">
+              “Walking hand in hand beneath the starlit heavens into a lifetime of shared dreams.”
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         MILESTONE 4: SACRED CEREMONIES TIMELINE (FOUR RITES)
+         ==================================================================== -->
+    <section id="events-section" class="events-section">
+      <div class="events-container">
+        <div class="events-header">
+          <span class="events-eyebrow">
+            <span>✨</span>
+            <span id="events-eyebrow-text">Auspicious Schedule • Four Sacred Rites</span>
+            <span>✨</span>
+          </span>
+          <h2 id="events-title" class="events-title text-gradient-lilac">The Wedding Celebrations</h2>
+          <p id="events-subtitle" class="events-subtitle">
+            Honoring timeless Vedic traditions, ancestral blessings, and sacred rituals as we unite beneath the stars.
+          </p>
+        </div>
+
+        <!-- The Responsive Timeline Architecture -->
+        <div class="timeline-wrapper">
+          <div id="timeline-events-list">
+            <!-- Populated dynamically via js/main.js with the 4 ceremonies -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         MILESTONE 4: VENUE & DIRECT GOOGLE MAPS ACTIONS
+         ==================================================================== -->
+    <section id="venue-section" class="venue-section">
+      <div class="venue-container">
+        <div class="venue-header">
+          <span class="venue-eyebrow">
+            <span>📍</span>
+            <span id="venue-eyebrow-text">Venue &amp; Destination</span>
+            <span>🗺️</span>
+          </span>
+          <h2 id="venue-title" class="venue-title text-gradient-lilac">The Wedding Venue</h2>
+          <p id="venue-subtitle" class="venue-subtitle">
+            We eagerly look forward to welcoming you and your family to celebrate our sacred day.
+          </p>
+        </div>
+
+        <!-- The Venue Presentation Card -->
+        <article class="venue-card">
+          <!-- Landmark Icon Disc -->
+          <div class="venue-location-icon" aria-hidden="true">
+            <span>📍</span>
+          </div>
+
+          <h3 id="venue-name" class="venue-name-display">Wedding Venue</h3>
+
+          <!-- Full Address as required -->
+          <p id="venue-address" class="venue-address-display">
+            Bardahia, Marhaura, Chhapra, Bihar – 841419, India
+          </p>
+
+          <!-- Verified Coordinates Badge -->
+          <div class="venue-coordinates-pill">
+            <span class="coordinates-dot" aria-hidden="true"></span>
+            <span id="venue-coordinates">Coordinates: 25.922985, 84.846042</span>
+          </div>
+
+          <!-- Separate Direct Google Maps Buttons -->
+          <div class="venue-actions-row">
+            <!-- Button 1: View Location -->
+            <a id="btn-view-map" href="https://www.google.com/maps/search/?api=1&query=25.922985%2C84.846042"
+              target="_blank" rel="noopener noreferrer" class="btn-map-view"
+              aria-label="View wedding venue location on Google Maps">
+              <span aria-hidden="true">📍</span>
+              <span id="btn-view-map-text">View Location on Google Maps</span>
+            </a>
+
+            <!-- Button 2: Get Directions -->
+            <a id="btn-get-directions" href="https://www.google.com/maps/dir/?api=1&destination=25.922985%2C84.846042"
+              target="_blank" rel="noopener noreferrer" class="btn-map-directions"
+              aria-label="Get driving directions to wedding venue on Google Maps">
+              <span aria-hidden="true">🚗</span>
+              <span id="btn-get-directions-text">Get Directions on Google Maps</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Final Invitation & Celestial Blessing Card -->
+        <div class="final-invitation-card">
+          <!-- Sanskrit Blessing -->
+          <div id="final-blessing-shlok" class="final-blessing-shlok" lang="sa">
+            मङ्गलं भगवान् विष्णुः मङ्गलं गरुडध्वजः।<br>
+            मङ्गलं पुण्डरीकाक्षः मङ्गलायतनो हरिः॥
+          </div>
+
+          <!-- Celestial Mandala Seal -->
+          <div class="final-mandala-seal">
+            <img src="assets/vectors/mandala-celestial.svg" alt="Celestial Blessing Mandala" width="90" height="90">
+          </div>
+
+          <p id="final-note-text" class="final-note-text">
+            “Your love, presence, and blessings are the greatest gifts we could cherish as we begin this sacred lifelong
+            journey together.”
+          </p>
+
+          <div id="final-monogram-sign" class="final-monogram-sign">Jyothi &amp; Rajan</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         OFFICIAL WEDDING INVITATION POSTER SECTION (FINAL SECTION)
+         ==================================================================== -->
+    <section id="invitation-poster-section" class="invitation-poster-section">
+      <div class="poster-container">
+        <!-- Section Header -->
+        <div class="poster-header">
+          <span class="poster-eyebrow">
+            <span aria-hidden="true">✨</span>
+            <span id="poster-eyebrow-text">मांगलिक निमंत्रण पत्र</span>
+            <span aria-hidden="true">✨</span>
+          </span>
+          <h2 id="poster-title" class="poster-title font-display">शुभ विवाह आमंत्रण</h2>
+          <p id="poster-subtitle" class="poster-subtitle">
+            हमारे इस पावन परिणयोत्सव का सप्रेम निमंत्रण पत्र। इसे सहेजें और अपने पास रखें।
+          </p>
+        </div>
+
+        <!-- Poster Display Card -->
+        <div class="poster-card-frame">
+          <div class="poster-glow-backdrop" aria-hidden="true"></div>
+          <div class="poster-image-wrapper">
+            <img id="invitation-poster-img" src="assets/images/wedding-invitation-poster-hi.png"
+              alt="ज्योति कुमारी एवं राजन शर्मा का शुभ विवाह निमंत्रण पत्र" class="invitation-poster-img" width="687"
+              height="1024" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Download Action Area -->
+        <div class="poster-action-area">
+          <a id="btn-download-invitation" href="assets/images/wedding-invitation-poster-hi.png"
+            download="Jyothi-Kumari-Rajan-Sharma-Wedding-Invitation-HI.png" class="btn-download-invitation"
+            aria-label="शुभ विवाह निमंत्रण पत्र डाउनलोड करें (उच्च गुणवत्ता PNG)">
+            <!-- Download Icon -->
+            <svg class="download-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"
+                fill="currentColor" />
+            </svg>
+            <span id="poster-download-text">निमंत्रण पत्र डाउनलोड करें</span>
+            <span class="download-file-badge">PNG</span>
+          </a>
+          <p class="download-hint-text">
+            <span id="poster-download-hint">उच्च गुणवत्ता प्रिंट योग्य निमंत्रण पत्र • HD ओरिजिनल क्वालिटी</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Seal -->
+    <footer
+      style="background: var(--color-midnight-deep); color: var(--color-silver-mist); padding: var(--space-2xl) 0; text-align: center; border-top: 1px solid var(--glass-dark-border);">
+      <div class="container">
+        <p id="footer-couple-names"
+          style="font-family: var(--font-display); font-size: var(--font-size-lg); color: var(--color-champagne-light); margin-bottom: var(--space-2xs);">
+          ज्योति कुमारी एवं राजन शर्मा
+        </p>
+        <p id="footer-tagline" style="font-size: var(--font-size-xs); color: var(--color-text-light-muted); margin: 0;">
+          शुभ विवाह उत्सव • 9 दिसंबर 2026
+        </p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Hidden anchor for smooth focus transfer from opening -->
+  <span id="couple-title" class="sr-only">Jyothi Kumari &amp; Rajan Sharma Wedding</span>
+
+  <!-- ES6 Module Script -->
+  <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

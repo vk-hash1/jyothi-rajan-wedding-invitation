@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 800" width="100%" height="100%" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="silverChampagneBorderGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C5A869" />
+      <stop offset="25%" stop-color="#E2E8F0" />
+      <stop offset="50%" stop-color="#FFFFFF" />
+      <stop offset="75%" stop-color="#F5E8D0" />
+      <stop offset="100%" stop-color="#9B7ED9" />
+    </linearGradient>
+    <pattern id="jaaliCelestialUnit" width="60" height="60" patternUnits="userSpaceOnUse">
+      <!-- Diamond celestial jaali geometry -->
+      <path d="M 30 0 L 60 30 L 30 60 L 0 30 Z" fill="none" stroke="url(#silverChampagneBorderGrad)" stroke-width="1.8" />
+      <rect x="15" y="15" width="30" height="30" fill="none" stroke="url(#silverChampagneBorderGrad)" stroke-width="1.2" />
+      <!-- Center starlight node -->
+      <circle cx="30" cy="30" r="4.5" fill="none" stroke="url(#silverChampagneBorderGrad)" stroke-width="1.2" />
+      <circle cx="30" cy="30" r="1.5" fill="#FFFFFF" />
+      <!-- Star tips -->
+      <circle cx="30" cy="0" r="2" fill="url(#silverChampagneBorderGrad)" />
+      <circle cx="60" cy="30" r="2" fill="url(#silverChampagneBorderGrad)" />
+      <circle cx="30" cy="60" r="2" fill="url(#silverChampagneBorderGrad)" />
+      <circle cx="0" cy="30" r="2" fill="url(#silverChampagneBorderGrad)" />
+      <!-- Radiating lines -->
+      <line x1="30" y1="10" x2="30" y2="20" stroke="url(#silverChampagneBorderGrad)" stroke-width="1.2" />
+      <line x1="30" y1="40" x2="30" y2="50" stroke="url(#silverChampagneBorderGrad)" stroke-width="1.2" />
+      <line x1="10" y1="30" x2="20" y2="30" stroke="url(#silverChampagneBorderGrad)" stroke-width="1.2" />
+      <line x1="40" y1="30" x2="50" y2="30" stroke="url(#silverChampagneBorderGrad)" stroke-width="1.2" />
+    </pattern>
+  </defs>
+
+  <!-- Left Guard Pin Lines -->
+  <line x1="8" y1="0" x2="8" y2="800" stroke="url(#silverChampagneBorderGrad)" stroke-width="2.5" />
+  <line x1="14" y1="0" x2="14" y2="800" stroke="url(#silverChampagneBorderGrad)" stroke-width="1.2" stroke-dasharray="2,3" />
+  <line x1="18" y1="0" x2="18" y2="800" stroke="url(#silverChampagneBorderGrad)" stroke-width="1.2" />
+
+  <!-- Repeating Jaali Lattice Center -->
+  <rect x="20" y="0" width="60" height="800" fill="url(#jaaliCelestialUnit)" />
+
+  <!-- Right Guard Pin Lines -->
+  <line x1="82" y1="0" x2="82" y2="800" stroke="url(#silverChampagneBorderGrad)" stroke-width="1.2" />
+  <line x1="86" y1="0" x2="86" y2="800" stroke="url(#silverChampagneBorderGrad)" stroke-width="1.2" stroke-dasharray="2,3" />
+  <line x1="92" y1="0" x2="92" y2="800" stroke="url(#silverChampagneBorderGrad)" stroke-width="2.5" />
+</svg>

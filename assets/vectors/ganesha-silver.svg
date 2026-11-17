@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 460" width="100%" height="100%">
+  <defs>
+    <linearGradient id="celestialSilverChampagne" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="25%" stop-color="#F5E8D0" />
+      <stop offset="55%" stop-color="#E2E8F0" />
+      <stop offset="85%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#B8A9C9" />
+    </linearGradient>
+    <radialGradient id="lilacAura" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#EDE7F6" stop-opacity="0.6" />
+      <stop offset="60%" stop-color="#C5B9E8" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#9B7ED9" stop-opacity="0" />
+    </radialGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Ethereal Aura Halo -->
+  <circle cx="200" cy="210" r="185" fill="url(#lilacAura)" />
+  <g stroke="url(#celestialSilverChampagne)" fill="none" opacity="0.85">
+    <circle cx="200" cy="210" r="175" stroke-width="1.5" stroke-dasharray="4,6" />
+    <circle cx="200" cy="210" r="162" stroke-width="1.2" />
+    <circle cx="200" cy="210" r="150" stroke-width="0.7" stroke-dasharray="2,4" />
+    
+    <!-- Outer Radiance Rays & Drops -->
+    <g stroke-width="1.5">
+      <path d="M 200 30 L 200 45" />
+      <path d="M 200 375 L 200 390" />
+      <path d="M 25 210 L 40 210" />
+      <path d="M 360 210 L 375 210" />
+      <path d="M 76 86 L 87 97" />
+      <path d="M 313 97 L 324 86" />
+      <path d="M 76 334 L 87 323" />
+      <path d="M 313 323 L 324 334" />
+    </g>
+
+    <!-- Ray tips with moonlight pearls -->
+    <g fill="url(#celestialSilverChampagne)" stroke="none">
+      <circle cx="200" cy="25" r="3" />
+      <circle cx="200" cy="395" r="3" />
+      <circle cx="20" cy="210" r="3" />
+      <circle cx="380" cy="210" r="3" />
+      <circle cx="72" cy="82" r="2.5" />
+      <circle cx="328" cy="82" r="2.5" />
+      <circle cx="72" cy="338" r="2.5" />
+      <circle cx="328" cy="338" r="2.5" />
+    </g>
+  </g>
+
+  <!-- Main Ornate Ganesha Body & Face in Celestial Silver & Champagne -->
+  <g stroke="url(#celestialSilverChampagne)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- MUKUT / ROYAL CROWN -->
+    <path d="M 200 52 L 200 66" stroke-width="2.5" />
+    <circle cx="200" cy="50" r="3.5" fill="url(#celestialSilverChampagne)" />
+    <!-- Crown Tier 1 -->
+    <path d="M 193 68 C 195 62, 205 62, 207 68 C 204 74, 196 74, 193 68 Z" fill="url(#celestialSilverChampagne)" stroke-width="1.2" />
+    <!-- Crown Tier 2 & Arch -->
+    <path d="M 182 82 C 188 72, 212 72, 218 82 C 210 88, 190 88, 182 82 Z" stroke-width="2" />
+    <path d="M 172 102 C 182 86, 218 86, 228 102 C 215 110, 185 110, 172 102 Z" stroke-width="2.2" />
+    <!-- Crown Intricate Filigree -->
+    <path d="M 160 128 C 175 106, 225 106, 240 128 C 220 136, 180 136, 160 128 Z" stroke-width="2.5" />
+    <path d="M 200 86 L 200 128" stroke-width="1.5" />
+    <path d="M 188 95 L 188 126" stroke-width="1.2" />
+    <path d="M 212 95 L 212 126" stroke-width="1.2" />
+    <circle cx="200" cy="115" r="3" fill="url(#celestialSilverChampagne)" />
+    <circle cx="185" cy="118" r="2.2" fill="url(#celestialSilverChampagne)" />
+    <circle cx="215" cy="118" r="2.2" fill="url(#celestialSilverChampagne)" />
+
+    <!-- Forehead (Mastak) & Royal Filigree Band -->
+    <path d="M 148 142 C 165 132, 235 132, 252 142" stroke-width="2.5" />
+    <path d="M 152 148 C 170 138, 230 138, 248 148" stroke-width="1.5" />
+    <!-- Sacred Tilak on Forehead -->
+    <path d="M 200 138 L 200 178" stroke-width="3" />
+    <path d="M 194 148 C 196 160, 200 172, 200 178 C 200 172, 204 160, 206 148" stroke-width="2" fill="none" />
+    <circle cx="200" cy="144" r="2.5" fill="url(#celestialSilverChampagne)" />
+    <line x1="188" y1="156" x2="212" y2="156" stroke-width="1.8" />
+    <line x1="190" y1="162" x2="210" y2="162" stroke-width="1.5" />
+    
+    <!-- EYES & BROWS -->
+    <path d="M 166 182 C 174 176, 184 178, 189 184" stroke-width="2.2" />
+    <path d="M 168 184 C 175 188, 182 188, 188 184" stroke-width="1.5" />
+    <circle cx="178" cy="183" r="2" fill="url(#celestialSilverChampagne)" stroke="none" />
+    <path d="M 211 184 C 216 178, 226 176, 234 182" stroke-width="2.2" />
+    <path d="M 212 184 C 218 188, 225 188, 232 184" stroke-width="1.5" />
+    <circle cx="222" cy="183" r="2" fill="url(#celestialSilverChampagne)" stroke="none" />
+
+    <!-- EARS (Karna) -->
+    <path d="M 150 146 C 110 148, 80 180, 85 220 C 89 252, 118 268, 145 264" stroke-width="2.8" />
+    <path d="M 144 160 C 116 164, 96 188, 100 216 C 103 238, 122 250, 142 248" stroke-width="1.5" />
+    <path d="M 138 175 C 122 178, 110 194, 112 210 C 114 224, 126 232, 140 230" stroke-width="1.2" stroke-dasharray="3,3" />
+    <circle cx="95" cy="254" r="5" stroke-width="1.8" />
+    <circle cx="95" cy="254" r="2" fill="url(#celestialSilverChampagne)" />
+    <path d="M 95 259 L 95 268" stroke-width="2" />
+    <circle cx="95" cy="270" r="3" fill="url(#celestialSilverChampagne)" />
+
+    <path d="M 250 146 C 290 148, 320 180, 315 220 C 311 252, 282 268, 255 264" stroke-width="2.8" />
+    <path d="M 256 160 C 284 164, 304 188, 300 216 C 297 238, 278 250, 258 248" stroke-width="1.5" />
+    <path d="M 262 175 C 278 178, 290 194, 288 210 C 286 224, 274 232, 260 230" stroke-width="1.2" stroke-dasharray="3,3" />
+    <circle cx="305" cy="254" r="5" stroke-width="1.8" />
+    <circle cx="305" cy="254" r="2" fill="url(#celestialSilverChampagne)" />
+    <path d="M 305 259 L 305 268" stroke-width="2" />
+    <circle cx="305" cy="270" r="3" fill="url(#celestialSilverChampagne)" />
+
+    <!-- TUSK (Ekadanta) -->
+    <path d="M 218 226 L 228 228 L 222 235 Z" fill="url(#celestialSilverChampagne)" stroke-width="1" />
+    <path d="M 182 226 L 168 232 C 170 238, 178 238, 180 234 Z" fill="url(#celestialSilverChampagne)" stroke-width="1" />
+
+    <!-- TRUNK (Sond) -->
+    <path d="M 188 200 C 188 240, 215 260, 215 285 C 215 315, 175 328, 170 300 C 166 280, 182 270, 192 274 C 198 276, 200 286, 194 290 C 190 292, 185 290, 184 286" stroke-width="3" />
+    <path d="M 212 200 C 212 230, 230 255, 230 285 C 230 330, 160 345, 155 300" stroke-width="2" />
+    <path d="M 194 230 C 202 232, 210 232, 218 230" stroke-width="2" />
+    <path d="M 197 245 C 205 248, 215 248, 223 245" stroke-width="1.8" />
+    <path d="M 200 260 C 208 263, 218 263, 226 260" stroke-width="1.8" />
+    <circle cx="188" cy="285" r="4.5" fill="url(#celestialSilverChampagne)" stroke="none" />
+    
+    <!-- ABHAYA MUDRA (Blessing Hand) -->
+    <path d="M 130 295 C 132 280, 142 278, 148 290 C 152 298, 156 312, 145 324 C 138 332, 126 330, 122 318 C 120 310, 124 300, 130 295 Z" stroke-width="2.2" />
+    <path d="M 132 285 L 133 270 C 134 266, 138 266, 139 270 L 140 285" stroke-width="2" />
+    <path d="M 140 274 L 142 262 C 143 258, 147 258, 148 262 L 149 276" stroke-width="2" />
+    <path d="M 149 276 L 151 266 C 152 262, 155 262, 156 266 L 156 280" stroke-width="2" />
+    <path d="M 156 282 L 159 274 C 160 270, 163 270, 164 274 L 163 288" stroke-width="2" />
+    <circle cx="140" cy="305" r="4.5" stroke-width="1.5" />
+    <circle cx="140" cy="305" r="1.5" fill="url(#celestialSilverChampagne)" stroke="none" />
+
+    <!-- MODAK PATRA (Bowl of Sweets) -->
+    <path d="M 245 305 C 248 322, 270 322, 273 305 Z" stroke-width="2.2" />
+    <ellipse cx="259" cy="305" rx="14" ry="4" stroke-width="1.5" />
+    <circle cx="254" cy="300" r="3" fill="url(#celestialSilverChampagne)" stroke="none" />
+    <circle cx="264" cy="300" r="3" fill="url(#celestialSilverChampagne)" stroke="none" />
+    <circle cx="259" cy="294" r="3" fill="url(#celestialSilverChampagne)" stroke="none" />
+
+    <!-- LOTUS BASE -->
+    <path d="M 155 355 C 175 348, 225 348, 245 355" stroke-width="2" />
+    <path d="M 175 356 C 185 370, 195 380, 200 380 C 205 380, 215 370, 225 356" stroke-width="2" />
+    <path d="M 150 357 C 160 368, 170 376, 180 374" stroke-width="1.5" />
+    <path d="M 250 357 C 240 368, 230 376, 220 374" stroke-width="1.5" />
+    <circle cx="200" cy="372" r="2.5" fill="url(#celestialSilverChampagne)" stroke="none" />
+  </g>
+</svg>

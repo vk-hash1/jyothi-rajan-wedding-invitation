@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="moonGleam" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="40%" stop-color="#F5E8D0" />
+      <stop offset="80%" stop-color="#E2E8F0" />
+      <stop offset="100%" stop-color="#C5B9E8" />
+    </linearGradient>
+    <radialGradient id="lunarAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#EDE7F6" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#A78BFA" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#0B0E21" stop-opacity="0" />
+    </radialGradient>
+    <filter id="moonGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Lunar Glow Aura -->
+  <circle cx="100" cy="100" r="85" fill="url(#lunarAura)" />
+
+  <!-- Crescent Moon Path -->
+  <path d="M 115 35 C 72 38, 42 74, 45 118 C 48 152, 78 175, 115 175 C 92 160, 78 135, 76 108 C 74 76, 92 48, 115 35 Z" fill="url(#moonGleam)" filter="url(#moonGlow)" />
+
+  <!-- Delicate filigree dots on inner curve -->
+  <circle cx="78" cy="95" r="1.5" fill="#FFFFFF" />
+  <circle cx="80" cy="110" r="1.5" fill="#FFFFFF" />
+  <circle cx="85" cy="125" r="1.5" fill="#FFFFFF" />
+
+  <!-- Orbiting Constellation Starburst -->
+  <g transform="translate(135, 80)">
+    <path d="M 0 -18 L 3 -5 L 18 0 L 3 5 L 0 18 L -3 5 L -18 0 L -3 -5 Z" fill="#FFFFFF" />
+    <circle cx="0" cy="0" r="2.5" fill="#F5E8D0" />
+  </g>
+
+  <!-- Smaller Companion Stars -->
+  <circle cx="148" cy="120" r="2" fill="#FFFFFF" />
+  <circle cx="120" cy="148" r="1.5" fill="#F5E8D0" />
+  <circle cx="132" cy="42" r="1.8" fill="#EDE7F6" />
+</svg>

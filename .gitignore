@@ -1,0 +1,12 @@
+# Dependency and local build artifacts
+node_modules/
+
+# Local test & audit screenshots
+audit-screenshots/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db

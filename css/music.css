@@ -1,0 +1,165 @@
+/**
+ * Jyothi Kumari & Rajan Sharma – Enchanted Dream Wedding Website
+ * Floating Audio Player Styles (Refined & Unified Clickable Button)
+ */
+
+/* ==========================================================================
+   FLOATING AUDIO PLAYER BUTTON
+   The entire element is a clickable button for effortless interaction.
+   ========================================================================== */
+.floating-audio-player {
+  position: fixed;
+  bottom: clamp(16px, 3vh, 28px);
+  right: clamp(16px, 3vw, 28px);
+  z-index: 850;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(21, 25, 52, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1.5px solid rgba(197, 168, 105, 0.45);
+  border-radius: var(--radius-pill);
+  padding: 8px 18px 8px 8px;
+  color: var(--color-champagne-light);
+  box-shadow:
+    0 10px 28px -4px rgba(0, 0, 0, 0.5),
+    0 0 20px -2px rgba(155, 126, 217, 0.3);
+  cursor: pointer;
+  outline: none;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: all var(--transition-smooth);
+  user-select: none;
+  text-decoration: none;
+}
+
+.floating-audio-player:hover {
+  background: rgba(28, 33, 68, 0.98);
+  border-color: rgba(245, 232, 208, 0.85);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 14px 34px -4px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(155, 126, 217, 0.45);
+}
+
+.floating-audio-player:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.floating-audio-player:focus-visible {
+  outline: 2px solid var(--color-champagne-light);
+  outline-offset: 3px;
+}
+
+/* Golden Circular Icon Disc */
+.audio-icon-disc {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, var(--color-champagne-light) 0%, var(--color-champagne-gold) 100%);
+  color: var(--color-midnight-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(197, 168, 105, 0.4);
+  transition: transform var(--transition-smooth);
+}
+
+.floating-audio-player:hover .audio-icon-disc {
+  transform: scale(1.06);
+}
+
+.audio-icon-disc svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Audio Action Label ("Play Music" / "Pause Music") */
+.audio-label {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-champagne-light);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* Equalizer Bars Container */
+.audio-equalizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+  padding: 0 2px;
+}
+
+.equalizer-bar {
+  width: 3px;
+  height: 4px;
+  background-color: var(--color-lavender-primary);
+  border-radius: 1.5px;
+  transition: height 0.2s ease, background-color 0.3s ease;
+}
+
+/* When Playing: Equalizer animates */
+.floating-audio-player.is-playing .equalizer-bar {
+  background-color: var(--color-champagne-light);
+  animation: equalizerBounce 1.2s ease-in-out infinite alternate;
+}
+
+.floating-audio-player.is-playing .bar-1 {
+  animation-delay: 0.1s;
+}
+
+.floating-audio-player.is-playing .bar-2 {
+  animation-delay: 0.35s;
+}
+
+.floating-audio-player.is-playing .bar-3 {
+  animation-delay: 0.2s;
+}
+
+.floating-audio-player.is-playing .bar-4 {
+  animation-delay: 0.45s;
+}
+
+@keyframes equalizerBounce {
+  0% {
+    height: 4px;
+  }
+
+  50% {
+    height: 16px;
+  }
+
+  100% {
+    height: 8px;
+  }
+}
+
+/* ==========================================================================
+   MOBILE SAFE AREA & COMPACT VIEWPORT
+   ========================================================================== */
+@media (max-width: 480px) {
+  .floating-audio-player {
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    right: 14px;
+    padding: 6px 14px 6px 6px;
+    font-size: 0.8125rem;
+  }
+
+  .audio-icon-disc {
+    width: 34px;
+    height: 34px;
+  }
+
+  .audio-icon-disc svg {
+    width: 16px;
+    height: 16px;
+  }
+}

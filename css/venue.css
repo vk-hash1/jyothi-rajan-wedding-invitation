@@ -1,0 +1,283 @@
+/**
+ * Jyothi Kumari & Rajan Sharma – Enchanted Dream Wedding Website
+ * Venue & Direct Google Maps Navigation Styles
+ */
+
+/* ==========================================================================
+   VENUE SECTION CONTAINER
+   ========================================================================== */
+.venue-section {
+  position: relative;
+  padding: clamp(3.5rem, 6vh, 6.5rem) 1.5rem;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(197, 168, 105, 0.12) 0%, transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(155, 126, 217, 0.14) 0%, transparent 55%),
+    linear-gradient(180deg, var(--color-lavender-ethereal) 0%, #FFFFFF 50%, var(--color-lilac-mist) 100%);
+  overflow: hidden;
+}
+
+.venue-container {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.venue-header {
+  text-align: center;
+  margin-bottom: clamp(2.5rem, 2rem + 2.5vw, 4rem);
+}
+
+.venue-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-sans);
+  font-size: clamp(0.75rem, 0.7rem + 0.2vw, 0.85rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-violet-rich);
+  margin-bottom: var(--space-xs);
+}
+
+.venue-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.6rem + 1.8vw, 3rem);
+  color: var(--color-violet-rich);
+  margin-bottom: var(--space-2xs);
+}
+
+.venue-subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.25rem);
+  font-style: italic;
+  color: var(--color-text-muted);
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   VENUE SHOWCASE CARD
+   ========================================================================== */
+.venue-card {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(197, 168, 105, 0.35);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 1.5rem + 2vw, 3.25rem) clamp(1.25rem, 1rem + 1.5vw, 2.5rem);
+  text-align: center;
+  box-shadow:
+    0 16px 40px -10px rgba(99, 57, 168, 0.1),
+    0 0 24px rgba(155, 126, 217, 0.12);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
+}
+
+/* Celestial Corner Jaali Accents */
+.venue-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-lavender-primary), var(--color-champagne-gold), var(--color-lavender-primary));
+}
+
+/* Destination Icon */
+.venue-location-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto var(--space-md);
+  border-radius: var(--radius-pill);
+  background: radial-gradient(circle, #FAF5FF 0%, var(--color-lavender-ethereal) 100%);
+  border: 2px solid var(--color-champagne-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.85rem;
+  box-shadow: 0 8px 20px rgba(99, 57, 168, 0.15);
+}
+
+.venue-name-display {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 1.4rem + 1vw, 2.35rem);
+  font-weight: 700;
+  color: var(--color-violet-rich);
+  margin-bottom: var(--space-xs);
+}
+
+/* Address Styling */
+.venue-address-display {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.2rem);
+  font-weight: 600;
+  color: var(--color-text-dark);
+  line-height: 1.5;
+  max-width: 600px;
+  margin: 0 auto var(--space-md);
+}
+
+/* Coordinates Pill */
+.venue-coordinates-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: var(--color-lavender-ethereal);
+  border: 1px solid var(--color-lavender-soft);
+  border-radius: var(--radius-pill);
+  padding: 0.45rem 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-violet-rich);
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-xl);
+}
+
+.coordinates-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #16A34A;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 0 6px #16A34A;
+}
+
+/* ==========================================================================
+   SEPARATE DIRECT GOOGLE MAPS BUTTONS
+   ========================================================================== */
+.venue-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.75rem, 1vw + 0.5rem, 1.25rem);
+}
+
+/* Action Button 1: View Location */
+.btn-map-view {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  background: linear-gradient(135deg, var(--color-champagne-light) 0%, var(--color-champagne-gold) 100%);
+  color: var(--color-midnight-deep);
+  font-family: var(--font-sans);
+  font-size: clamp(0.875rem, 0.825rem + 0.25vw, 1rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.95rem 2rem;
+  border-radius: var(--radius-pill);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(197, 168, 105, 0.35);
+  transition: all var(--transition-smooth);
+  min-height: 48px;
+}
+
+.btn-map-view:hover {
+  background: linear-gradient(135deg, #FFFFFF 0%, var(--color-champagne-light) 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(197, 168, 105, 0.5);
+  color: var(--color-midnight-deep);
+}
+
+/* Action Button 2: Get Directions */
+.btn-map-directions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  background: linear-gradient(135deg, var(--color-violet-rich) 0%, var(--color-lavender-primary) 100%);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: clamp(0.875rem, 0.825rem + 0.25vw, 1rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.95rem 2rem;
+  border-radius: var(--radius-pill);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(99, 57, 168, 0.28);
+  transition: all var(--transition-smooth);
+  min-height: 48px;
+}
+
+.btn-map-directions:hover {
+  background: linear-gradient(135deg, var(--color-violet-deep) 0%, var(--color-violet-rich) 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(99, 57, 168, 0.42);
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   FINAL INVITATION & CELESTIAL BLESSING CARD
+   ========================================================================== */
+.final-invitation-card {
+  background: linear-gradient(180deg, #FFFFFF 0%, var(--color-lavender-ethereal) 100%);
+  border: 1px solid var(--color-lavender-soft);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 1.5rem + 2vw, 3rem) clamp(1.25rem, 1rem + 1vw, 2rem);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.final-blessing-shlok {
+  font-family: 'Noto Serif Devanagari', 'Nirmala UI', serif !important;
+  font-size: clamp(1.1rem, 1rem + 0.4vw, 1.45rem);
+  color: var(--color-violet-rich);
+  line-height: 1.65 !important;
+  margin-bottom: var(--space-md);
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  text-transform: none !important;
+  font-style: normal !important;
+  font-feature-settings: "dev2" 1, "deva" 1 !important;
+}
+
+.final-mandala-seal {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto var(--space-md);
+  filter: drop-shadow(0 4px 12px rgba(155, 126, 217, 0.3));
+}
+
+.final-note-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1rem + 0.3vw, 1.25rem);
+  font-style: italic;
+  color: var(--color-text-muted);
+  max-width: 580px;
+  margin: 0 auto var(--space-md);
+  line-height: 1.6;
+}
+
+.final-monogram-sign {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-champagne-gold);
+  letter-spacing: 0.1em;
+}
+
+/* ==========================================================================
+   RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 600px) {
+  .venue-actions-row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-map-view,
+  .btn-map-directions {
+    width: 100%;
+    max-width: 340px;
+  }
+}

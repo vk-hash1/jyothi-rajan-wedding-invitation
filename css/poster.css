@@ -1,0 +1,274 @@
+/**
+ * Jyothi Kumari & Rajan Sharma – Enchanted Dream Wedding Website
+ * Dedicated Wedding Invitation Poster Section Styles
+ *
+ * Theme: Enchanted Dream (Deep Violet, Lavender, Midnight Blue & Champagne Gold)
+ */
+
+/* ==========================================================================
+   POSTER SECTION CONTAINER (FINAL SECTION)
+   ========================================================================== */
+.invitation-poster-section {
+  position: relative;
+  padding: clamp(3.5rem, 6vh, 6.5rem) 1.5rem clamp(4rem, 7vh, 7rem);
+  background: 
+    radial-gradient(circle at 50% 25%, rgba(155, 126, 217, 0.3) 0%, transparent 65%),
+    radial-gradient(circle at 18% 75%, rgba(99, 57, 168, 0.32) 0%, transparent 55%),
+    radial-gradient(circle at 82% 70%, rgba(197, 168, 105, 0.22) 0%, transparent 55%),
+    linear-gradient(180deg, var(--color-lilac-mist) 0%, #20153D 18%, #120B28 55%, #070914 100%);
+  color: var(--color-text-light);
+  overflow: hidden;
+  text-align: center;
+  isolation: isolate;
+}
+
+.poster-container {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+/* ==========================================================================
+   SECTION HEADER
+   ========================================================================== */
+.poster-header {
+  margin-bottom: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+}
+
+.poster-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-sans);
+  font-size: clamp(0.75rem, 0.7rem + 0.2vw, 0.85rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-lavender-soft);
+  margin-bottom: var(--space-xs);
+}
+
+.poster-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.6rem + 2vw, 3.25rem);
+  font-weight: 700;
+  color: var(--color-text-light);
+  margin-bottom: var(--space-2xs);
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFF5E1 35%, #E8D19F 70%, #FFFFFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.6));
+}
+
+.poster-subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.25rem);
+  font-style: italic;
+  color: var(--color-silver-mist);
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.55;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* ==========================================================================
+   POSTER DISPLAY CARD FRAME
+   ========================================================================== */
+.poster-card-frame {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto clamp(1.75rem, 1.25rem + 1.8vw, 2.75rem);
+  border-radius: var(--radius-lg);
+  padding: clamp(8px, 1.8vw, 14px);
+  background: rgba(22, 16, 48, 0.82);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1.5px solid rgba(197, 168, 105, 0.45);
+  box-shadow: 
+    0 25px 65px -12px rgba(0, 0, 0, 0.85),
+    0 0 35px rgba(155, 126, 217, 0.35),
+    0 0 65px rgba(197, 168, 105, 0.18),
+    inset 0 0 20px rgba(197, 168, 105, 0.1);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.poster-card-frame:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 
+    0 32px 75px -12px rgba(0, 0, 0, 0.9),
+    0 0 45px rgba(155, 126, 217, 0.5),
+    0 0 80px rgba(197, 168, 105, 0.28);
+  border-color: rgba(245, 232, 208, 0.75);
+}
+
+/* Ambient Radial Starlight Aura behind the Frame */
+.poster-glow-backdrop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+  height: 110%;
+  background: radial-gradient(circle, rgba(155, 126, 217, 0.22) 0%, rgba(197, 168, 105, 0.15) 45%, transparent 70%);
+  border-radius: var(--radius-lg);
+  filter: blur(35px);
+  pointer-events: none;
+  z-index: -1;
+  animation: posterAuraPulse 7s ease-in-out infinite alternate;
+}
+
+@keyframes posterAuraPulse {
+  0% { transform: translate(-50%, -50%) scale(0.96); opacity: 0.65; }
+  100% { transform: translate(-50%, -50%) scale(1.04); opacity: 0.95; }
+}
+
+.poster-image-wrapper {
+  border-radius: calc(var(--radius-lg) - 4px);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  background-color: #0F0A24;
+}
+
+.invitation-poster-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.poster-card-frame:hover .invitation-poster-img {
+  transform: scale(1.02);
+}
+
+/* ==========================================================================
+   DOWNLOAD ACTION BUTTON & HINTS
+   ========================================================================== */
+.poster-action-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+}
+
+.btn-download-invitation {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  background: linear-gradient(135deg, #F5E8D0 0%, #C5A869 50%, #9B7ED9 100%);
+  color: var(--color-midnight-deep);
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.1rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.95rem 2.25rem;
+  min-height: 52px;
+  border-radius: var(--radius-pill);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 
+    0 10px 28px rgba(197, 168, 105, 0.45),
+    0 0 25px rgba(155, 126, 217, 0.35);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), filter var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-download-invitation::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: rotate(30deg);
+  animation: shimmerSweep 3s infinite;
+}
+
+.btn-download-invitation:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 
+    0 14px 35px rgba(197, 168, 105, 0.6),
+    0 0 35px rgba(155, 126, 217, 0.55);
+}
+
+.btn-download-invitation:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.download-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  transition: transform var(--transition-smooth);
+}
+
+.btn-download-invitation:hover .download-icon {
+  transform: translateY(2px);
+}
+
+.download-file-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  background: rgba(21, 25, 52, 0.2);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(21, 25, 52, 0.3);
+}
+
+.download-hint-text {
+  font-family: var(--font-sans);
+  font-size: clamp(0.75rem, 0.7rem + 0.18vw, 0.85rem);
+  color: var(--color-silver-mist);
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+  opacity: 0.88;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY: PREFERS-REDUCED-MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .poster-card-frame,
+  .poster-glow-backdrop,
+  .invitation-poster-img,
+  .btn-download-invitation::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 600px) {
+  .invitation-poster-section {
+    padding: 3rem 1rem 4rem;
+  }
+
+  .poster-card-frame {
+    max-width: 100%;
+    padding: 6px;
+    border-radius: var(--radius-md);
+  }
+
+  .poster-image-wrapper {
+    border-radius: calc(var(--radius-md) - 2px);
+  }
+
+  .btn-download-invitation {
+    width: 100%;
+    max-width: 320px;
+    padding: 0.9rem 1.5rem;
+  }
+}

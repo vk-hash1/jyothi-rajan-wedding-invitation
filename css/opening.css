@@ -1,0 +1,876 @@
+/**
+ * Jyothi Kumari & Rajan Sharma – Enchanted Dream Wedding Website
+ * Redesigned Landing & Opening Experience Styles
+ *
+ * Primary Visual Reference: Enchanted Dream Celestial Night Atmosphere
+ * Follows exact reference composition on both mobile and desktop.
+ */
+
+/* ==========================================================================
+   1. CINEMATIC OPENING CONTAINER & DESKTOP EXTENSION SCENERY
+   ========================================================================== */
+.cinematic-opening {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 9999;
+  background-color: var(--color-midnight-deep);
+  background-image:
+    radial-gradient(circle at 50% 25%, rgba(99, 57, 168, 0.4) 0%, transparent 65%),
+    radial-gradient(circle at 80% 85%, rgba(155, 126, 217, 0.25) 0%, transparent 60%),
+    linear-gradient(180deg, #090B1A 0%, #110E28 50%, #1A1238 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.9s ease;
+  will-change: opacity, transform;
+}
+
+.cinematic-opening.is-dismissed {
+  opacity: 0;
+  transform: scale(1.06);
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* Ambient celestial nebula for wide screens surrounding the portrait stage */
+.landing-desktop-scenery {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse at 25% 30%, rgba(155, 126, 217, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 40%, rgba(215, 110, 200, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 90%, rgba(130, 70, 200, 0.22) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ==========================================================================
+   2. CENTERED PORTRAIT STAGE (EXACT 9:16 REFERENCE PROPORTIONS)
+   ========================================================================== */
+.landing-stage {
+  position: relative;
+  height: min(100vh, 100dvh, 1024px);
+  width: auto;
+  aspect-ratio: 9 / 16;
+  max-width: 576px;
+  margin: 0 auto;
+  overflow: hidden;
+  box-shadow:
+    0 25px 70px -10px rgba(0, 0, 0, 0.85),
+    0 0 50px -5px rgba(155, 126, 217, 0.35);
+  background-color: #0B0E21;
+}
+
+@media (max-width: 640px) {
+  .landing-stage {
+    width: 100vw;
+    height: 100dvh;
+    max-width: 100%;
+    max-height: 100dvh;
+    aspect-ratio: auto;
+    box-shadow: none;
+  }
+}
+
+/* High-Resolution Celestial Backdrop Scene Artwork */
+.landing-scenery-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   3. ANIMATED PULSING MOON GLOW & ATMOSPHERIC CORONA
+   ========================================================================== */
+.landing-moon-corona {
+  position: absolute;
+  left: 29%;
+  top: 17%;
+  width: 180px;
+  height: 180px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+  animation: moonCoronaPulse 6s ease-in-out infinite alternate;
+}
+
+.moon-halo-inner {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 240, 255, 0.38) 0%, rgba(220, 180, 255, 0.15) 50%, transparent 75%);
+  filter: blur(14px);
+}
+
+.moon-halo-outer {
+  position: absolute;
+  inset: -55px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 150, 255, 0.22) 0%, rgba(155, 100, 240, 0.08) 55%, transparent 80%);
+  filter: blur(28px);
+}
+
+@keyframes moonCoronaPulse {
+  0% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+    filter: drop-shadow(0 0 25px rgba(220, 190, 255, 0.4));
+  }
+  50% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(1.08);
+    filter: drop-shadow(0 0 50px rgba(245, 220, 255, 0.75));
+  }
+  100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+    filter: drop-shadow(0 0 25px rgba(220, 190, 255, 0.4));
+  }
+}
+
+/* ==========================================================================
+   4. LAYERED ETHEREAL DRIFTING CLOUDS
+   ========================================================================== */
+.landing-clouds-drift {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background-repeat: no-repeat;
+  mix-blend-mode: screen;
+}
+
+.cloud-layer-1 {
+  background:
+    radial-gradient(ellipse at 15% 28%, rgba(215, 140, 230, 0.18) 0%, transparent 45%),
+    radial-gradient(ellipse at 88% 45%, rgba(185, 110, 225, 0.2) 0%, transparent 45%);
+  animation: cloudDriftSlow 45s ease-in-out infinite alternate;
+}
+
+.cloud-layer-2 {
+  background:
+    radial-gradient(ellipse at 80% 25%, rgba(155, 90, 215, 0.15) 0%, transparent 40%),
+    radial-gradient(ellipse at 25% 55%, rgba(225, 150, 240, 0.16) 0%, transparent 42%);
+  animation: cloudDriftCounter 35s ease-in-out infinite alternate;
+}
+
+@keyframes cloudDriftSlow {
+  0% { transform: translate3d(-10px, 0, 0) scale(1); }
+  100% { transform: translate3d(14px, -6px, 0) scale(1.04); }
+}
+
+@keyframes cloudDriftCounter {
+  0% { transform: translate3d(12px, 0, 0) scale(1.03); }
+  100% { transform: translate3d(-12px, 5px, 0) scale(1); }
+}
+
+/* ==========================================================================
+   5. CANVASES: STARS & FALLING PETALS
+   ========================================================================== */
+.landing-stars-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ==========================================================================
+   6. FLOATING DIYAS & SHIMMERING WATER AT THE BASE
+   ========================================================================== */
+.landing-water-stage {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 22%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Gentle water ripple shimmer */
+.water-shimmer-fx {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 235, 200, 0.08) 25%,
+    rgba(255, 190, 240, 0.18) 50%,
+    rgba(255, 235, 200, 0.08) 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: waterShimmerWave 5s linear infinite;
+  mix-blend-mode: color-dodge;
+  opacity: 0.65;
+}
+
+@keyframes waterShimmerWave {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Diya Lantern Glow and Light Effects */
+.diya-glow-fx {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Left Diya (Foreground) */
+.diya-left-glow {
+  left: 11.5%;
+  bottom: 35%;
+  width: 44px;
+  height: 44px;
+  animation: diyaFloatLeft 4.5s ease-in-out infinite alternate;
+}
+
+/* Mid Diya */
+.diya-mid-glow {
+  left: 28%;
+  bottom: 60%;
+  width: 32px;
+  height: 32px;
+  animation: diyaFloatMid 5s ease-in-out infinite alternate;
+}
+
+/* Right Diya (Foreground) */
+.diya-right-glow {
+  right: 6.5%;
+  bottom: 36%;
+  width: 44px;
+  height: 44px;
+  animation: diyaFloatRight 4s ease-in-out infinite alternate;
+}
+
+.diya-flame-core {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 240, 180, 0.95) 0%, rgba(255, 180, 70, 0.6) 45%, transparent 70%);
+  filter: blur(3px);
+  animation: flameFlickerPulse 2.2s ease-in-out infinite;
+}
+
+.diya-reflection-bar {
+  position: absolute;
+  top: 105%;
+  left: -20%;
+  width: 140%;
+  height: 35px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 200, 90, 0.45) 0%, rgba(255, 140, 50, 0.15) 50%, transparent 80%);
+  filter: blur(5px);
+  animation: reflectionPulse 2.8s ease-in-out infinite alternate;
+}
+
+@keyframes diyaFloatLeft {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-5px) rotate(1deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes diyaFloatMid {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(-0.8deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes diyaFloatRight {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-5px) rotate(-1deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes flameFlickerPulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(0.96) translate(0, 0);
+  }
+  25% {
+    opacity: 1;
+    transform: scale(1.08) translate(0.5px, -1px);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(0.98) translate(-0.5px, 0.5px);
+  }
+  75% {
+    opacity: 0.95;
+    transform: scale(1.05) translate(0.5px, 0);
+  }
+}
+
+@keyframes reflectionPulse {
+  0%, 100% { opacity: 0.45; transform: scaleX(0.95); }
+  50% { opacity: 0.8; transform: scaleX(1.1); }
+}
+
+/* Foreground Lotus gentle sway */
+.lotus-float-fx {
+  position: absolute;
+  right: 12%;
+  bottom: 8%;
+  width: 65px;
+  height: 45px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 160, 210, 0.25) 0%, transparent 70%);
+  filter: blur(6px);
+  animation: lotusBreathe 5s ease-in-out infinite alternate;
+}
+
+@keyframes lotusBreathe {
+  0% { transform: translateY(0) scale(0.96); }
+  50% { transform: translateY(-4px) scale(1.04); }
+  100% { transform: translateY(0) scale(0.96); }
+}
+
+/* ==========================================================================
+   7. TOP CONTROLS BAR: LANGUAGE SWITCHER & CIRCULAR MUSIC BUTTON
+   ========================================================================== */
+.landing-top-bar {
+  position: absolute;
+  top: max(22px, env(safe-area-inset-top, 22px));
+  right: clamp(16px, 4vw, 24px);
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+}
+
+/* Golden oval language switcher pill */
+.landing-lang-pill {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(16, 18, 44, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(212, 175, 55, 0.7);
+  border-radius: var(--radius-pill);
+  padding: 3px 5px;
+  box-shadow:
+    0 8px 24px -4px rgba(0, 0, 0, 0.6),
+    0 0 16px rgba(212, 175, 55, 0.25);
+  transition: all var(--transition-smooth);
+}
+
+.landing-lang-pill:hover {
+  border-color: rgba(245, 232, 208, 0.95);
+  box-shadow:
+    0 10px 28px -4px rgba(0, 0, 0, 0.7),
+    0 0 22px rgba(212, 175, 55, 0.4);
+}
+
+.landing-lang-btn {
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-pill);
+  color: var(--color-silver-mist);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 5px 12px;
+  min-height: 32px;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.landing-lang-btn[data-lang="hi"] {
+  font-family: 'Noto Serif Devanagari', var(--font-hindi);
+  font-size: 0.875rem;
+}
+
+.landing-lang-btn:hover:not(.is-active) {
+  color: #FFFFFF;
+}
+
+.landing-lang-btn.is-active {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.5) 0%, rgba(155, 126, 217, 0.4) 100%);
+  color: #FFE5A3;
+  font-weight: 700;
+  border: 1px solid rgba(245, 232, 208, 0.6);
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.35);
+}
+
+.landing-lang-divider {
+  color: rgba(212, 175, 55, 0.55);
+  font-size: 0.8125rem;
+  padding: 0 2px;
+}
+
+/* Circular Music Button */
+.landing-music-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(16, 18, 44, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(212, 175, 55, 0.7);
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  box-shadow:
+    0 8px 24px -4px rgba(0, 0, 0, 0.6),
+    0 0 16px rgba(212, 175, 55, 0.25);
+  position: relative;
+  transition: all var(--transition-smooth);
+}
+
+.landing-music-btn:hover {
+  border-color: rgba(245, 232, 208, 0.95);
+  transform: scale(1.06);
+  box-shadow:
+    0 10px 28px -4px rgba(0, 0, 0, 0.7),
+    0 0 22px rgba(212, 175, 55, 0.45);
+}
+
+.music-note-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+  color: #FFFFFF;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+.landing-music-btn.is-playing .music-note-icon {
+  color: #FFE5A3;
+  text-shadow: 0 0 10px rgba(255, 229, 163, 0.9);
+}
+
+.landing-music-btn.is-playing {
+  border-color: rgba(255, 229, 163, 0.9);
+  animation: musicPlayingPulse 2s ease-in-out infinite;
+}
+
+@keyframes musicPlayingPulse {
+  0%, 100% { box-shadow: 0 0 15px rgba(245, 210, 140, 0.4); }
+  50% { box-shadow: 0 0 25px rgba(245, 210, 140, 0.85); }
+}
+
+/* ==========================================================================
+   8. MONOGRAM AURA & CENTRAL INVITATION CONTENT STACK
+   ========================================================================== */
+/* Subtle Golden Breathing Aura behind the artwork's celestial monogram */
+.landing-monogram-aura {
+  position: absolute;
+  left: 50%;
+  top: 36%;
+  width: 290px;
+  height: 290px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 215, 120, 0.22) 0%, rgba(212, 175, 55, 0.1) 45%, transparent 70%);
+  filter: blur(22px);
+  pointer-events: none;
+  z-index: 2;
+  animation: monogramAuraPulse 5s ease-in-out infinite alternate;
+}
+
+@keyframes monogramAuraPulse {
+  0% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+  100% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+/* Content Stack: Positioned cleanly below the golden monogram */
+.landing-content-stack {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 55.8%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 0 clamp(16px, 4.5vw, 28px);
+  pointer-events: none;
+}
+
+/* Lead Announcement Text */
+.landing-invitation-lead {
+  font-family: var(--font-display);
+  font-size: clamp(0.72rem, 0.68rem + 0.22vw, 0.82rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #F8EFE2;
+  line-height: 1.55;
+  margin-bottom: clamp(14px, 2.2vh, 22px);
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.95),
+    0 0 14px rgba(0, 0, 0, 0.8);
+}
+
+html[lang="hi"] .landing-invitation-lead {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: clamp(0.84rem, 0.8rem + 0.25vw, 0.96rem);
+  text-transform: none;
+  letter-spacing: normal !important;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   ROYAL FILIGREE DATE CARTOUCHE
+   Recreates the exquisite royal date plaque from reference design
+   ========================================================================== */
+.landing-date-pill,
+.landing-date-cartouche {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto clamp(16px, 2.6vh, 26px);
+  padding: 0;
+  max-width: min(94vw, 540px);
+  pointer-events: auto;
+  user-select: none;
+}
+
+/* Inner Pill Capsule with Concentric Double Gold Border & Warm Center Radial Glow */
+.cartouche-inner {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(9px, 2vw, 14px);
+  padding: clamp(9px, 1.4vh, 12px) clamp(22px, 5.5vw, 36px);
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(245, 208, 130, 0.22) 0%, rgba(212, 175, 80, 0.1) 45%, rgba(14, 16, 42, 0) 75%),
+    linear-gradient(180deg, rgba(26, 20, 56, 0.9) 0%, rgba(14, 16, 44, 0.94) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(228, 194, 132, 0.95);
+  border-radius: var(--radius-pill);
+  box-shadow:
+    0 8px 24px -2px rgba(0, 0, 0, 0.7),
+    0 0 20px rgba(220, 185, 120, 0.35),
+    inset 0 0 16px rgba(220, 185, 120, 0.18);
+  z-index: 2;
+}
+
+/* Inner Hairline Concentric Border */
+.cartouche-inner::before {
+  content: '';
+  position: absolute;
+  inset: 2.5px;
+  border: 1px solid rgba(245, 218, 160, 0.55);
+  border-radius: var(--radius-pill);
+  pointer-events: none;
+}
+
+/* Gold Diamond Finials at Top and Bottom Center */
+.cartouche-diamond {
+  position: absolute;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  background: linear-gradient(135deg, #FFF8E7 0%, #F5D07A 50%, #C8962A 100%);
+  transform: translateX(-50%) rotate(45deg);
+  box-shadow:
+    0 0 6px rgba(255, 225, 150, 0.95),
+    0 0 12px rgba(212, 175, 55, 0.65);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.cartouche-diamond::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255, 220, 140, 0.85) 0%, rgba(212, 175, 55, 0.3) 40%, transparent 70%);
+  pointer-events: none;
+}
+
+.cartouche-diamond.diamond-top {
+  top: -3.5px;
+}
+
+.cartouche-diamond.diamond-bottom {
+  bottom: -3.5px;
+}
+
+/* Left and Right Side Florets */
+.cartouche-floret {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(22px, 4.5vw, 28px);
+  height: clamp(32px, 6.5vh, 42px);
+  pointer-events: none;
+  z-index: 3;
+  filter: drop-shadow(0 0 6px rgba(220, 185, 120, 0.55));
+}
+
+.cartouche-floret.floret-left {
+  left: calc(clamp(22px, 4.5vw, 28px) * -0.65);
+}
+
+.cartouche-floret.floret-right {
+  right: calc(clamp(22px, 4.5vw, 28px) * -0.65);
+}
+
+.cartouche-floret svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Vector Calendar Icon */
+.gold-calendar-icon {
+  width: clamp(20px, 2.3vw, 23px);
+  height: clamp(20px, 2.3vw, 23px);
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 8px rgba(245, 208, 130, 0.4));
+}
+
+/* Date Text Typography: High-Contrast Royal Classical Serif */
+.cartouche-date-text {
+  font-family: var(--font-display);
+  font-size: clamp(0.96rem, 0.88rem + 0.4vw, 1.22rem);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #FFF6E0;
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.95),
+    0 0 14px rgba(245, 208, 130, 0.45);
+  white-space: nowrap;
+}
+
+/* Hindi Devanagari Date Text Typography */
+html[lang="hi"] .cartouche-date-text {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-weight: 600;
+  letter-spacing: normal !important;
+  font-size: clamp(0.94rem, 0.86rem + 0.35vw, 1.16rem);
+}
+
+/* Responsive adjustments for narrow mobile (< 380px) */
+@media (max-width: 380px) {
+  .cartouche-inner {
+    padding: 8px 16px;
+    gap: 8px;
+  }
+  .cartouche-floret {
+    width: 18px;
+    height: 28px;
+  }
+  .cartouche-floret.floret-left {
+    left: -12px;
+  }
+  .cartouche-floret.floret-right {
+    right: -12px;
+  }
+  .cartouche-date-text {
+    font-size: 0.86rem;
+  }
+}
+
+.date-icon {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+/* Luminous "Unfold the Celebration" Action Button */
+.landing-action-wrap {
+  pointer-events: auto;
+  margin-top: 2px;
+}
+
+.landing-unfold-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #FFF0D0 0%, #F5D38A 50%, #DFB456 100%);
+  border: 1.5px solid #FFF8E6;
+  border-radius: var(--radius-pill);
+  padding: clamp(11px, 1.7vh, 15px) clamp(26px, 6vw, 42px);
+  color: #381E05;
+  font-family: var(--font-display);
+  font-size: clamp(0.96rem, 0.9rem + 0.35vw, 1.15rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  outline: none;
+  box-shadow:
+    0 10px 30px -4px rgba(0, 0, 0, 0.65),
+    0 0 35px rgba(245, 210, 140, 0.55),
+    inset 0 1px 2px #FFFFFF;
+  transition: all var(--transition-smooth);
+  animation: unfoldBtnBreathe 3.5s ease-in-out infinite;
+}
+
+html[lang="hi"] .landing-unfold-btn {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: clamp(0.96rem, 0.9rem + 0.35vw, 1.125rem);
+  letter-spacing: normal !important;
+}
+
+.landing-unfold-btn:hover {
+  background: linear-gradient(135deg, #FFF8E6 0%, #FAE0A0 50%, #ECC56C 100%);
+  transform: translateY(-2px) scale(1.025);
+  box-shadow:
+    0 14px 38px -4px rgba(0, 0, 0, 0.75),
+    0 0 50px rgba(255, 225, 155, 0.8),
+    inset 0 1px 3px #FFFFFF;
+}
+
+.landing-unfold-btn:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.landing-unfold-btn:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 3px;
+}
+
+.btn-sparkle {
+  color: #C87808;
+  font-size: 1.1rem;
+}
+
+.btn-chevron {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #5E390A;
+  margin-left: 2px;
+}
+
+@keyframes unfoldBtnBreathe {
+  0%, 100% {
+    box-shadow:
+      0 10px 30px -4px rgba(0, 0, 0, 0.65),
+      0 0 25px rgba(245, 210, 140, 0.45);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow:
+      0 12px 36px -4px rgba(0, 0, 0, 0.75),
+      0 0 45px rgba(255, 225, 160, 0.75);
+    transform: scale(1.02);
+  }
+}
+
+/* Floating Interactive Helper Instruction */
+.landing-tap-instruction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: clamp(8px, 1.4vh, 14px);
+  padding: 4px 14px;
+  background: rgba(16, 12, 38, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(245, 232, 208, 0.35);
+  border-radius: var(--radius-pill);
+  color: #FFF2CC;
+  font-family: var(--font-sans);
+  font-size: clamp(0.72rem, 0.68rem + 0.2vw, 0.82rem);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 12px rgba(245, 210, 140, 0.4);
+  pointer-events: auto;
+  cursor: pointer;
+  animation: tapInstructionFloat 3s ease-in-out infinite;
+  transition: all var(--transition-smooth);
+  user-select: none;
+}
+
+html[lang="hi"] .landing-tap-instruction {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: clamp(0.75rem, 0.7rem + 0.2vw, 0.86rem);
+  letter-spacing: normal !important;
+}
+
+.landing-tap-instruction:hover {
+  background: rgba(28, 20, 60, 0.75);
+  border-color: rgba(245, 232, 208, 0.75);
+  color: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), 0 0 15px rgba(245, 210, 140, 0.4);
+}
+
+.tap-hand-icon {
+  font-size: 0.95rem;
+  display: inline-block;
+  animation: tapHandPulse 2s ease-in-out infinite;
+}
+
+@keyframes tapInstructionFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes tapHandPulse {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.15);
+  }
+}
+
+/* ==========================================================================
+   9. ACCESSIBILITY & PREFERS-REDUCED-MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .landing-moon-corona,
+  .cloud-layer-1,
+  .cloud-layer-2,
+  .water-shimmer-fx,
+  .diya-left-glow,
+  .diya-mid-glow,
+  .diya-right-glow,
+  .diya-flame-core,
+  .diya-reflection-bar,
+  .lotus-float-fx,
+  .landing-emblem-img,
+  .landing-unfold-btn,
+  .landing-tap-instruction,
+  .tap-hand-icon,
+  .landing-music-btn.is-playing {
+    animation: none !important;
+  }
+}

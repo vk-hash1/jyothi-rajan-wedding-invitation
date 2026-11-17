@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="mehendiLilac" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E9D5FF" />
+      <stop offset="50%" stop-color="#9333EA" />
+      <stop offset="100%" stop-color="#581C87" />
+    </linearGradient>
+    <linearGradient id="mehendiChampagne" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="40%" stop-color="#F5E8D0" />
+      <stop offset="80%" stop-color="#C5A869" />
+      <stop offset="100%" stop-color="#9B7ED9" />
+    </linearGradient>
+    <linearGradient id="dholakViolet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7E22CE" />
+      <stop offset="60%" stop-color="#581C87" />
+      <stop offset="100%" stop-color="#3B0764" />
+    </linearGradient>
+    <radialGradient id="mehendiAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FAF5FF" stop-opacity="0.9" />
+      <stop offset="65%" stop-color="#F3E8FF" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#9B7ED9" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Aura Halo -->
+  <circle cx="100" cy="100" r="90" fill="url(#mehendiAura)" />
+  <circle cx="100" cy="100" r="86" fill="none" stroke="url(#mehendiChampagne)" stroke-width="1.5" stroke-dasharray="3,4" />
+
+  <!-- Central Lotus Henna Mandala -->
+  <g stroke="url(#mehendiLilac)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="100" cy="72" r="30" stroke-width="2" />
+    <circle cx="100" cy="72" r="22" stroke-dasharray="2,3" />
+    <circle cx="100" cy="72" r="14" fill="#9333EA" fill-opacity="0.12" />
+    <circle cx="100" cy="72" r="4" fill="#7E22CE" />
+
+    <!-- 8 Radiating Henna Petals -->
+    <path d="M 100 42 Q 92 32 100 25 Q 108 32 100 42 Z" fill="#9333EA" fill-opacity="0.3" />
+    <path d="M 100 102 Q 92 112 100 119 Q 108 112 100 102 Z" fill="#9333EA" fill-opacity="0.3" />
+    <path d="M 70 72 Q 60 64 53 72 Q 60 80 70 72 Z" fill="#9333EA" fill-opacity="0.3" />
+    <path d="M 130 72 Q 140 64 147 72 Q 140 80 130 72 Z" fill="#9333EA" fill-opacity="0.3" />
+
+    <!-- Diagonal Dots -->
+    <circle cx="78" cy="50" r="2.8" fill="#7E22CE" />
+    <circle cx="122" cy="50" r="2.8" fill="#7E22CE" />
+    <circle cx="78" cy="94" r="2.8" fill="#7E22CE" />
+    <circle cx="122" cy="94" r="2.8" fill="#7E22CE" />
+
+    <!-- Paisley / Ambi Swirls -->
+    <path d="M 50 62 C 35 47, 25 72, 45 87 C 50 91, 55 87, 50 82 C 40 75, 38 62, 48 57 Z" fill="#9333EA" fill-opacity="0.15" />
+    <path d="M 150 62 C 165 47, 175 72, 155 87 C 150 91, 145 87, 150 82 C 160 75, 162 62, 152 57 Z" fill="#9333EA" fill-opacity="0.15" />
+  </g>
+
+  <!-- Festive Dholak (Musical Drum) at Bottom -->
+  <g transform="translate(100, 150)">
+    <!-- Barrel Shape in Royal Violet -->
+    <path d="M -52,-18 C -25,-26, 25,-26, 52,-18 L 52,18 C 25,26, -25,26, -52,18 Z" fill="url(#dholakViolet)" />
+    <!-- Outer Rims in Champagne -->
+    <ellipse cx="-52" cy="0" rx="6" ry="18" fill="url(#mehendiChampagne)" />
+    <ellipse cx="52" cy="0" rx="6" ry="18" fill="url(#mehendiChampagne)" />
+    <!-- Drum Skins -->
+    <ellipse cx="-53" cy="0" rx="4" ry="15" fill="#F8FAFC" />
+    <ellipse cx="53" cy="0" rx="4" ry="15" fill="#F8FAFC" />
+    <circle cx="-53" cy="0" r="4" fill="#3B0764" />
+    <circle cx="53" cy="0" r="5" fill="#3B0764" />
+    
+    <!-- Champagne Tuning Ropes in Zig-Zag pattern -->
+    <g stroke="url(#mehendiChampagne)" stroke-width="1.6" fill="none">
+      <path d="M -48,-14 L -30,18 L -12,-16 L 8,18 L 28,-16 L 48,16" />
+      <path d="M -48,14 L -30,-18 L -12,16 L 8,-18 L 28,16 L 48,-16" />
+      <!-- Golden Tuning Rings -->
+      <circle cx="-20" cy="0" r="3" fill="url(#mehendiChampagne)" />
+      <circle cx="0" cy="0" r="3" fill="url(#mehendiChampagne)" />
+      <circle cx="20" cy="0" r="3" fill="url(#mehendiChampagne)" />
+    </g>
+  </g>
+
+  <!-- Celestial Starlight Accents -->
+  <circle cx="38" cy="40" r="2" fill="#FFFFFF" />
+  <circle cx="162" cy="40" r="2" fill="#FFFFFF" />
+  <circle cx="100" cy="18" r="1.5" fill="#F5E8D0" />
+</svg>

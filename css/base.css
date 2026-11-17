@@ -1,0 +1,315 @@
+/**
+ * Jyothi Kumari & Rajan Sharma – Enchanted Dream Wedding Website
+ * Base Styles, CSS Reset, Typography & Foundation Utilities
+ */
+
+/* ==========================================================================
+   MODERN CSS RESET
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: 1.65;
+  color: var(--color-text-dark);
+  background-color: var(--color-lilac-mist);
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+/* ==========================================================================
+   TYPOGRAPHY HIERARCHY
+   ========================================================================== */
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.015em;
+  color: var(--color-violet-rich);
+}
+
+h1 {
+  font-size: var(--font-size-hero);
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+}
+
+h4 {
+  font-size: var(--font-size-lg);
+}
+
+p {
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-md);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-champagne {
+  color: var(--color-champagne-gold);
+}
+
+.text-lilac {
+  color: var(--color-lavender-primary);
+}
+
+.text-violet {
+  color: var(--color-violet-rich);
+}
+
+.text-gradient-champagne {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F5E8D0 40%, #C5A869 85%, #9B7ED9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-lilac {
+  background: linear-gradient(135deg, var(--color-violet-deep) 0%, var(--color-violet-rich) 50%, var(--color-lavender-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ==========================================================================
+   LAYOUT CONTAINERS & GRIDS
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: var(--container-narrow);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+
+.section {
+  padding-top: var(--space-section);
+  padding-bottom: var(--space-section);
+  position: relative;
+}
+
+.section-title-wrap {
+  text-align: center;
+  margin-bottom: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-violet-rich);
+  margin-bottom: var(--space-xs);
+}
+
+.section-title {
+  margin-bottom: var(--space-sm);
+}
+
+.section-subtitle {
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==========================================================================
+   SURFACE UTILITIES & GLASSMORPHISM
+   ========================================================================== */
+.glass-panel-light {
+  background: var(--glass-light-bg);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--glass-light-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.glass-panel-dark {
+  background: var(--glass-dark-bg);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--glass-dark-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  color: var(--color-text-light);
+}
+
+.celestial-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid var(--color-lavender-soft);
+  border-radius: var(--radius-md);
+  padding: clamp(1.5rem, 1rem + 1.5vw, 2.25rem);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.celestial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ==========================================================================
+   BUTTONS & ACTION LINKS
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  text-decoration: none;
+  min-height: 48px;
+  /* Accessible touch target */
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-violet-rich) 0%, var(--color-lavender-primary) 100%);
+  color: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(99, 57, 168, 0.25);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-violet-deep) 0%, var(--color-violet-rich) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 57, 168, 0.35);
+  color: #FFFFFF;
+}
+
+.btn-secondary {
+  background: #FFFFFF;
+  color: var(--color-violet-rich);
+  border-color: var(--color-lavender-soft);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  background: var(--color-lavender-ethereal);
+  border-color: var(--color-lavender-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-champagne {
+  background: linear-gradient(135deg, var(--color-champagne-light) 0%, var(--color-champagne-gold) 100%);
+  color: var(--color-midnight-deep);
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(197, 168, 105, 0.3);
+}
+
+.btn-champagne:hover {
+  background: linear-gradient(135deg, #FFFFFF 0%, var(--color-champagne-light) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(197, 168, 105, 0.45);
+}
+
+/* ==========================================================================
+   ACCESSIBILITY & FOCUS CONTROLS
+   ========================================================================== */
+:focus-visible {
+  outline: 2px solid var(--color-lavender-primary);
+  outline-offset: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
