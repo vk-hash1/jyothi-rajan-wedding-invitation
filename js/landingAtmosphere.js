@@ -25,6 +25,7 @@ export class LandingAtmosphere {
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     this.stars = [];
+    this.sparklingStars = [];
     this.shootingStars = [];
     this.stardust = [];
     this.petals = [];
@@ -84,16 +85,25 @@ export class LandingAtmosphere {
       this.stars.push({
         x: Math.random() * this.width,
         y: Math.random() * (this.height * 0.78),
-        radius: Math.random() * 1.6 + 0.4,
-        baseAlpha: Math.random() * 0.6 + 0.25,
+        radius: Math.random() * 1.5 + 0.35,
+        baseAlpha: Math.random() * 0.55 + 0.2,
         alpha: 0.5,
         phase: Math.random() * Math.PI * 2,
         twinkleSpeed: Math.random() * 0.03 + 0.01,
-        isFlare: i < 5, // Top 5 stars get elegant diamond cross-flares
-        flareSize: Math.random() * 6 + 6,
         color: this.getStarColor()
       });
     }
+
+    // 1b. Realistic Living Sparkling Stars (Bursting diamond cross-flares with authentic sparkle glint)
+    this.sparklingStars = [
+      { xRatio: 0.15, yRatio: 0.18, maxFlare: 22, speed: 0.032, phase: 0.2 },
+      { xRatio: 0.85, yRatio: 0.19, maxFlare: 24, speed: 0.026, phase: 1.9 },
+      { xRatio: 0.24, yRatio: 0.32, maxFlare: 18, speed: 0.038, phase: 3.4 },
+      { xRatio: 0.76, yRatio: 0.34, maxFlare: 20, speed: 0.029, phase: 4.8 },
+      { xRatio: 0.10, yRatio: 0.52, maxFlare: 16, speed: 0.035, phase: 2.3 },
+      { xRatio: 0.90, yRatio: 0.54, maxFlare: 18, speed: 0.027, phase: 5.6 },
+      { xRatio: 0.50, yRatio: 0.12, maxFlare: 25, speed: 0.030, phase: 1.1 }
+    ];
 
     // 2. Floating Stardust (magical floating light particles)
     this.stardust = [];
@@ -205,6 +215,15 @@ export class LandingAtmosphere {
       if (star.alpha > 1) star.alpha = 1;
     }
 
+    // 2b. Update Sparkling Stars (Dynamic diamond glint & sparkle pulse)
+    for (let s of this.sparklingStars) {
+      s.phase += s.speed;
+      const raw = Math.sin(s.phase);
+      s.sparkleIntensity = Math.max(0, Math.pow(Math.max(0, raw), 3.5));
+      s.baseTwinkle = 0.25 + 0.35 * (0.5 + 0.5 * Math.sin(s.phase * 1.8));
+      s.rotation = s.phase * 0.35;
+    }
+
     // 3. Update Shooting Stars
     for (let i = this.shootingStars.length - 1; i >= 0; i--) {
       const s = this.shootingStars[i];
@@ -251,40 +270,95 @@ export class LandingAtmosphere {
     if (!this.ctx) return;
     this.ctx.clearRect(0, 0, this.width, this.height);
 
-    // 1. Draw Twinkling Stars & Cross-Flares
+    // 1. Draw Twinkling Stars
     for (let star of this.stars) {
       this.ctx.beginPath();
       this.ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
       this.ctx.fillStyle = `${star.color}${star.alpha})`;
       this.ctx.fill();
+    }
 
-      // Diamond cross-flare for key stars
-      if (star.isFlare && star.alpha > 0.6) {
-        const fSize = star.flareSize * (star.alpha * 0.9);
+    // 1b. Draw Realistic Living Sparkling Stars (Bursting diamond cross-flares & glints)
+    for (let s of this.sparklingStars) {
+      const sx = s.xRatio * this.width;
+      const sy = s.yRatio * this.height;
+      const intensity = s.sparkleIntensity; // 0 to 1 peak
+      const currentAlpha = Math.min(1, s.baseTwinkle + intensity * 0.7);
+
+      this.ctx.save();
+      this.ctx.translate(sx, sy);
+      this.ctx.rotate(s.rotation);
+
+      // Central star core
+      this.ctx.beginPath();
+      this.ctx.arc(0, 0, 1.8 + intensity * 1.5, 0, Math.PI * 2);
+      this.ctx.fillStyle = `rgba(255, 255, 255, ${currentAlpha})`;
+      this.ctx.fill();
+
+      // Radial starlight aura glow
+      const auraRad = 6 + intensity * 16;
+      const auraGrad = this.ctx.createRadialGradient(0, 0, 0, 0, 0, auraRad);
+      auraGrad.addColorStop(0, `rgba(255, 245, 220, ${0.4 + intensity * 0.5})`);
+      auraGrad.addColorStop(0.4, `rgba(255, 215, 130, ${0.15 + intensity * 0.3})`);
+      auraGrad.addColorStop(1, 'rgba(255, 200, 100, 0)');
+      this.ctx.beginPath();
+      this.ctx.arc(0, 0, auraRad, 0, Math.PI * 2);
+      this.ctx.fillStyle = auraGrad;
+      this.ctx.fill();
+
+      // Living Diamond Sparkle Beams
+      if (intensity > 0.05) {
+        const fLen = 8 + intensity * s.maxFlare;
+        const fThick = Math.max(0.6, 1.8 * intensity);
+
+        // Primary Vertical & Horizontal Diamond Beams
+        this.ctx.fillStyle = `rgba(255, 255, 245, ${0.3 + intensity * 0.7})`;
+
+        // Vertical diamond beam
+        this.ctx.beginPath();
+        this.ctx.moveTo(0, -fLen);
+        this.ctx.lineTo(fThick, 0);
+        this.ctx.lineTo(0, fLen);
+        this.ctx.lineTo(-fThick, 0);
+        this.ctx.closePath();
+        this.ctx.fill();
+
+        // Horizontal diamond beam
+        this.ctx.beginPath();
+        this.ctx.moveTo(-fLen, 0);
+        this.ctx.lineTo(0, fThick);
+        this.ctx.lineTo(fLen, 0);
+        this.ctx.lineTo(0, -fThick);
+        this.ctx.closePath();
+        this.ctx.fill();
+
+        // Secondary 45-degree diagonal rays (softer, shorter)
+        const diagLen = fLen * 0.45;
+        const diagThick = fThick * 0.65;
         this.ctx.save();
-        this.ctx.strokeStyle = `rgba(255, 245, 230, ${star.alpha * 0.65})`;
-        this.ctx.lineWidth = 0.75;
+        this.ctx.rotate(Math.PI / 4);
+        this.ctx.fillStyle = `rgba(255, 235, 180, ${0.2 + intensity * 0.55})`;
 
-        // Horizontal beam
         this.ctx.beginPath();
-        this.ctx.moveTo(star.x - fSize, star.y);
-        this.ctx.lineTo(star.x + fSize, star.y);
-        this.ctx.stroke();
+        this.ctx.moveTo(0, -diagLen);
+        this.ctx.lineTo(diagThick, 0);
+        this.ctx.lineTo(0, diagLen);
+        this.ctx.lineTo(-diagThick, 0);
+        this.ctx.closePath();
+        this.ctx.fill();
 
-        // Vertical beam
         this.ctx.beginPath();
-        this.ctx.moveTo(star.x, star.y - fSize);
-        this.ctx.lineTo(star.x, star.y + fSize);
-        this.ctx.stroke();
-
-        // Subtle circular core glow
-        this.ctx.beginPath();
-        this.ctx.arc(star.x, star.y, star.radius * 2.5, 0, Math.PI * 2);
-        this.ctx.fillStyle = `rgba(255, 230, 180, ${star.alpha * 0.3})`;
+        this.ctx.moveTo(-diagLen, 0);
+        this.ctx.lineTo(0, diagThick);
+        this.ctx.lineTo(diagLen, 0);
+        this.ctx.lineTo(0, -diagThick);
+        this.ctx.closePath();
         this.ctx.fill();
 
         this.ctx.restore();
       }
+
+      this.ctx.restore();
     }
 
     // 2. Draw Shooting Stars with Luminous Gradient Trail
@@ -379,6 +453,7 @@ export class LandingAtmosphere {
   destroy() {
     this.pause();
     this.stars = [];
+    this.sparklingStars = [];
     this.shootingStars = [];
     this.stardust = [];
     this.petals = [];

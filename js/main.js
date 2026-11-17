@@ -150,7 +150,7 @@ function setupLanguageSwitcher() {
   if (landingBtnHi) landingBtnHi.addEventListener('click', switchHi);
 
   // Floating Tap Instruction Click Binding
-  const landingTapInstruction = document.getElementById('landing-tap-instruction');
+  const landingTapInstruction = document.getElementById('landing-tap-instruction') || document.getElementById('landing-tap-text');
   const unfoldBtn = document.getElementById('btn-unfold-invitation');
   if (landingTapInstruction && unfoldBtn) {
     landingTapInstruction.addEventListener('click', () => unfoldBtn.click());

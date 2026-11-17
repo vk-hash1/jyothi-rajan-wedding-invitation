@@ -32,8 +32,8 @@ export const translations = {
       dateBadge: "Wednesday, 9th December 2026",
       venueText: "BARDAHIYA, MARHAURA, CHHAPRA • BIHAR - 841419",
       unfoldBtn: "OPEN INVITATION",
-      helperText: "Tap or press space to enter",
-      tapInstruction: "TAP TO ENTER"
+      helperText: "Click or press Space to view wedding card",
+      tapInstruction: "Tap here to view the wedding card"
     },
     audio: {
       ariaPlay: "Play background music",
@@ -175,8 +175,8 @@ export const translations = {
       dateBadge: "बुधवार, 9 दिसंबर 2026",
       venueText: "बरदहियाँ, मढ़ौरा, छपरा • बिहार - 841419",
       unfoldBtn: "आमंत्रण खोलें",
-      helperText: "प्रवेश करने के लिए टैप या स्पेस दबाएं",
-      tapInstruction: "प्रवेश करने के लिए टैप करें"
+      helperText: "शादी का कार्ड देखने के लिए यहाँ दबाएं",
+      tapInstruction: "शादी का कार्ड देखने के लिए यहाँ दबाएं"
     },
     audio: {
       ariaPlay: "पृष्ठभूमि संगीत बजाएं",
