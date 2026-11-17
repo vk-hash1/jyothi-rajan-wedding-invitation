@@ -2,12 +2,13 @@
  * Jyothi Kumari & Rajan Sharma – Enchanted Dream Wedding Website
  * Celestial Royal Landing & Opening Experience Styles
  *
- * Implements the approved master celestial royal artwork with
- * perfect responsive scaling for mobile, tablet, and desktop.
+ * Built with pure semantic HTML, responsive CSS, Canvas, and SVG.
+ * Recreates the approved Celestial Royal visual atmosphere with living animations.
+ * NO static image backgrounds or AI watermarks.
  */
 
 /* ==========================================================================
-   1. CINEMATIC OPENING CONTAINER & BACKDROP
+   1. CINEMATIC OPENING CONTAINER
    ========================================================================== */
 .cinematic-opening {
   position: fixed;
@@ -16,11 +17,10 @@
   height: 100vh;
   height: 100dvh;
   z-index: 9999;
-  background-color: #070314;
+  background-color: #06020E;
   background-image:
-    radial-gradient(ellipse at 50% 30%, rgba(100, 50, 160, 0.32) 0%, transparent 65%),
-    radial-gradient(ellipse at 50% 80%, rgba(60, 30, 110, 0.25) 0%, transparent 60%),
-    linear-gradient(180deg, #05020F 0%, #0B041C 50%, #070314 100%);
+    radial-gradient(ellipse at 50% 35%, rgba(95, 40, 160, 0.35) 0%, rgba(35, 12, 70, 0.22) 50%, #06020E 80%),
+    linear-gradient(180deg, #04010A 0%, #0B041C 50%, #05020D 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,7 +40,7 @@
   visibility: hidden;
 }
 
-/* Lock document scrolling while opening invitation overlay is active */
+/* Lock background scrolling while opening invitation overlay is active */
 html.opening-active,
 body.opening-active {
   overflow: hidden !important;
@@ -50,7 +50,7 @@ body.opening-active {
 }
 
 /* ==========================================================================
-   2. RESPONSIVE LANDING STAGE CARD
+   2. RESPONSIVE MASTER STAGE CARD
    ========================================================================== */
 .landing-stage {
   position: relative;
@@ -61,16 +61,21 @@ body.opening-active {
   aspect-ratio: 572 / 1024;
   margin: auto;
   overflow: hidden;
-  display: block;
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(22px, 4.2vh, 38px) clamp(16px, 3.5vw, 28px) clamp(16px, 2.8vh, 28px);
+  background: radial-gradient(circle at 50% 38%, #281350 0%, #150930 45%, #0B041C 75%, #060210 100%);
+  border: 1px solid rgba(229, 193, 108, 0.45);
   box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.85),
-    0 0 45px rgba(135, 80, 220, 0.25);
+    0 20px 60px rgba(0, 0, 0, 0.9),
+    0 0 50px rgba(135, 80, 220, 0.25);
   border-radius: 8px;
   user-select: none;
   -webkit-user-select: none;
+  cursor: default;
   transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  background-color: #0B041C;
 }
 
 @media (max-width: 600px) {
@@ -83,14 +88,12 @@ body.opening-active {
 /* Landscape / Desktop Stage Viewport */
 @media (min-width: 768px) and (orientation: landscape), (min-width: 1024px) {
   .landing-stage {
-    width: min(94vw, calc(92dvh * 1024 / 506), 1280px);
+    width: min(94vw, calc(90dvh * 1024 / 540), 1080px);
     height: auto;
-    max-height: 92dvh;
-    aspect-ratio: 1024 / 506;
-    border-radius: 12px;
-    box-shadow:
-      0 25px 80px rgba(0, 0, 0, 0.88),
-      0 0 55px rgba(155, 126, 217, 0.35);
+    max-height: 90dvh;
+    aspect-ratio: 1024 / 540;
+    border-radius: 14px;
+    padding: clamp(22px, 3.6vh, 34px) clamp(28px, 4vw, 56px) clamp(18px, 2.8vh, 28px);
   }
 }
 
@@ -98,40 +101,205 @@ body.opening-active {
   transform: scale(1.04);
 }
 
-/* Picture and Full Scenery Image */
-.landing-stage picture {
-  display: block;
+/* ==========================================================================
+   3. BACKGROUND CANVAS (STARS, SHOOTING STARS & STARDUST)
+   ========================================================================== */
+.landing-stars-canvas {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-}
-
-.landing-scenery-backdrop {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
   pointer-events: none;
+  z-index: 2;
 }
 
 /* ==========================================================================
-   3. TOP BAR: GLASSMORPHIС LANGUAGE SWITCHER PILL
+   4. LIVING DECORATIVE ELEMENTS: BILLOWING CLOUDS & FLOATING DIYAS
+   ========================================================================== */
+.landing-decorations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  overflow: hidden;
+}
+
+/* Billowing Ethereal Lavender Clouds */
+.landing-cloud {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(28px);
+  opacity: 0.52;
+}
+
+.cloud-left {
+  left: -28%;
+  top: 12%;
+  width: 68%;
+  height: 74%;
+  background: radial-gradient(ellipse at 30% 50%, rgba(145, 95, 215, 0.45) 0%, rgba(95, 45, 160, 0.22) 50%, transparent 75%);
+  animation: cloudDriftLeft 14s ease-in-out infinite alternate;
+}
+
+.cloud-right {
+  right: -28%;
+  top: 12%;
+  width: 68%;
+  height: 74%;
+  background: radial-gradient(ellipse at 70% 50%, rgba(145, 95, 215, 0.45) 0%, rgba(95, 45, 160, 0.22) 50%, transparent 75%);
+  animation: cloudDriftRight 16s ease-in-out infinite alternate;
+}
+
+@keyframes cloudDriftLeft {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-12px) scale(1.05); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes cloudDriftRight {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-14px) scale(1.04); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* Natural Floating Diyas */
+.floating-diya {
+  position: absolute;
+  bottom: clamp(16px, 3.2vh, 28px);
+  z-index: 12;
+  pointer-events: none;
+}
+
+.diya-left {
+  left: clamp(16px, 4.5vw, 38px);
+  animation: diyaFloatLeft 4.5s ease-in-out infinite alternate;
+}
+
+.diya-right {
+  right: clamp(16px, 4.5vw, 38px);
+  animation: diyaFloatRight 5s ease-in-out infinite alternate;
+}
+
+.diya-lamp {
+  width: clamp(38px, 8vw, 52px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.8));
+}
+
+.diya-flame-path {
+  transform-origin: 27px 22px;
+  animation: diyaFlameFlicker 2.4s ease-in-out infinite;
+}
+
+.diya-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 220, 110, 0.75) 0%, rgba(255, 140, 40, 0.3) 50%, transparent 75%);
+  filter: blur(4px);
+  animation: diyaGlowPulse 2.8s ease-in-out infinite alternate;
+}
+
+.diya-water-reflection {
+  position: absolute;
+  top: 88%;
+  left: 8%;
+  width: 84%;
+  height: 18px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 200, 80, 0.45) 0%, rgba(255, 130, 40, 0.15) 50%, transparent 75%);
+  filter: blur(4px);
+  animation: diyaReflectPulse 3.2s ease-in-out infinite alternate;
+}
+
+@keyframes diyaFloatLeft {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-5px) rotate(1.5deg); }
+}
+
+@keyframes diyaFloatRight {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-5px) rotate(-1.5deg); }
+}
+
+@keyframes diyaFlameFlicker {
+  0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.95; filter: drop-shadow(0 0 6px rgba(255, 200, 80, 0.9)); }
+  25% { transform: scale(0.96, 1.05) translate(-0.5px, -1px); opacity: 1; filter: drop-shadow(0 0 8px rgba(255, 215, 100, 1)); }
+  50% { transform: scale(1.04, 0.94) translate(0.5px, 0.5px); opacity: 0.88; filter: drop-shadow(0 0 5px rgba(255, 190, 60, 0.8)); }
+  75% { transform: scale(0.98, 1.02) translate(-0.3px, -0.5px); opacity: 0.98; filter: drop-shadow(0 0 9px rgba(255, 220, 110, 0.95)); }
+}
+
+@keyframes diyaGlowPulse {
+  0% { transform: translateX(-50%) scale(0.95); opacity: 0.65; }
+  100% { transform: translateX(-50%) scale(1.1); opacity: 0.95; }
+}
+
+@keyframes diyaReflectPulse {
+  0% { transform: scaleX(0.92); opacity: 0.5; }
+  100% { transform: scaleX(1.08); opacity: 0.85; }
+}
+
+/* ==========================================================================
+   5. GOLD INNER FRAME & CORNER FILIGREES (ZERO WATERMARKS)
+   ========================================================================== */
+.landing-inner-frame {
+  position: absolute;
+  inset: clamp(7px, 1.6vw, 12px);
+  border: 1.5px solid rgba(235, 205, 130, 0.75);
+  border-radius: 5px;
+  pointer-events: none;
+  z-index: 8;
+  box-shadow: inset 0 0 15px rgba(220, 180, 80, 0.08);
+}
+
+.corner-filigree {
+  position: absolute;
+  width: clamp(48px, 11vw, 76px);
+  height: clamp(48px, 11vw, 76px);
+  pointer-events: none;
+  z-index: 9;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7));
+  user-select: none;
+}
+
+.corner-filigree.top-left {
+  top: 5px;
+  left: 5px;
+}
+
+.corner-filigree.top-right {
+  top: 5px;
+  right: 5px;
+  transform: scaleX(-1);
+}
+
+.corner-filigree.bottom-left {
+  bottom: 5px;
+  left: 5px;
+  transform: scaleY(-1);
+}
+
+.corner-filigree.bottom-right {
+  bottom: 5px;
+  right: 5px;
+  transform: scale(-1);
+}
+
+/* ==========================================================================
+   6. TOP BAR: LANGUAGE SWITCHER PILL
    ========================================================================== */
 .landing-top-bar {
   position: absolute;
-  top: 14px;
-  right: 14px;
-  z-index: 25;
+  top: clamp(14px, 2.5vh, 20px);
+  right: clamp(14px, 2.5vw, 24px);
+  z-index: 30;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  pointer-events: auto;
-}
-
-@media (min-width: 768px) and (orientation: landscape), (min-width: 1024px) {
-  .landing-top-bar {
-    top: 18px;
-    right: 22px;
-  }
 }
 
 .landing-lang-pill {
@@ -139,13 +307,13 @@ body.opening-active {
   align-items: center;
   gap: 6px;
   padding: 4px 12px;
-  background: rgba(14, 9, 32, 0.78);
+  background: rgba(14, 9, 32, 0.82);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(229, 193, 108, 0.45);
   border-radius: 9999px;
   box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.5),
+    0 4px 16px rgba(0, 0, 0, 0.6),
     0 0 10px rgba(229, 193, 108, 0.15);
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
@@ -153,7 +321,7 @@ body.opening-active {
 .landing-lang-pill:hover {
   border-color: rgba(245, 215, 140, 0.75);
   box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.6),
+    0 4px 20px rgba(0, 0, 0, 0.7),
     0 0 15px rgba(245, 215, 140, 0.3);
 }
 
@@ -162,7 +330,7 @@ body.opening-active {
   border: none;
   color: #EDE3D5;
   font-family: inherit;
-  font-size: clamp(0.75rem, 0.7rem + 0.2vw, 0.85rem);
+  font-size: clamp(0.72rem, 0.68rem + 0.2vw, 0.82rem);
   font-weight: 500;
   cursor: pointer;
   padding: 2px 7px;
@@ -189,53 +357,277 @@ body.opening-active {
 }
 
 /* ==========================================================================
-   4. INTERACTIVE UNFOLD BUTTON OVERLAY
+   7. TOP SECTION: GANESHA & SACRED INVOCATION
    ========================================================================== */
-.landing-action-trigger-btn {
+.landing-top-section {
+  position: relative;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: clamp(2px, 0.6vh, 8px);
+}
+
+.landing-ganesha-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: clamp(4px, 0.8vh, 8px);
+}
+
+.ganesha-aura-glow {
   position: absolute;
-  top: 81.2%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 55%;
-  height: 5.4%;
-  border-radius: 9999px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  z-index: 20;
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  inset: -14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 230, 150, 0.35) 0%, rgba(215, 175, 80, 0.15) 50%, transparent 75%);
+  filter: blur(8px);
+  animation: ganeshaHalo 4s ease-in-out infinite alternate;
 }
 
-.landing-action-trigger-btn:hover {
-  box-shadow:
-    0 0 25px rgba(255, 215, 100, 0.8),
-    inset 0 0 15px rgba(255, 255, 255, 0.4);
+@keyframes ganeshaHalo {
+  0% { transform: scale(0.92); opacity: 0.6; }
+  100% { transform: scale(1.1); opacity: 0.95; }
 }
 
-.landing-action-trigger-btn:focus-visible {
-  outline: 2px solid rgba(255, 240, 190, 0.95);
-  outline-offset: 2px;
-  box-shadow: 0 0 25px rgba(255, 215, 100, 0.85);
+.landing-ganesha-img {
+  position: relative;
+  width: clamp(38px, 6.2vh, 48px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8));
+  user-select: none;
+  pointer-events: none;
 }
 
-.landing-action-trigger-btn:active {
-  transform: translateX(-50%) scale(0.98);
+.landing-shlok {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: clamp(0.95rem, 0.88rem + 0.3vw, 1.15rem);
+  font-weight: 600;
+  color: #FFF3CE;
+  letter-spacing: 0.12em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 12px rgba(245, 215, 130, 0.35);
+  margin-bottom: clamp(2px, 0.5vh, 6px);
 }
 
-@media (min-width: 768px) and (orientation: landscape), (min-width: 1024px) {
-  .landing-action-trigger-btn {
-    top: 84.4%;
-    width: 22%;
-    height: 6.8%;
-  }
+.landing-subtitle {
+  font-family: 'Cinzel', 'Noto Serif Devanagari', serif;
+  font-size: clamp(0.72rem, 0.68rem + 0.25vw, 0.88rem);
+  font-weight: 700;
+  color: #E8D3A8;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
+}
+
+html[lang="hi"] .landing-subtitle {
+  font-family: 'Noto Serif Devanagari', serif;
+  letter-spacing: 0.12em;
+  font-size: clamp(0.78rem, 0.74rem + 0.25vw, 0.92rem);
 }
 
 /* ==========================================================================
-   5. ACCESSIBILITY & PREFERS-REDUCED-MOTION
+   8. CENTER SECTION: FLORAL MONOGRAM CREST
+   ========================================================================== */
+.landing-center-section {
+  position: relative;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: clamp(4px, 1vh, 12px) 0;
+}
+
+.landing-crest-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: crestBreathe 7s ease-in-out infinite alternate;
+}
+
+.crest-halo-glow {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(145, 85, 225, 0.35) 0%, rgba(95, 45, 165, 0.15) 50%, transparent 75%);
+  filter: blur(18px);
+}
+
+.landing-crest-img {
+  position: relative;
+  width: clamp(220px, 42vh, 320px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 20px rgba(165, 110, 235, 0.3));
+  user-select: none;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) and (orientation: landscape), (min-width: 1024px) {
+  .landing-crest-img {
+    width: clamp(190px, 34vh, 270px);
+  }
+}
+
+@keyframes crestBreathe {
+  0% { transform: scale(1); filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 15px rgba(165, 110, 235, 0.25)); }
+  100% { transform: scale(1.025); filter: drop-shadow(0 12px 34px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 28px rgba(185, 130, 255, 0.45)); }
+}
+
+/* ==========================================================================
+   9. BOTTOM SECTION: DETAILS & FUNCTIONAL UNFOLD ACTION BUTTON
+   ========================================================================== */
+.landing-bottom-section {
+  position: relative;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.landing-date {
+  font-family: 'Cinzel', 'Noto Serif Devanagari', serif;
+  font-size: clamp(0.92rem, 0.86rem + 0.35vw, 1.15rem);
+  font-weight: 600;
+  color: #FFF9ED;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 10px rgba(245, 215, 140, 0.35);
+  margin-bottom: clamp(3px, 0.6vh, 6px);
+}
+
+html[lang="hi"] .landing-date {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-weight: 600;
+}
+
+.landing-venue {
+  font-family: 'Cinzel', 'Noto Serif Devanagari', serif;
+  font-size: clamp(0.68rem, 0.64rem + 0.2vw, 0.82rem);
+  font-weight: 500;
+  color: #EBDCF5;
+  letter-spacing: 0.08em;
+  line-height: 1.45;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
+  margin-bottom: clamp(10px, 1.8vh, 18px);
+  max-width: 440px;
+}
+
+html[lang="hi"] .landing-venue {
+  font-family: 'Noto Serif Devanagari', serif;
+  letter-spacing: 0.04em;
+}
+
+/* Functional Gold Unfold Button (Clickable ONLY on this button!) */
+.landing-unfold-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: clamp(9px, 1.6vh, 13px) clamp(28px, 6vw, 42px);
+  background: linear-gradient(135deg, #FFEAB5 0%, #E8C16A 40%, #B88A2E 80%, #F5D688 100%);
+  color: #381E05;
+  border: 1.5px solid #FFF8DC;
+  border-radius: 9999px;
+  font-family: 'Cinzel', 'Noto Serif Devanagari', serif;
+  font-size: clamp(0.82rem, 0.78rem + 0.25vw, 0.95rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.6),
+    0 0 22px rgba(232, 193, 106, 0.45),
+    inset 0 1px 2px #FFFFFF;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: unfoldBtnPulse 3s ease-in-out infinite;
+  user-select: none;
+}
+
+html[lang="hi"] .landing-unfold-btn {
+  font-family: 'Noto Serif Devanagari', serif;
+  letter-spacing: 0.04em;
+}
+
+.landing-unfold-btn:hover {
+  transform: scale(1.04);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.7),
+    0 0 35px rgba(255, 225, 140, 0.75),
+    inset 0 1px 3px #FFFFFF;
+}
+
+.landing-unfold-btn:active {
+  transform: scale(0.98);
+}
+
+.landing-unfold-btn:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 3px;
+}
+
+.btn-floral-icon {
+  font-size: 0.95em;
+  color: #7A4E00;
+}
+
+.btn-heart-icon {
+  font-size: 1.05em;
+  color: #7A4E00;
+}
+
+@keyframes unfoldBtnPulse {
+  0%, 100% {
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.6),
+      0 0 20px rgba(232, 193, 106, 0.4),
+      inset 0 1px 2px #FFFFFF;
+  }
+  50% {
+    box-shadow:
+      0 10px 28px rgba(0, 0, 0, 0.65),
+      0 0 32px rgba(255, 225, 140, 0.7),
+      inset 0 1px 2px #FFFFFF;
+  }
+}
+
+.landing-tap-text {
+  font-family: 'Cinzel', 'Noto Serif Devanagari', serif;
+  font-size: clamp(0.66rem, 0.62rem + 0.18vw, 0.75rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #D8CBED;
+  margin-top: clamp(6px, 1.2vh, 12px);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.95);
+  opacity: 0.85;
+  pointer-events: none;
+  user-select: none;
+}
+
+html[lang="hi"] .landing-tap-text {
+  font-family: 'Noto Serif Devanagari', serif;
+  letter-spacing: 0.06em;
+}
+
+/* ==========================================================================
+   10. ACCESSIBILITY & PREFERS-REDUCED-MOTION
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
   .cinematic-opening,
-  .landing-stage {
+  .landing-stage,
+  .landing-cloud,
+  .floating-diya,
+  .diya-flame-path,
+  .diya-glow,
+  .diya-water-reflection,
+  .ganesha-aura-glow,
+  .landing-crest-wrap,
+  .landing-unfold-btn {
+    animation: none !important;
     transition: none !important;
   }
 }

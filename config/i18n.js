@@ -22,6 +22,7 @@ export const translations = {
     },
     opening: {
       shlok: "॥ श्री गणेशाय नमः ॥",
+      subtitle: "WEDDING INVITATION",
       emblemAlt: "Jyothi & Rajan Floral Gold JR Monogram Crest",
       brideName: "Jyothi",
       groomName: "Rajan",
@@ -29,6 +30,7 @@ export const translations = {
       names: "Jyothi & Rajan",
       lead: "WEDDING INVITATION",
       dateBadge: "Wednesday, 9th December 2026",
+      venueText: "BARDAHIYA, MARHAURA, CHHAPRA • BIHAR - 841419",
       unfoldBtn: "OPEN INVITATION",
       helperText: "Tap or press space to enter",
       tapInstruction: "TAP TO ENTER"
@@ -163,6 +165,7 @@ export const translations = {
     },
     opening: {
       shlok: "॥ श्री गणेशाय नमः ॥",
+      subtitle: "शुभ विवाह आमंत्रण",
       emblemAlt: "ज्योति संग राजन मांगलिक पुष्प स्वर्ण प्रतीक चिह्न",
       brideName: "ज्योति",
       groomName: "राजन",
@@ -170,6 +173,7 @@ export const translations = {
       names: "ज्योति संग राजन",
       lead: "शुभ विवाह आमंत्रण",
       dateBadge: "बुधवार, 9 दिसंबर 2026",
+      venueText: "बरदहियाँ, मढ़ौरा, छपरा • बिहार - 841419",
       unfoldBtn: "आमंत्रण खोलें",
       helperText: "प्रवेश करने के लिए टैप या स्पेस दबाएं",
       tapInstruction: "प्रवेश करने के लिए टैप करें"

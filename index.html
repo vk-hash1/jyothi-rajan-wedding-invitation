@@ -74,17 +74,60 @@
     aria-label="Wedding Celebration Opening Invitation">
 
     <!-- Responsive Master Stage Card (Portrait on mobile, Landscape on desktop) -->
-    <div id="landing-stage" class="landing-stage" role="button" tabindex="0" aria-label="आमंत्रण खोलें / Open Invitation">
+    <div id="landing-stage" class="landing-stage">
 
-      <!-- Responsive Scenery Picture with exact mobile and desktop master references -->
-      <picture id="landing-picture">
-        <source id="landing-src-desk" media="(min-width: 768px) and (orientation: landscape), (min-width: 1024px)"
-          srcset="assets/images/landing/landing-celestial-royal-desktop-hi.jpg">
-        <img id="landing-bg-img" src="assets/images/landing/landing-celestial-royal-mobile-hi.jpg"
-          alt="ज्योति कुमारी संग राजन शर्मा | शुभ विवाह आमंत्रण" class="landing-scenery-backdrop" loading="eager" decoding="sync">
-      </picture>
+      <!-- 1. Background Interactive Stars Canvas -->
+      <canvas id="celestial-stars-canvas" class="landing-stars-canvas" aria-hidden="true"></canvas>
 
-      <!-- Glassmorphic Language Switcher (Top Right) -->
+      <!-- 2. Decorative Billowing Clouds & Natural Floating Diyas -->
+      <div class="landing-decorations" aria-hidden="true">
+        <div class="landing-cloud cloud-left"></div>
+        <div class="landing-cloud cloud-right"></div>
+
+        <!-- Left Floating Diya -->
+        <div class="floating-diya diya-left">
+          <div class="diya-glow"></div>
+          <svg class="diya-lamp" viewBox="0 0 54 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="diyaBrassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFE28A" />
+                <stop offset="45%" stop-color="#D4A017" />
+                <stop offset="100%" stop-color="#7A4E00" />
+              </linearGradient>
+              <linearGradient id="diyaFlameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%" stop-color="#FF4500" />
+                <stop offset="35%" stop-color="#FF9800" />
+                <stop offset="70%" stop-color="#FFEB3B" />
+                <stop offset="100%" stop-color="#FFFFFF" />
+              </linearGradient>
+            </defs>
+            <ellipse cx="27" cy="24" rx="24" ry="8" fill="url(#diyaBrassGrad)" />
+            <ellipse cx="27" cy="23" rx="18" ry="5" fill="#3D1800" />
+            <path class="diya-flame-path" d="M27 4 C25 11 22 15 22 19 C22 23 24 25 27 25 C30 25 32 23 32 19 C32 15 29 11 27 4 Z" fill="url(#diyaFlameGrad)" />
+          </svg>
+          <div class="diya-water-reflection"></div>
+        </div>
+
+        <!-- Right Floating Diya -->
+        <div class="floating-diya diya-right">
+          <div class="diya-glow"></div>
+          <svg class="diya-lamp" viewBox="0 0 54 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="27" cy="24" rx="24" ry="8" fill="url(#diyaBrassGrad)" />
+            <ellipse cx="27" cy="23" rx="18" ry="5" fill="#3D1800" />
+            <path class="diya-flame-path" d="M27 4 C25 11 22 15 22 19 C22 23 24 25 27 25 C30 25 32 23 32 19 C32 15 29 11 27 4 Z" fill="url(#diyaFlameGrad)" />
+          </svg>
+          <div class="diya-water-reflection"></div>
+        </div>
+      </div>
+
+      <!-- 3. Double Gold Frame & Corner Filigrees (100% Symmetric, Zero Gemini Logo) -->
+      <div class="landing-inner-frame" aria-hidden="true"></div>
+      <img src="assets/images/landing/corner-filigree-gold.png" class="corner-filigree top-left" alt="" aria-hidden="true">
+      <img src="assets/images/landing/corner-filigree-gold.png" class="corner-filigree top-right" alt="" aria-hidden="true">
+      <img src="assets/images/landing/corner-filigree-gold.png" class="corner-filigree bottom-left" alt="" aria-hidden="true">
+      <img src="assets/images/landing/corner-filigree-gold.png" class="corner-filigree bottom-right" alt="" aria-hidden="true">
+
+      <!-- 4. Top Language Switcher Bar -->
       <header class="landing-top-bar">
         <div class="landing-lang-pill" role="radiogroup" aria-label="Language selection / भाषा चुनें">
           <button type="button" id="landing-lang-btn-en" class="landing-lang-btn" role="radio" aria-checked="false"
@@ -99,22 +142,40 @@
         </div>
       </header>
 
-      <!-- Interactive Unfold Action Button (Precision overlay on artwork's gold button) -->
-      <button type="button" id="btn-unfold-invitation" class="landing-action-trigger-btn"
-        aria-label="आमंत्रण खोलें">
-        <span id="unfold-btn-text" class="sr-only">आमंत्रण खोलें</span>
-      </button>
-
-      <!-- Accessible Metadata & Screen Reader Elements -->
-      <div class="sr-only">
-        <div id="opening-shlok" lang="sa">॥ श्री गणेशाय नमः ॥</div>
-        <h1 id="opening-couple-names">ज्योति कुमारी संग राजन शर्मा</h1>
-        <p id="opening-lead">शुभ विवाह आमंत्रण</p>
-        <div id="opening-date-text">बुधवार, 9 दिसंबर 2026</div>
-        <div id="landing-tap-instruction" role="button" tabindex="0" aria-label="प्रवेश करने के लिए टैप करें">
-          <span id="landing-tap-text">प्रवेश करने के लिए टैप करें</span>
+      <!-- 5. Top Invocation Section: Lord Ganesha & Shlok -->
+      <div class="landing-top-section">
+        <div class="landing-ganesha-wrap">
+          <div class="ganesha-aura-glow" aria-hidden="true"></div>
+          <img src="assets/images/landing/ganesha-gold-emblem.png" alt="॥ श्री गणेशाय नमः ॥" class="landing-ganesha-img" width="52" height="62" loading="eager">
         </div>
-        <span id="opening-helper-text">निमंत्रण पत्र खोलने एवं मंगल ध्वनि के लिए स्पर्श करें</span>
+        <div id="opening-shlok" class="landing-shlok" lang="sa">॥ श्री गणेशाय नमः ॥</div>
+        <div id="opening-subtitle" class="landing-subtitle">शुभ विवाह आमंत्रण</div>
+      </div>
+
+      <!-- 6. Centerpiece Floral Monogram Crest Section -->
+      <div class="landing-center-section">
+        <div class="landing-crest-wrap">
+          <div class="crest-halo-glow" aria-hidden="true"></div>
+          <img src="assets/images/landing/crest-floral-jr.png" alt="Jyothi & Rajan Floral Gold Monogram Crest" class="landing-crest-img" width="360" height="312" loading="eager">
+        </div>
+        <!-- Hidden Accessible Heading for SEO & Screen Readers -->
+        <h1 id="opening-couple-names" class="sr-only">ज्योति कुमारी संग राजन शर्मा</h1>
+      </div>
+
+      <!-- 7. Bottom Details & Unfold Action Section -->
+      <div class="landing-bottom-section">
+        <div id="opening-date-text" class="landing-date">बुधवार, 9 दिसंबर 2026</div>
+        <div id="opening-venue-text" class="landing-venue">बरदहियाँ, मढ़ौरा, छपरा • बिहार - 841419</div>
+
+        <!-- Functional Unfold Button (Clickable ONLY on this button!) -->
+        <button type="button" id="btn-unfold-invitation" class="landing-unfold-btn" aria-label="आमंत्रण खोलें">
+          <span class="btn-floral-icon" aria-hidden="true">❀</span>
+          <span id="unfold-btn-text">आमंत्रण खोलें</span>
+          <span class="btn-heart-icon" aria-hidden="true">♡</span>
+        </button>
+
+        <!-- Tap Helper Text -->
+        <div id="landing-tap-text" class="landing-tap-text">प्रवेश करने के लिए टैप करें</div>
       </div>
     </div>
   </div>

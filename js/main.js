@@ -217,25 +217,11 @@ export function applyLanguage(lang) {
   }
 
   // 4. Milestone 2: Cinematic Opening Invitation
-  // Responsive Master Landing Picture (Hindi vs English reference artwork)
-  const deskSrc = document.getElementById('landing-src-desk');
-  const bgImg = document.getElementById('landing-bg-img');
-  if (isHi) {
-    if (deskSrc) deskSrc.srcset = 'assets/images/landing/landing-celestial-royal-desktop-hi.jpg';
-    if (bgImg) {
-      bgImg.src = 'assets/images/landing/landing-celestial-royal-mobile-hi.jpg';
-      bgImg.alt = 'ज्योति कुमारी संग राजन शर्मा | शुभ विवाह आमंत्रण';
-    }
-  } else {
-    if (deskSrc) deskSrc.srcset = 'assets/images/landing/landing-celestial-royal-desktop.jpg';
-    if (bgImg) {
-      bgImg.src = 'assets/images/landing/landing-celestial-royal-mobile.jpg';
-      bgImg.alt = 'Jyothi Kumari Weds Rajan Sharma | Wedding Invitation';
-    }
-  }
-
   const openingShlok = document.getElementById('opening-shlok');
   if (openingShlok) openingShlok.textContent = data.opening.shlok;
+
+  const openingSubtitle = document.getElementById('opening-subtitle');
+  if (openingSubtitle) openingSubtitle.textContent = data.opening.subtitle || data.opening.lead;
 
   const openingNames = document.getElementById('opening-couple-names');
   if (openingNames) openingNames.textContent = data.opening.names;
@@ -245,6 +231,11 @@ export function applyLanguage(lang) {
 
   const openingDateText = document.getElementById('opening-date-text');
   if (openingDateText) openingDateText.textContent = data.opening.dateBadge;
+
+  const openingVenueText = document.getElementById('opening-venue-text');
+  if (openingVenueText && data.opening.venueText) {
+    openingVenueText.innerHTML = data.opening.venueText;
+  }
 
   const unfoldBtnText = document.getElementById('unfold-btn-text');
   if (unfoldBtnText) unfoldBtnText.textContent = data.opening.unfoldBtn;
