@@ -123,6 +123,7 @@ function initWeddingWebsite() {
 function setupLanguageSwitcher() {
   const switchEn = (e) => {
     e.preventDefault();
+    if (e.stopPropagation) e.stopPropagation();
     try {
       localStorage.setItem('wedding_lang_user_selected', 'true');
     } catch (err) {}
@@ -131,6 +132,7 @@ function setupLanguageSwitcher() {
 
   const switchHi = (e) => {
     e.preventDefault();
+    if (e.stopPropagation) e.stopPropagation();
     try {
       localStorage.setItem('wedding_lang_user_selected', 'true');
     } catch (err) {}
@@ -215,6 +217,23 @@ export function applyLanguage(lang) {
   }
 
   // 4. Milestone 2: Cinematic Opening Invitation
+  // Responsive Master Landing Picture (Hindi vs English reference artwork)
+  const deskSrc = document.getElementById('landing-src-desk');
+  const bgImg = document.getElementById('landing-bg-img');
+  if (isHi) {
+    if (deskSrc) deskSrc.srcset = 'assets/images/landing/landing-celestial-royal-desktop-hi.jpg';
+    if (bgImg) {
+      bgImg.src = 'assets/images/landing/landing-celestial-royal-mobile-hi.jpg';
+      bgImg.alt = 'ज्योति कुमारी संग राजन शर्मा | शुभ विवाह आमंत्रण';
+    }
+  } else {
+    if (deskSrc) deskSrc.srcset = 'assets/images/landing/landing-celestial-royal-desktop.jpg';
+    if (bgImg) {
+      bgImg.src = 'assets/images/landing/landing-celestial-royal-mobile.jpg';
+      bgImg.alt = 'Jyothi Kumari Weds Rajan Sharma | Wedding Invitation';
+    }
+  }
+
   const openingShlok = document.getElementById('opening-shlok');
   if (openingShlok) openingShlok.textContent = data.opening.shlok;
 

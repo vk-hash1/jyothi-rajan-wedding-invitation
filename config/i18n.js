@@ -27,11 +27,11 @@ export const translations = {
       groomName: "Rajan",
       connector: "&",
       names: "Jyothi & Rajan",
-      lead: "TOGETHER WITH THEIR FAMILIES,<br>INVITE YOU TO CELEBRATE",
-      dateBadge: "Wednesday, 9 December 2026",
-      unfoldBtn: "Unfold the Celebration",
-      helperText: "Tap to reveal invitation & play ambient soundtrack",
-      tapInstruction: "Tap here to view the invitation"
+      lead: "WEDDING INVITATION",
+      dateBadge: "Wednesday, 9th December 2026",
+      unfoldBtn: "OPEN INVITATION",
+      helperText: "Tap or press space to enter",
+      tapInstruction: "TAP TO ENTER"
     },
     audio: {
       ariaPlay: "Play background music",
@@ -168,11 +168,11 @@ export const translations = {
       groomName: "राजन",
       connector: "संग",
       names: "ज्योति संग राजन",
-      lead: "सपरिवार आपका स्नेहिल अभिनन्दन करते हैं,<br>एवं विवाह के इस मांगलिक अवसर पर सादर आमंत्रित करते हैं",
+      lead: "शुभ विवाह आमंत्रण",
       dateBadge: "बुधवार, 9 दिसंबर 2026",
-      unfoldBtn: "उत्सव का साक्षी बनें",
-      helperText: "निमंत्रण पत्र खोलने एवं मंगल ध्वनि के लिए स्पर्श करें",
-      tapInstruction: "निमंत्रण पत्र देखने के लिए यहाँ टैप करें"
+      unfoldBtn: "आमंत्रण खोलें",
+      helperText: "प्रवेश करने के लिए टैप या स्पेस दबाएं",
+      tapInstruction: "प्रवेश करने के लिए टैप करें"
     },
     audio: {
       ariaPlay: "पृष्ठभूमि संगीत बजाएं",

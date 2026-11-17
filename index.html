@@ -73,59 +73,19 @@
   <div id="cinematic-opening" class="cinematic-opening" role="dialog" aria-modal="true"
     aria-label="Wedding Celebration Opening Invitation">
 
-    <!-- Atmospheric Desktop Background Scenery Extension -->
-    <div class="landing-desktop-scenery" aria-hidden="true"></div>
+    <!-- Responsive Master Stage Card (Portrait on mobile, Landscape on desktop) -->
+    <div id="landing-stage" class="landing-stage" role="button" tabindex="0" aria-label="आमंत्रण खोलें / Open Invitation">
 
-    <!-- Centered Portrait Stage (9:16 Aspect Ratio) -->
-    <div id="landing-stage" class="landing-stage">
+      <!-- Responsive Scenery Picture with exact mobile and desktop master references -->
+      <picture id="landing-picture">
+        <source id="landing-src-desk" media="(min-width: 768px) and (orientation: landscape), (min-width: 1024px)"
+          srcset="assets/images/landing/landing-celestial-royal-desktop-hi.jpg">
+        <img id="landing-bg-img" src="assets/images/landing/landing-celestial-royal-mobile-hi.jpg"
+          alt="ज्योति कुमारी संग राजन शर्मा | शुभ विवाह आमंत्रण" class="landing-scenery-backdrop" loading="eager" decoding="sync">
+      </picture>
 
-      <!-- 1. High-Res Enchanted Celestial Backdrop Scene -->
-      <img src="assets/images/landing/landing-enchanted-celestial.jpg"
-        alt="Enchanted Dream Celestial Wedding Atmosphere" class="landing-scenery-backdrop" aria-hidden="true">
-
-      <!-- 2. Animated Pulsing Moon Glow & Atmospheric Corona -->
-      <div class="landing-moon-corona" aria-hidden="true">
-        <div class="moon-halo-inner"></div>
-        <div class="moon-halo-outer"></div>
-      </div>
-
-      <!-- 3. Layered Ethereal Drifting Clouds -->
-      <div class="landing-clouds-drift cloud-layer-1" aria-hidden="true"></div>
-      <div class="landing-clouds-drift cloud-layer-2" aria-hidden="true"></div>
-
-      <!-- 4. Interactive Stars, Shooting Stars & Stardust Canvas -->
-      <canvas id="celestial-stars-canvas" class="landing-stars-canvas" aria-hidden="true"></canvas>
-
-      <!-- 5. Floating Diyas & Water Shimmer Layer (At the base) -->
-      <div class="landing-water-stage" aria-hidden="true">
-        <!-- Water ripple light shimmer -->
-        <div class="water-shimmer-fx"></div>
-
-        <!-- Left Diya Flame Glow & Water Reflection -->
-        <div class="diya-glow-fx diya-left-glow">
-          <div class="diya-flame-core"></div>
-          <div class="diya-reflection-bar"></div>
-        </div>
-
-        <!-- Mid Diya Flame Glow & Reflection -->
-        <div class="diya-glow-fx diya-mid-glow">
-          <div class="diya-flame-core"></div>
-          <div class="diya-reflection-bar"></div>
-        </div>
-
-        <!-- Right Diya Flame Glow & Reflection -->
-        <div class="diya-glow-fx diya-right-glow">
-          <div class="diya-flame-core"></div>
-          <div class="diya-reflection-bar"></div>
-        </div>
-
-        <!-- Foreground Lotus Gentle Float Effect -->
-        <div class="lotus-float-fx"></div>
-      </div>
-
-      <!-- 6. Top Controls Bar: Language Switcher & Circular Music Button -->
+      <!-- Glassmorphic Language Switcher (Top Right) -->
       <header class="landing-top-bar">
-        <!-- Language Switcher Pill -->
         <div class="landing-lang-pill" role="radiogroup" aria-label="Language selection / भाषा चुनें">
           <button type="button" id="landing-lang-btn-en" class="landing-lang-btn" role="radio" aria-checked="false"
             aria-label="Switch to English" data-lang="en">
@@ -139,140 +99,22 @@
         </div>
       </header>
 
-      <!-- 7. Central Invitation Content Stack (Centered gracefully in the celestial sky) -->
-      <div class="landing-content-stack">
-        <!-- Auspicious Ganesha Shlok -->
-        <div id="opening-shlok" class="landing-shlok" lang="sa">॥ श्री गणेशाय नमः ॥</div>
+      <!-- Interactive Unfold Action Button (Precision overlay on artwork's gold button) -->
+      <button type="button" id="btn-unfold-invitation" class="landing-action-trigger-btn"
+        aria-label="आमंत्रण खोलें">
+        <span id="unfold-btn-text" class="sr-only">आमंत्रण खोलें</span>
+      </button>
 
-        <!-- Ornate Celestial JR Floral Monogram & Couple Names Emblem (Exact 3D Gold Design) -->
-        <div class="landing-emblem-wrap">
-          <div class="landing-monogram-aura" aria-hidden="true"></div>
-          <picture>
-            <source srcset="assets/images/emblem-monogram.webp" type="image/webp">
-            <img src="assets/images/emblem-monogram.png" alt="Jyothi & Rajan"
-              class="landing-emblem-img" width="310" height="337" loading="eager" decoding="async">
-          </picture>
+      <!-- Accessible Metadata & Screen Reader Elements -->
+      <div class="sr-only">
+        <div id="opening-shlok" lang="sa">॥ श्री गणेशाय नमः ॥</div>
+        <h1 id="opening-couple-names">ज्योति कुमारी संग राजन शर्मा</h1>
+        <p id="opening-lead">शुभ विवाह आमंत्रण</p>
+        <div id="opening-date-text">बुधवार, 9 दिसंबर 2026</div>
+        <div id="landing-tap-instruction" role="button" tabindex="0" aria-label="प्रवेश करने के लिए टैप करें">
+          <span id="landing-tap-text">प्रवेश करने के लिए टैप करें</span>
         </div>
-
-        <!-- Accessible Hidden Heading for SEO & Screen Readers -->
-        <h1 id="opening-couple-names" class="sr-only">ज्योति कुमारी संग राजन शर्मा</h1>
-
-        <!-- Lead Invitation Announcement -->
-        <p id="opening-lead" class="landing-invitation-lead">
-          सपरिवार आपका स्नेहिल अभिनन्दन करते हैं,<br>एवं विवाह के इस मांगलिक अवसर पर सादर आमंत्रित करते हैं
-        </p>
-
-        <!-- Auspicious Wedding Date Cartouche (Royal Filigree Edition) -->
-        <div id="opening-date" class="landing-date-cartouche" role="status"
-          aria-label="शुभ विवाह तिथि: बुधवार, 9 दिसंबर 2026">
-          <!-- Left Filigree Flourish -->
-          <span class="cartouche-floret floret-left" aria-hidden="true">
-            <svg viewBox="0 0 32 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="cartoucheGoldLeft" x1="100%" y1="50%" x2="0%" y2="50%">
-                  <stop offset="0%" stop-color="#FFE8B0" />
-                  <stop offset="45%" stop-color="#E5C16C" />
-                  <stop offset="85%" stop-color="#B88A36" />
-                  <stop offset="100%" stop-color="#FFE094" />
-                </linearGradient>
-              </defs>
-              <path d="M32 22H9M9 22L14 18M9 22L14 26" stroke="url(#cartoucheGoldLeft)" stroke-width="1.3"
-                stroke-linecap="round" />
-              <polygon points="3,22 6.5,20.2 10,22 6.5,23.8" fill="url(#cartoucheGoldLeft)" />
-              <circle cx="6.5" cy="22" r="1.1" fill="#FFFBE6" />
-              <path d="M30 11C23 11 17 7.5 13 12C10 16 13 20 17 19C22 18 23 13 22 8C21 4 16 1 11.5 2C7 3 3.5 7.5 3.5 13"
-                stroke="url(#cartoucheGoldLeft)" stroke-width="1.4" stroke-linecap="round" />
-              <circle cx="11.5" cy="2" r="1.3" fill="url(#cartoucheGoldLeft)" />
-              <circle cx="5.5" cy="5.5" r="1" fill="url(#cartoucheGoldLeft)" />
-              <circle cx="3.5" cy="13" r="1.1" fill="url(#cartoucheGoldLeft)" />
-              <path
-                d="M30 33C23 33 17 36.5 13 32C10 28 13 24 17 25C22 26 23 31 22 36C21 40 16 43 11.5 42C7 41 3.5 36.5 3.5 31"
-                stroke="url(#cartoucheGoldLeft)" stroke-width="1.4" stroke-linecap="round" />
-              <circle cx="11.5" cy="42" r="1.3" fill="url(#cartoucheGoldLeft)" />
-              <circle cx="5.5" cy="38.5" r="1" fill="url(#cartoucheGoldLeft)" />
-              <circle cx="3.5" cy="31" r="1.1" fill="url(#cartoucheGoldLeft)" />
-            </svg>
-          </span>
-
-          <!-- Top Center Diamond Finial -->
-          <span class="cartouche-diamond diamond-top" aria-hidden="true"></span>
-
-          <!-- Inner Cartouche Content (Calendar Icon + Dynamic Date Text) -->
-          <div class="cartouche-inner">
-            <svg class="gold-calendar-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true">
-              <defs>
-                <linearGradient id="goldCalGrad" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#FFF3CE" />
-                  <stop offset="35%" stop-color="#F5D07A" />
-                  <stop offset="75%" stop-color="#E2B748" />
-                  <stop offset="100%" stop-color="#C29326" />
-                </linearGradient>
-              </defs>
-              <rect x="6.5" y="1.5" width="2" height="3.5" rx="1" fill="url(#goldCalGrad)" />
-              <rect x="15.5" y="1.5" width="2" height="3.5" rx="1" fill="url(#goldCalGrad)" />
-              <rect x="3" y="4" width="18" height="17" rx="3.5" stroke="url(#goldCalGrad)" stroke-width="1.6"
-                fill="rgba(255, 230, 160, 0.06)" />
-              <path d="M3 9H21" stroke="url(#goldCalGrad)" stroke-width="1.4" />
-              <rect x="6.2" y="11.6" width="2.4" height="2.1" rx="0.6" fill="url(#goldCalGrad)" />
-              <rect x="10.8" y="11.6" width="2.4" height="2.1" rx="0.6" fill="url(#goldCalGrad)" />
-              <rect x="15.4" y="11.6" width="2.4" height="2.1" rx="0.6" fill="url(#goldCalGrad)" />
-              <rect x="6.2" y="15.6" width="2.4" height="2.1" rx="0.6" fill="url(#goldCalGrad)" />
-              <rect x="10.8" y="15.6" width="2.4" height="2.1" rx="0.6" fill="url(#goldCalGrad)" />
-              <rect x="15.4" y="15.6" width="2.4" height="2.1" rx="0.6" fill="url(#goldCalGrad)" />
-            </svg>
-            <span id="opening-date-text" class="cartouche-date-text">बुधवार, 9 दिसंबर 2026</span>
-          </div>
-
-          <!-- Bottom Center Diamond Finial -->
-          <span class="cartouche-diamond diamond-bottom" aria-hidden="true"></span>
-
-          <!-- Right Filigree Flourish (Symmetrical) -->
-          <span class="cartouche-floret floret-right" aria-hidden="true">
-            <svg viewBox="0 0 32 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="cartoucheGoldRight" x1="0%" y1="50%" x2="100%" y2="50%">
-                  <stop offset="0%" stop-color="#FFE8B0" />
-                  <stop offset="45%" stop-color="#E5C16C" />
-                  <stop offset="85%" stop-color="#B88A36" />
-                  <stop offset="100%" stop-color="#FFE094" />
-                </linearGradient>
-              </defs>
-              <path d="M0 22H23M23 22L18 18M23 22L18 26" stroke="url(#cartoucheGoldRight)" stroke-width="1.3"
-                stroke-linecap="round" />
-              <polygon points="29,22 25.5,20.2 22,22 25.5,23.8" fill="url(#cartoucheGoldRight)" />
-              <circle cx="25.5" cy="22" r="1.1" fill="#FFFBE6" />
-              <path d="M2 11C9 11 15 7.5 19 12C22 16 19 20 15 19C10 18 9 13 10 8C11 4 16 1 20.5 2C25 3 28.5 7.5 28.5 13"
-                stroke="url(#cartoucheGoldRight)" stroke-width="1.4" stroke-linecap="round" />
-              <circle cx="20.5" cy="2" r="1.3" fill="url(#cartoucheGoldRight)" />
-              <circle cx="26.5" cy="5.5" r="1" fill="url(#cartoucheGoldRight)" />
-              <circle cx="28.5" cy="13" r="1.1" fill="url(#cartoucheGoldRight)" />
-              <path
-                d="M2 33C9 33 15 36.5 19 32C22 28 19 24 15 25C10 26 9 31 10 36C11 40 16 43 20.5 42C25 41 28.5 36.5 28.5 31"
-                stroke="url(#cartoucheGoldRight)" stroke-width="1.4" stroke-linecap="round" />
-              <circle cx="20.5" cy="42" r="1.3" fill="url(#cartoucheGoldRight)" />
-              <circle cx="26.5" cy="38.5" r="1" fill="url(#cartoucheGoldRight)" />
-              <circle cx="28.5" cy="31" r="1.1" fill="url(#cartoucheGoldRight)" />
-            </svg>
-          </span>
-        </div>
-
-        <!-- Luminous "Unfold the Celebration" Action Button -->
-        <div class="landing-action-wrap">
-          <button type="button" id="btn-unfold-invitation" class="landing-unfold-btn"
-            aria-label="उत्सव का साक्षी बनें एवं निमंत्रण पत्र देखें">
-            <span class="btn-sparkle" aria-hidden="true">✨</span>
-            <span id="unfold-btn-text">उत्सव का साक्षी बनें</span>
-            <span class="btn-chevron" aria-hidden="true">∨</span>
-          </button>
-
-          <!-- Floating Interactive Tap Instruction -->
-          <div id="landing-tap-instruction" class="landing-tap-instruction" role="button" tabindex="0"
-            aria-label="निमंत्रण पत्र देखने के लिए यहाँ टैप करें">
-            <span class="tap-hand-icon" aria-hidden="true">👆</span>
-            <span id="landing-tap-text">निमंत्रण पत्र देखने के लिए यहाँ टैप करें</span>
-          </div>
-        </div>
+        <span id="opening-helper-text">निमंत्रण पत्र खोलने एवं मंगल ध्वनि के लिए स्पर्श करें</span>
       </div>
     </div>
   </div>

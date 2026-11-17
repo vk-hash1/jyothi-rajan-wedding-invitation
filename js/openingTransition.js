@@ -26,12 +26,42 @@ export class OpeningTransition {
       this.atmosphereEngine = new LandingAtmosphere(this.canvas);
     }
 
-    // Bind Unfold Trigger
-    this.unfoldBtn.addEventListener('click', () => {
+    // Bind Unfold Trigger on the action button
+    this.unfoldBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       this.unfold();
     });
 
     this.unfoldBtn.addEventListener('keydown', (e) => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        e.stopPropagation();
+        this.unfold();
+      }
+    });
+
+    // Also allow tapping/clicking anywhere on the landing stage card
+    if (this.stage) {
+      this.stage.addEventListener('click', (e) => {
+        if (e.target.closest('.landing-top-bar') || e.target.closest('.landing-lang-pill') || e.target.closest('.landing-lang-btn')) {
+          return;
+        }
+        this.unfold();
+      });
+
+      this.stage.addEventListener('keydown', (e) => {
+        if (e.target.closest('.landing-top-bar')) return;
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault();
+          this.unfold();
+        }
+      });
+    }
+
+    // Space/Enter anywhere when opening overlay is active
+    document.addEventListener('keydown', (e) => {
+      if (this.isUnfolded) return;
+      if (document.activeElement && document.activeElement.closest('.landing-top-bar')) return;
       if (e.key === ' ' || e.key === 'Enter') {
         e.preventDefault();
         this.unfold();
