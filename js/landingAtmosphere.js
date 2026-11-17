@@ -45,14 +45,26 @@ export class LandingAtmosphere {
       this.createElements();
     });
 
-    // Auto-pause when page/tab is hidden
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
+    // Auto-pause when page/tab is hidden; resume cleanly and safely on return
+    const onVisibilityChange = () => {
+      if (document.hidden || document.visibilityState === 'hidden') {
         this.pause();
-      } else if (this.isRunning) {
-        this.start();
+      } else {
+        this.resume();
       }
-    });
+    };
+
+    const onPageShow = () => {
+      this.resume();
+    };
+
+    const onPageHide = () => {
+      this.pause();
+    };
+
+    document.addEventListener('visibilitychange', onVisibilityChange);
+    window.addEventListener('pageshow', onPageShow);
+    window.addEventListener('pagehide', onPageHide);
 
     if (this.reducedMotion) {
       this.renderStatic();
@@ -178,6 +190,13 @@ export class LandingAtmosphere {
   start() {
     if (this.isRunning) return;
     this.isRunning = true;
+    this.lastShootingStarTime = Date.now();
+
+    // Prevent duplicate animation loops
+    if (this.animationFrameId) {
+      cancelAnimationFrame(this.animationFrameId);
+      this.animationFrameId = null;
+    }
 
     const loop = () => {
       if (!this.isRunning) return;
@@ -195,6 +214,17 @@ export class LandingAtmosphere {
       cancelAnimationFrame(this.animationFrameId);
       this.animationFrameId = null;
     }
+  }
+
+  resume() {
+    if (this.reducedMotion) return;
+    // Do not resume if landing has already unfolded and dismissed
+    const opening = document.getElementById('cinematic-opening');
+    if (opening && opening.classList.contains('is-dismissed')) return;
+
+    this.resize();
+    this.lastShootingStarTime = Date.now();
+    this.start();
   }
 
   update() {

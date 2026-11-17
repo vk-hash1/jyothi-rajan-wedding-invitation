@@ -90,20 +90,18 @@
         <div class="sparkle-star sparkle-star-3"></div>
         <div class="sparkle-star sparkle-star-4"></div>
 
-        <!-- Left Floating Brass Diya (Handcrafted Ornate Deepak with Sacred Flame) -->
+        <!-- Left Floating Sacred Lotus Diya (Enchanted Celestial Lotus Deepak) -->
         <div class="floating-diya diya-left">
           <div class="diya-water-reflection"></div>
-          <img src="assets/images/landing/floating-diya-brass.png" alt="" class="diya-img" width="104" height="72" loading="eager">
+          <img src="assets/images/landing/floating-lotus-diya.png" alt="" class="diya-img" width="80" height="87" loading="eager">
           <div class="diya-glow"></div>
-          <div class="diya-flicker-flame"></div>
         </div>
 
-        <!-- Right Floating Brass Diya -->
+        <!-- Right Floating Sacred Lotus Diya -->
         <div class="floating-diya diya-right">
           <div class="diya-water-reflection"></div>
-          <img src="assets/images/landing/floating-diya-brass.png" alt="" class="diya-img diya-flipped" width="104" height="72" loading="eager">
+          <img src="assets/images/landing/floating-lotus-diya.png" alt="" class="diya-img diya-flipped" width="80" height="87" loading="eager">
           <div class="diya-glow"></div>
-          <div class="diya-flicker-flame"></div>
         </div>
       </div>
 
@@ -143,7 +141,7 @@
       <div class="landing-center-section">
         <div class="landing-crest-wrap">
           <div class="crest-halo-glow" aria-hidden="true"></div>
-          <img src="assets/images/landing/crest-floral-jr.png" alt="Jyothi & Rajan Floral Gold Monogram Crest" class="landing-crest-img" width="360" height="312" loading="eager">
+          <img src="assets/images/landing/crest-floral-jr.png" alt="Jyothi & Rajan Floral Gold Monogram Crest" class="landing-crest-img" width="360" height="373" loading="eager">
         </div>
         <!-- Hidden Accessible Heading for SEO & Screen Readers -->
         <h1 id="opening-couple-names" class="sr-only">ज्योति कुमारी संग राजन शर्मा</h1>
@@ -161,10 +159,43 @@
           <span class="btn-heart-icon" aria-hidden="true">♡</span>
         </button>
 
-        <!-- Simple, Clear Helper Text for Rural & Village Guests -->
-        <div id="landing-tap-text" class="landing-tap-text" role="button" tabindex="0" aria-label="शादी का कार्ड देखने के लिए यहाँ दबाएं">शादी का कार्ड देखने के लिए यहाँ दबाएं</div>
+        <!-- Floating Interactive Tap Hint with Pointing Finger (Showcasing Tap on Button) -->
+        <div id="landing-tap-text" class="landing-tap-text is-floating" role="button" tabindex="0" aria-label="शादी का कार्ड देखने के लिए यहाँ दबाएं">
+          <span class="tap-pointer-icon" aria-hidden="true">👆</span>
+          <span id="landing-tap-label">शादी का कार्ड देखने के लिए यहाँ दबाएं</span>
+        </div>
       </div>
     </div>
+
+    <!-- Dual Diagonal Sliding Panels Container (Reveals Website Underneath) -->
+    <div id="landing-split-container" class="landing-split-container" aria-hidden="true">
+      <!-- Top Section (Slides Top-Left across / orientation) -->
+      <div id="split-panel-ur" class="split-panel split-panel-top split-panel-ur">
+        <div class="split-panel-clip"></div>
+        <div class="split-panel-border" aria-hidden="true">
+          <svg class="seam-border-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <line class="seam-line-glow" x1="-100" y1="820" x2="1100" y2="80" vector-effect="non-scaling-stroke" />
+            <line class="seam-line-core" x1="-100" y1="820" x2="1100" y2="80" vector-effect="non-scaling-stroke" />
+            <line class="seam-line-shimmer" x1="-100" y1="820" x2="1100" y2="80" pathLength="1450" vector-effect="non-scaling-stroke" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Bottom Section (Slides Bottom-Right across / orientation) -->
+      <div id="split-panel-ll" class="split-panel split-panel-bottom split-panel-ll">
+        <div class="split-panel-clip"></div>
+        <div class="split-panel-border" aria-hidden="true">
+          <svg class="seam-border-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <line class="seam-line-glow" x1="-100" y1="820" x2="1100" y2="80" vector-effect="non-scaling-stroke" />
+            <line class="seam-line-core" x1="-100" y1="820" x2="1100" y2="80" vector-effect="non-scaling-stroke" />
+            <line class="seam-line-shimmer" x1="-100" y1="820" x2="1100" y2="80" pathLength="1450" vector-effect="non-scaling-stroke" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transition FX Canvas for Floating Flower Petals & Golden Stardust Sparkles -->
+    <canvas id="transition-fx-canvas" class="transition-fx-canvas" aria-hidden="true"></canvas>
   </div>
 
   <!-- ========================================================================

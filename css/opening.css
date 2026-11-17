@@ -27,17 +27,20 @@
   overflow: hidden;
   margin: 0;
   padding: 0;
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-    visibility 0.85s ease;
-  will-change: opacity, transform;
+  pointer-events: auto;
+}
+
+/* When the split animation begins, container becomes transparent so the website underneath is revealed through the parting rift */
+.cinematic-opening.is-splitting {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
 }
 
 .cinematic-opening.is-dismissed {
-  opacity: 0;
-  transform: scale(1.05);
-  pointer-events: none;
-  visibility: hidden;
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 /* Lock background scrolling while opening invitation overlay is active */
@@ -56,44 +59,38 @@ body.opening-active {
   position: relative;
   max-width: 100vw;
   max-height: 100dvh;
-  width: min(100vw, calc(100dvh * 572 / 1024));
-  height: min(100dvh, calc(100vw * 1024 / 572));
-  aspect-ratio: 572 / 1024;
+  width: 100vw;
+  height: 100dvh;
+  aspect-ratio: auto;
   margin: auto;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: clamp(22px, 4.2vh, 38px) clamp(16px, 3.5vw, 28px) clamp(16px, 2.8vh, 28px);
+  box-sizing: border-box;
+  padding: clamp(14px, 2.4vh, 22px) clamp(12px, 3.2vw, 20px) clamp(10px, 1.8vh, 16px);
   background: radial-gradient(circle at 50% 38%, #281350 0%, #150930 45%, #0B041C 75%, #060210 100%);
   border: 1px solid rgba(229, 193, 108, 0.45);
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.9),
-    0 0 50px rgba(135, 80, 220, 0.25);
-  border-radius: 8px;
+  box-shadow: none;
+  border-radius: 0;
   user-select: none;
   -webkit-user-select: none;
   cursor: default;
   transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@media (max-width: 600px) {
+/* Tablet & Desktop Centered Royal Invitation Stage */
+@media (min-width: 769px) {
   .landing-stage {
-    border-radius: 0;
-    box-shadow: none;
-  }
-}
-
-/* Landscape / Desktop Stage Viewport */
-@media (min-width: 768px) and (orientation: landscape), (min-width: 1024px) {
-  .landing-stage {
-    width: min(94vw, calc(90dvh * 1024 / 540), 1080px);
-    height: auto;
-    max-height: 90dvh;
-    aspect-ratio: 1024 / 540;
+    width: min(92vw, calc(92dvh * 580 / 860), 560px);
+    height: min(92dvh, 840px);
+    max-height: 92dvh;
     border-radius: 14px;
-    padding: clamp(22px, 3.6vh, 34px) clamp(28px, 4vw, 56px) clamp(18px, 2.8vh, 28px);
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.9),
+      0 0 50px rgba(135, 80, 220, 0.25);
+    padding: clamp(16px, 2.6vh, 26px) clamp(22px, 3.2vw, 36px) clamp(12px, 2vh, 20px);
   }
 }
 
@@ -229,26 +226,26 @@ body.opening-active {
   }
 }
 
-/* Natural Floating Brass Urli Diyas (Handcrafted Sacred Deepak) */
+/* Sacred Floating Lotus Diyas (Kamal Deepak with Divine Warmth) */
 .floating-diya {
   position: absolute;
-  bottom: clamp(12px, 2.5vh, 24px);
-  z-index: 12;
+  bottom: clamp(6px, 1.2vh, 12px);
+  z-index: 10;
   pointer-events: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  width: clamp(68px, 15vw, 98px);
+  width: clamp(48px, 10vw, 68px);
 }
 
 .diya-left {
-  left: clamp(14px, 3.8vw, 34px);
+  left: clamp(6px, 1.8vw, 16px);
   animation: diyaFloatLeft 5s ease-in-out infinite alternate;
 }
 
 .diya-right {
-  right: clamp(14px, 3.8vw, 34px);
+  right: clamp(6px, 1.8vw, 16px);
   animation: diyaFloatRight 5.5s ease-in-out infinite alternate;
 }
 
@@ -256,7 +253,7 @@ body.opening-active {
   width: 100%;
   height: auto;
   display: block;
-  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 14px rgba(255, 175, 45, 0.4));
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 12px rgba(255, 175, 45, 0.35));
 }
 
 .diya-flipped {
@@ -265,40 +262,26 @@ body.opening-active {
 
 .diya-glow {
   position: absolute;
-  top: 14%;
+  top: 12%;
   left: 50%;
   transform: translateX(-50%);
-  width: clamp(32px, 6.5vw, 46px);
-  height: clamp(32px, 6.5vw, 46px);
+  width: clamp(26px, 5.5vw, 38px);
+  height: clamp(26px, 5.5vw, 38px);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 230, 130, 0.85) 0%, rgba(255, 150, 40, 0.4) 45%, transparent 72%);
-  filter: blur(5px);
+  background: radial-gradient(circle, rgba(255, 230, 130, 0.8) 0%, rgba(255, 140, 30, 0.35) 45%, transparent 70%);
+  filter: blur(4px);
   animation: diyaGlowPulse 2.4s ease-in-out infinite alternate;
-  pointer-events: none;
-}
-
-.diya-flicker-flame {
-  position: absolute;
-  top: 18%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 8px;
-  height: 14px;
-  border-radius: 50% 50% 35% 35%;
-  background: radial-gradient(ellipse at 50% 70%, #ffffff 0%, #ffe680 40%, #ff8c00 80%, transparent 100%);
-  filter: blur(0.6px) drop-shadow(0 0 4px #ffd700);
-  animation: diyaFlameFlicker 1.8s ease-in-out infinite;
   pointer-events: none;
 }
 
 .diya-water-reflection {
   position: absolute;
-  top: 86%;
-  left: 12%;
-  width: 76%;
-  height: 16px;
-  background: radial-gradient(ellipse at 50% 0%, rgba(255, 200, 80, 0.45) 0%, rgba(255, 130, 40, 0.15) 50%, transparent 75%);
-  filter: blur(4px);
+  top: 88%;
+  left: 14%;
+  width: 72%;
+  height: 12px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 190, 80, 0.4) 0%, rgba(200, 120, 230, 0.18) 50%, transparent 75%);
+  filter: blur(3px);
   animation: diyaReflectPulse 3.2s ease-in-out infinite alternate;
 }
 
@@ -446,13 +429,14 @@ body.opening-active {
    7. TOP SECTION: GANESHA & SACRED INVOCATION
    ========================================================================== */
 .landing-top-section {
+  flex-shrink: 0;
   position: relative;
   z-index: 15;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: clamp(2px, 0.6vh, 8px);
+  margin-top: clamp(0px, 0.4vh, 6px);
 }
 
 .landing-ganesha-wrap {
@@ -460,7 +444,7 @@ body.opening-active {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: clamp(4px, 0.8vh, 8px);
+  margin-bottom: clamp(2px, 0.5vh, 6px);
 }
 
 .ganesha-aura-glow {
@@ -479,7 +463,7 @@ body.opening-active {
 
 .landing-ganesha-img {
   position: relative;
-  width: clamp(38px, 6.2vh, 48px);
+  width: clamp(32px, 5vh, 44px);
   height: auto;
   display: block;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8));
@@ -489,17 +473,17 @@ body.opening-active {
 
 .landing-shlok {
   font-family: 'Noto Serif Devanagari', serif;
-  font-size: clamp(0.95rem, 0.88rem + 0.3vw, 1.15rem);
+  font-size: clamp(0.85rem, 1.8vh, 1.05rem);
   font-weight: 600;
   color: #FFF3CE;
   letter-spacing: 0.12em;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 12px rgba(245, 215, 130, 0.35);
-  margin-bottom: clamp(2px, 0.5vh, 6px);
+  margin-bottom: clamp(1px, 0.3vh, 4px);
 }
 
 .landing-subtitle {
   font-family: 'Cinzel', 'Noto Serif Devanagari', serif;
-  font-size: clamp(0.72rem, 0.68rem + 0.25vw, 0.88rem);
+  font-size: clamp(0.66rem, 1.3vh, 0.82rem);
   font-weight: 700;
   color: #E8D3A8;
   letter-spacing: 0.22em;
@@ -510,7 +494,7 @@ body.opening-active {
 html[lang="hi"] .landing-subtitle {
   font-family: 'Noto Serif Devanagari', serif;
   letter-spacing: 0.12em;
-  font-size: clamp(0.78rem, 0.74rem + 0.25vw, 0.92rem);
+  font-size: clamp(0.74rem, 1.4vh, 0.88rem);
 }
 
 /* ==========================================================================
@@ -519,11 +503,13 @@ html[lang="hi"] .landing-subtitle {
 .landing-center-section {
   position: relative;
   z-index: 15;
+  flex: 1 1 auto;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: clamp(4px, 1vh, 12px) 0;
+  margin: clamp(2px, 0.6vh, 6px) 0;
 }
 
 .landing-crest-wrap {
@@ -531,6 +517,7 @@ html[lang="hi"] .landing-subtitle {
   display: flex;
   align-items: center;
   justify-content: center;
+  max-height: 100%;
   animation: crestBreathe 7s ease-in-out infinite alternate;
 }
 
@@ -544,18 +531,14 @@ html[lang="hi"] .landing-subtitle {
 
 .landing-crest-img {
   position: relative;
-  width: clamp(220px, 42vh, 320px);
-  height: auto;
+  max-height: clamp(130px, 26vh, 230px);
+  width: auto;
+  max-width: min(72vw, 240px);
+  object-fit: contain;
   display: block;
-  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 20px rgba(165, 110, 235, 0.3));
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 18px rgba(165, 110, 235, 0.3));
   user-select: none;
   pointer-events: none;
-}
-
-@media (min-width: 768px) and (orientation: landscape), (min-width: 1024px) {
-  .landing-crest-img {
-    width: clamp(190px, 34vh, 270px);
-  }
 }
 
 @keyframes crestBreathe {
@@ -567,6 +550,7 @@ html[lang="hi"] .landing-subtitle {
    9. BOTTOM SECTION: DETAILS & FUNCTIONAL UNFOLD ACTION BUTTON
    ========================================================================== */
 .landing-bottom-section {
+  flex-shrink: 0;
   position: relative;
   z-index: 15;
   display: flex;
@@ -574,16 +558,17 @@ html[lang="hi"] .landing-subtitle {
   align-items: center;
   text-align: center;
   width: 100%;
+  margin-bottom: clamp(2px, 0.5vh, 6px);
 }
 
 .landing-date {
   font-family: 'Cinzel', 'Noto Serif Devanagari', serif;
-  font-size: clamp(0.92rem, 0.86rem + 0.35vw, 1.15rem);
+  font-size: clamp(0.82rem, 1.7vh, 1.02rem);
   font-weight: 600;
   color: #FFF9ED;
   letter-spacing: 0.04em;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 10px rgba(245, 215, 140, 0.35);
-  margin-bottom: clamp(3px, 0.6vh, 6px);
+  margin-bottom: clamp(2px, 0.4vh, 4px);
 }
 
 html[lang="hi"] .landing-date {
@@ -593,13 +578,13 @@ html[lang="hi"] .landing-date {
 
 .landing-venue {
   font-family: 'Cinzel', 'Noto Serif Devanagari', serif;
-  font-size: clamp(0.68rem, 0.64rem + 0.2vw, 0.82rem);
+  font-size: clamp(0.64rem, 1.3vh, 0.78rem);
   font-weight: 500;
   color: #EBDCF5;
   letter-spacing: 0.08em;
-  line-height: 1.45;
+  line-height: 1.35;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
-  margin-bottom: clamp(10px, 1.8vh, 18px);
+  margin-bottom: clamp(5px, 1.1vh, 10px);
   max-width: 440px;
 }
 
@@ -614,13 +599,13 @@ html[lang="hi"] .landing-venue {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: clamp(9px, 1.6vh, 13px) clamp(28px, 6vw, 42px);
+  padding: clamp(7px, 1.3vh, 11px) clamp(22px, 5.5vw, 36px);
   background: linear-gradient(135deg, #FFEAB5 0%, #E8C16A 40%, #B88A2E 80%, #F5D688 100%);
   color: #381E05;
   border: 1.5px solid #FFF8DC;
   border-radius: 9999px;
   font-family: 'Cinzel', 'Noto Serif Devanagari', serif;
-  font-size: clamp(0.82rem, 0.78rem + 0.25vw, 0.95rem);
+  font-size: clamp(0.78rem, 1.5vh, 0.92rem);
   font-weight: 700;
   letter-spacing: 0.08em;
   box-shadow:
@@ -682,37 +667,313 @@ html[lang="hi"] .landing-unfold-btn {
 }
 
 .landing-tap-text {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
   font-family: 'Cinzel', 'Noto Serif Devanagari', serif;
-  font-size: clamp(0.72rem, 0.68rem + 0.22vw, 0.84rem);
+  font-size: clamp(0.72rem, 1.3vh, 0.82rem);
   font-weight: 500;
-  letter-spacing: 0.08em;
-  color: #EBDCF8;
-  margin-top: clamp(6px, 1.2vh, 12px);
+  letter-spacing: 0.04em;
+  color: #FFF2D6;
+  margin-top: clamp(4px, 0.8vh, 8px);
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.95);
-  opacity: 0.92;
+  background: rgba(30, 10, 50, 0.65);
+  border: 1px solid rgba(235, 205, 130, 0.45);
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.5),
+    0 0 12px rgba(232, 193, 106, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 3px 14px 5px;
+  border-radius: 20px;
+  max-width: fit-content;
+  opacity: 0.95;
   pointer-events: auto;
   cursor: pointer;
   user-select: none;
-  transition: opacity 0.25s ease, transform 0.25s ease, color 0.25s ease;
-  padding: 3px 12px;
-  border-radius: 12px;
+  animation: tapHintFloat 2.6s ease-in-out infinite;
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tap-pointer-icon {
+  display: block;
+  font-size: 1.25em;
+  line-height: 1;
+  margin-bottom: -1px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+  animation: fingerPointBounce 1.25s ease-in-out infinite;
+}
+
+#landing-tap-label {
+  display: block;
+  white-space: nowrap;
+  font-size: inherit;
+  color: inherit;
+  line-height: 1.3;
 }
 
 .landing-tap-text:hover,
 .landing-tap-text:focus-visible {
   opacity: 1;
-  color: #FFF2D1;
-  transform: translateY(-1px);
+  color: #FFFFFF;
+  background: rgba(54, 18, 86, 0.8);
+  border-color: rgba(255, 230, 150, 0.75);
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(255, 225, 130, 0.4);
+  transform: translateY(-2px);
 }
 
 html[lang="hi"] .landing-tap-text {
   font-family: 'Noto Serif Devanagari', serif;
-  letter-spacing: 0.03em;
-  font-size: clamp(0.82rem, 0.78rem + 0.2vw, 0.95rem);
+  letter-spacing: 0.02em;
+  font-size: clamp(0.78rem, 0.74rem + 0.18vw, 0.88rem);
+}
+
+@keyframes tapHintFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes fingerPointBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.18);
+  }
 }
 
 /* ==========================================================================
-   10. ACCESSIBILITY & PREFERS-REDUCED-MOTION
+   10. CINEMATIC OPENING ANIMATION: MONOGRAM GLOW, ZOOM & DIAGONAL SPLIT
+   ========================================================================== */
+
+/* Button Golden Ripple Shockwave */
+.landing-unfold-btn.is-clicked {
+  animation: btnShockwave 0.6s cubic-bezier(0.2, 0.8, 0.4, 1) forwards !important;
+}
+
+@keyframes btnShockwave {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 225, 120, 0.9), 0 0 30px rgba(255, 200, 80, 0.8);
+  }
+  50% {
+    transform: scale(0.96);
+    box-shadow: 0 0 0 25px rgba(255, 225, 120, 0.4), 0 0 50px rgba(255, 200, 80, 0.6);
+  }
+  100% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 50px rgba(255, 225, 120, 0), 0 0 70px rgba(255, 200, 80, 0);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   10. TWO DIAGONAL PANELS SLIDING APART (MAIN WEBSITE REVEALED UNDERNEATH)
+   ========================================================================== */
+
+/* Full-viewport Container for the Split Panels */
+.landing-split-container {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  pointer-events: none;
+  z-index: 25;
+  display: none;
+  overflow: hidden;
+}
+
+.landing-split-container.is-active {
+  display: block;
+}
+
+/* Common Full-screen Split Panel Base (Opaque, Zero Opacity Fade) */
+.split-panel {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 1 !important; /* STRICTLY NO OPACITY FADE */
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  transition: transform 1.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Clipped Content Container for Each Panel */
+.split-panel-clip {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #06020E;
+  background-image:
+    radial-gradient(ellipse at 50% 35%, rgba(95, 40, 160, 0.35) 0%, rgba(35, 12, 70, 0.22) 50%, #06020E 80%),
+    linear-gradient(180deg, #04010A 0%, #0B041C 50%, #05020D 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: clip-path;
+}
+
+.split-panel-clip .landing-stage {
+  pointer-events: none;
+  margin: auto;
+  opacity: 1 !important;
+}
+
+/* Top / Upper-Left Diagonal Panel (/ Orientation: Bottom-Left to Top-Right):
+   Clips content above the diagonal seam passing from bottom-left (-10% 82.5%) to top-right (110% 8.5%).
+   Overlaps by ~1% along the seam to guarantee zero subpixel gap before sliding. */
+.split-panel-ur .split-panel-clip,
+.split-panel-top .split-panel-clip {
+  clip-path: polygon(-10% -10%, 110% -10%, 110% 8.5%, -10% 82.5%);
+  -webkit-clip-path: polygon(-10% -10%, 110% -10%, 110% 8.5%, -10% 82.5%);
+}
+
+.split-panel-ur.is-sliding,
+.split-panel-top.is-sliding {
+  transform: translate3d(-150vw, -150vh, 0);
+}
+
+/* Bottom / Lower-Right Diagonal Panel (/ Orientation: Bottom-Left to Top-Right):
+   Clips content below the diagonal seam passing from bottom-left (-10% 81.5%) to top-right (110% 7.5%).
+   Overlaps by ~1% along the seam to guarantee zero subpixel gap before sliding. */
+.split-panel-ll .split-panel-clip,
+.split-panel-bottom .split-panel-clip {
+  clip-path: polygon(-10% 81.5%, 110% 7.5%, 110% 110%, -10% 110%);
+  -webkit-clip-path: polygon(-10% 81.5%, 110% 7.5%, 110% 110%, -10% 110%);
+}
+
+.split-panel-ll.is-sliding,
+.split-panel-bottom.is-sliding {
+  transform: translate3d(150vw, 150vh, 0);
+}
+
+/* ==========================================================================
+   ELEGANT GLOWING CHAMPAGNE-GOLD DIAGONAL SEAM BORDERS
+   ========================================================================== */
+
+/* Seam Border SVG Container (Moves in lockstep with panel, unclipped glow) */
+.split-panel-border {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.seam-border-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* 1. Soft Golden Outer Glow Layer
+   Slightly brighter when split begins, then gradually fades as panels slide apart */
+.seam-line-glow {
+  stroke: rgba(235, 195, 115, 0.75);
+  stroke-width: 3.5px;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 5px rgba(255, 225, 130, 0.85)) drop-shadow(0 0 12px rgba(225, 175, 80, 0.5)) drop-shadow(0 0 20px rgba(185, 135, 235, 0.3));
+  opacity: 0.95;
+  will-change: opacity, filter;
+}
+
+.split-panel.is-sliding .seam-line-glow {
+  animation: seamBorderGlowFade 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes seamBorderGlowFade {
+  0% {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(255, 235, 150, 0.95)) drop-shadow(0 0 14px rgba(235, 185, 90, 0.65)) drop-shadow(0 0 24px rgba(195, 145, 245, 0.35));
+  }
+  25% {
+    opacity: 0.9;
+    filter: drop-shadow(0 0 5px rgba(255, 225, 130, 0.85)) drop-shadow(0 0 12px rgba(225, 175, 80, 0.5));
+  }
+  65% {
+    opacity: 0.55;
+    filter: drop-shadow(0 0 3px rgba(255, 215, 120, 0.55)) drop-shadow(0 0 8px rgba(215, 165, 70, 0.35));
+  }
+  100% {
+    opacity: 0.2;
+    filter: drop-shadow(0 0 2px rgba(255, 215, 120, 0.3)) drop-shadow(0 0 4px rgba(215, 165, 70, 0.15));
+  }
+}
+
+/* 2. Thin Champagne-Gold Border (Sharp, clean and continuous throughout movement) */
+.seam-line-core {
+  stroke: #ECC880;
+  stroke-width: 1.5px;
+  stroke-linecap: round;
+  opacity: 0.95;
+  filter: drop-shadow(0 0 2px rgba(255, 245, 205, 0.85));
+}
+
+/* 3. Subtle Shimmering Travelling Light Highlight along Diagonal Edge */
+.seam-line-shimmer {
+  stroke: #FFFFFF;
+  stroke-width: 2.2px;
+  stroke-linecap: round;
+  stroke-dasharray: 240 1450;
+  stroke-dashoffset: 240;
+  filter: drop-shadow(0 0 4px #FFF8E7) drop-shadow(0 0 10px rgba(225, 175, 255, 0.85)) drop-shadow(0 0 18px rgba(255, 215, 120, 0.6));
+  opacity: 0;
+  will-change: stroke-dashoffset, opacity;
+}
+
+.split-panel.is-sliding .seam-line-shimmer {
+  animation: seamShimmerTravel 1.6s cubic-bezier(0.2, 0.7, 0.35, 1) forwards;
+}
+
+@keyframes seamShimmerTravel {
+  0% {
+    stroke-dashoffset: 240;
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.95;
+  }
+  80% {
+    opacity: 0.85;
+  }
+  100% {
+    stroke-dashoffset: -1450;
+    opacity: 0;
+  }
+}
+
+/* Transition FX Canvas for Floating Petals & Golden Sparkles */
+.transition-fx-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  pointer-events: none;
+  z-index: 60;
+}
+
+/* ==========================================================================
+   11. ACCESSIBILITY & PREFERS-REDUCED-MOTION
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
   .cinematic-opening,
@@ -724,7 +985,10 @@ html[lang="hi"] .landing-tap-text {
   .diya-water-reflection,
   .ganesha-aura-glow,
   .landing-crest-wrap,
-  .landing-unfold-btn {
+  .landing-unfold-btn,
+  .landing-tap-text,
+  .tap-pointer-icon,
+  .split-panel {
     animation: none !important;
     transition: none !important;
   }

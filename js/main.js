@@ -240,13 +240,15 @@ export function applyLanguage(lang) {
   const unfoldBtnText = document.getElementById('unfold-btn-text');
   if (unfoldBtnText) unfoldBtnText.textContent = data.opening.unfoldBtn;
 
+  const landingTapLabel = document.getElementById('landing-tap-label');
   const landingTapText = document.getElementById('landing-tap-text');
-  if (landingTapText && data.opening.tapInstruction) {
+  if (landingTapLabel && data.opening.tapInstruction) {
+    landingTapLabel.textContent = data.opening.tapInstruction;
+  } else if (landingTapText && data.opening.tapInstruction) {
     landingTapText.textContent = data.opening.tapInstruction;
   }
-  const landingTapWrap = document.getElementById('landing-tap-instruction');
-  if (landingTapWrap && data.opening.tapInstruction) {
-    landingTapWrap.setAttribute('aria-label', data.opening.tapInstruction);
+  if (landingTapText && data.opening.tapInstruction) {
+    landingTapText.setAttribute('aria-label', data.opening.tapInstruction);
   }
 
   const openingHelper = document.getElementById('opening-helper-text');

@@ -26,14 +26,20 @@ export class CelestialStars {
 
     window.addEventListener('resize', () => this.resize());
 
-    // Auto-pause when tab is inactive
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
+    // Auto-pause when tab is inactive; resume safely when returning
+    const onVisibilityChange = () => {
+      if (document.hidden || document.visibilityState === 'hidden') {
         this.pause();
-      } else if (this.isRunning) {
+      } else if (!this.reducedMotion) {
         this.start();
       }
+    };
+
+    document.addEventListener('visibilitychange', onVisibilityChange);
+    window.addEventListener('pageshow', () => {
+      if (!this.reducedMotion) this.start();
     });
+    window.addEventListener('pagehide', () => this.pause());
 
     if (this.reducedMotion) {
       this.renderStatic();
