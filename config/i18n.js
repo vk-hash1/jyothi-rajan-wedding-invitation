@@ -12,8 +12,8 @@ export const translations = {
   en: {
     meta: {
       lang: "en",
-      title: "Jyothi Kumari & Rajan Sharma | Enchanted Dream Wedding",
-      description: "Wedding celebration of Jyothi Kumari and Rajan Sharma – 9 December 2026. Enchanted Dream wedding invitation."
+      title: "Jyothi Kumari Weds Rajan Sharma | Enchanted Dream Wedding",
+      description: "Wedding celebration of Jyothi Kumari Weds Rajan Sharma – 9 December 2026. Enchanted Dream wedding invitation."
     },
     languageSwitcher: {
       ariaLabel: "Switch language",
@@ -22,8 +22,8 @@ export const translations = {
     },
     opening: {
       shlok: "॥ श्री गणेशाय नमः ॥",
-      emblemAlt: "Jyothi & Rajan Floral Gold J&R Monogram Emblem",
-      names: "Jyothi Kumari & Rajan Sharma",
+      emblemAlt: "Jyothi Weds Rajan Floral Gold J&R Monogram Emblem",
+      names: "Jyothi Kumari Weds Rajan Sharma",
       lead: "TOGETHER WITH THEIR FAMILIES,<br>INVITE YOU TO CELEBRATE",
       dateBadge: "Wednesday, 9 December 2026",
       unfoldBtn: "Unfold the Celebration",
@@ -41,9 +41,9 @@ export const translations = {
       eyebrow: "Shubh Vivah • Auspicious Union",
       brideFirstName: "Jyothi",
       groomFirstName: "Rajan",
-      connector: "&",
+      connector: "Weds",
       tagline: "Together with their families, joyfully invite you to celebrate the sacred union of their lives and love.",
-      monogramAlt: "Jyothi & Rajan Floral Gold JR Monogram Emblem",
+      monogramAlt: "Jyothi Weds Rajan Floral Gold JR Monogram Emblem",
       dateDisplay: "Wednesday, 9 December 2026",
       subRite: "Subh Vivah",
       subLocation: "Bardahia, Chhapra, Bihar",
@@ -62,7 +62,7 @@ export const translations = {
     },
     couple: {
       eyebrow: "The Blessed Union",
-      title: "Jyothi & Rajan",
+      title: "Jyothi Weds Rajan",
       subtitle: "Two souls united by destiny, blessed by families, beginning their sacred journey under the starry heavens.",
       bride: {
         title: "The Bride",
@@ -128,21 +128,21 @@ export const translations = {
       btnGetDirections: "Get Directions on Google Maps",
       blessingShlok: "मङ्गलं भगवान् विष्णुः मङ्गलं गरुडध्वजः।\nमङ्गलं पुण्डरीकाक्षः मङ्गलायतनो हरिः॥",
       blessingNote: "“Your love, presence, and blessings are the greatest gifts we could cherish as we begin this sacred lifelong journey together.”",
-      signature: "Jyothi & Rajan"
+      signature: "Jyothi Weds Rajan"
     },
     poster: {
       eyebrow: "Auspicious Wedding Card",
       title: "Official Wedding Invitation",
       subtitle: "A timeless keepsake of our celestial union. Save and keep this blessing with you.",
       imgSrc: "assets/images/wedding-invitation-poster.png",
-      imgAlt: "Official Wedding Invitation Card of Jyothi Kumari and Rajan Sharma",
+      imgAlt: "Official Wedding Invitation Card of Jyothi Kumari Weds Rajan Sharma",
       downloadBtnText: "Download Invitation",
       downloadBadge: "PNG",
       downloadHint: "High-Resolution Printable Invitation • HD Original Quality",
       downloadFilename: "Jyothi-Kumari-Rajan-Sharma-Wedding-Invitation-EN.png"
     },
     footer: {
-      names: "Jyothi Kumari & Rajan Sharma",
+      names: "Jyothi Kumari Weds Rajan Sharma",
       tagline: "Enchanted Dream Wedding Website • 9 December 2026"
     }
   },
@@ -150,8 +150,8 @@ export const translations = {
   hi: {
     meta: {
       lang: "hi",
-      title: "ज्योति कुमारी एवं राजन शर्मा | शुभ विवाह उत्सव",
-      description: "ज्योति कुमारी एवं राजन शर्मा का पावन वैवाहिक उत्सव – 9 दिसंबर 2026। सादर आमंत्रण।"
+      title: "ज्योति कुमारी संग राजन शर्मा | शुभ विवाह उत्सव",
+      description: "ज्योति कुमारी संग राजन शर्मा का पावन वैवाहिक उत्सव – 9 दिसंबर 2026। सादर आमंत्रण।"
     },
     languageSwitcher: {
       ariaLabel: "भाषा बदलें",
@@ -160,8 +160,8 @@ export const translations = {
     },
     opening: {
       shlok: "॥ श्री गणेशाय नमः ॥",
-      emblemAlt: "ज्योति एवं राजन मांगलिक स्वर्ण प्रतीक चिह्न",
-      names: "ज्योति कुमारी एवं राजन शर्मा",
+      emblemAlt: "ज्योति संग राजन मांगलिक स्वर्ण प्रतीक चिह्न",
+      names: "ज्योति कुमारी संग राजन शर्मा",
       lead: "सपरिवार आपका स्नेहिल अभिनन्दन करते हैं,<br>एवं विवाह के इस मांगलिक अवसर पर सादर आमंत्रित करते हैं",
       dateBadge: "बुधवार, 9 दिसंबर 2026",
       unfoldBtn: "उत्सव का साक्षी बनें",
@@ -181,7 +181,7 @@ export const translations = {
       groomFirstName: "राजन",
       connector: "संग",
       tagline: "परमपिता परमेश्वर की असीम अनुकम्पा से, दो परिवारों का स्नेहिल मिलन एवं दो आत्माओं का पावन वैवाहिक गठबंधन।",
-      monogramAlt: "ज्योति एवं राजन मांगलिक पुष्प स्वर्ण प्रतीक चिह्न",
+      monogramAlt: "ज्योति संग राजन मांगलिक पुष्प स्वर्ण प्रतीक चिह्न",
       dateDisplay: "बुधवार, 9 दिसंबर 2026",
       subRite: "शुभ विवाह",
       subLocation: "बरदहिया, छपरा, बिहार",
@@ -200,7 +200,7 @@ export const translations = {
     },
     couple: {
       eyebrow: "वर एवं वधू परिचय",
-      title: "ज्योति एवं राजन",
+      title: "ज्योति संग राजन",
       subtitle: "भाग्य की डोर से बंधे, परिजनों के आशीष से सजे, नवजीवन की पावन बेला में आपका स्नेहिल स्वागत करते हैं।",
       bride: {
         title: "वधू",
@@ -266,21 +266,21 @@ export const translations = {
       btnGetDirections: "रास्ता (दिशानिर्देश) प्राप्त करें",
       blessingShlok: "मङ्गलं भगवान् विष्णुः मङ्गलं गरुडध्वजः।\nमङ्गलं पुण्डरीकाक्षः मङ्गलायतनो हरिः॥",
       blessingNote: "“आपके स्नेह, उपस्थिति और पावन शुभाशीर्वाद ही हमारे इस नए जीवन के सबसे अनमोल उपहार हैं।”",
-      signature: "ज्योति एवं राजन"
+      signature: "ज्योति संग राजन"
     },
     poster: {
       eyebrow: "मांगलिक निमंत्रण पत्र",
       title: "शुभ विवाह आमंत्रण",
       subtitle: "हमारे इस पावन परिणयोत्सव का सप्रेम निमंत्रण पत्र। इसे सहेजें और अपने पास रखें।",
       imgSrc: "assets/images/wedding-invitation-poster-hi.png",
-      imgAlt: "ज्योति कुमारी एवं राजन शर्मा का शुभ विवाह निमंत्रण पत्र",
+      imgAlt: "ज्योति कुमारी संग राजन शर्मा का शुभ विवाह निमंत्रण पत्र",
       downloadBtnText: "निमंत्रण पत्र डाउनलोड करें",
       downloadBadge: "PNG",
       downloadHint: "उच्च गुणवत्ता प्रिंट योग्य निमंत्रण पत्र • HD ओरिजिनल क्वालिटी",
       downloadFilename: "Jyothi-Kumari-Rajan-Sharma-Wedding-Invitation-HI.png"
     },
     footer: {
-      names: "ज्योति कुमारी एवं राजन शर्मा",
+      names: "ज्योति कुमारी संग राजन शर्मा",
       tagline: "शुभ विवाह उत्सव • 9 दिसंबर 2026"
     }
   }

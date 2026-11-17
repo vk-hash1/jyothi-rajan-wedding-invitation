@@ -159,6 +159,10 @@ export function applyLanguage(lang) {
   if (metaDescription) {
     metaDescription.setAttribute('content', data.meta.description);
   }
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle) ogTitle.setAttribute('content', data.meta.title);
+  const ogDesc = document.querySelector('meta[property="og:description"]');
+  if (ogDesc) ogDesc.setAttribute('content', data.meta.description);
 
   // 3. Switcher Buttons State (Both Floating & Landing Bar)
   const isEn = selectedLang === 'en';
@@ -225,7 +229,9 @@ export function applyLanguage(lang) {
   // 6. Enhanced Celestial Hero Section
   const coupleTitle = document.getElementById('couple-title');
   if (coupleTitle) {
-    coupleTitle.textContent = `${data.hero.brideFirstName} & ${data.hero.groomFirstName} Wedding`;
+    coupleTitle.textContent = selectedLang === 'hi'
+      ? `${data.hero.brideFirstName} संग ${data.hero.groomFirstName} विवाह उत्सव`
+      : `${data.hero.brideFirstName} Weds ${data.hero.groomFirstName} Wedding`;
   }
 
   const heroTagline = document.getElementById('hero-tagline');
@@ -288,8 +294,8 @@ export function applyLanguage(lang) {
   const countdownCompleted = document.getElementById('countdown-completed');
   if (countdownCompleted) {
     countdownCompleted.textContent = selectedLang === 'hi'
-      ? '🌟 शुभ विवाह का पावन दिवस आ गया है! ज्योति एवं राजन के विवाह उत्सव में आपका हार्दिक स्वागत है! 🌟'
-      : '🌟 The Auspicious Wedding Day has arrived! Welcome to the celebration of Jyothi & Rajan! 🌟';
+      ? '🌟 शुभ विवाह का पावन दिवस आ गया है! ज्योति संग राजन के विवाह उत्सव में आपका हार्दिक स्वागत है! 🌟'
+      : '🌟 The Auspicious Wedding Day has arrived! Welcome to the celebration of Jyothi Weds Rajan! 🌟';
   }
 
   // 8. Couple Presentation Spotlight
