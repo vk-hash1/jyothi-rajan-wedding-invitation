@@ -13,7 +13,7 @@ export const translations = {
     meta: {
       lang: "en",
       title: "Jyothi Kumari Weds Rajan Sharma | Enchanted Dream Wedding",
-      description: "Wedding celebration of Jyothi Kumari Weds Rajan Sharma – 9 December 2026. Enchanted Dream wedding invitation."
+      description: "Wedding celebration of Jyothi Kumari and Rajan Sharma – 9 December 2026. Enchanted Dream wedding invitation."
     },
     languageSwitcher: {
       ariaLabel: "Switch language",
@@ -41,7 +41,7 @@ export const translations = {
       eyebrow: "Shubh Vivah • Auspicious Union",
       brideFirstName: "Jyothi",
       groomFirstName: "Rajan",
-      connector: "Weds",
+      connector: "&",
       tagline: "Together with their families, joyfully invite you to celebrate the sacred union of their lives and love.",
       monogramAlt: "Jyothi Weds Rajan Floral Gold JR Monogram Emblem",
       dateDisplay: "Wednesday, 9 December 2026",
