@@ -43,6 +43,11 @@ export class OpeningTransition {
     if (this.isUnfolded) return;
     this.isUnfolded = true;
 
+    // Remove document scroll lock and guarantee scroll is strictly at the top (0, 0)
+    document.documentElement.classList.remove('opening-active');
+    document.body.classList.remove('opening-active');
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
     // 1. Trigger Stage Unfold Reveal Animation
     if (this.stage) {
       this.stage.classList.add('is-unfolding');
@@ -62,12 +67,17 @@ export class OpeningTransition {
         this.openingContainer.setAttribute('aria-hidden', 'true');
       }
 
-      // 4. Focus Transfer for Accessibility
-      const mainHeading = document.getElementById('couple-title');
-      if (mainHeading) {
-        mainHeading.setAttribute('tabindex', '-1');
-        mainHeading.focus({ preventScroll: true });
+      // 4. Focus Transfer for Accessibility (Top of main content at scroll 0)
+      const focusTarget = document.getElementById('couple-title') || document.getElementById('main-content');
+      if (focusTarget) {
+        focusTarget.setAttribute('tabindex', '-1');
+        try {
+          focusTarget.focus({ preventScroll: true });
+        } catch (_) {
+          focusTarget.focus();
+        }
       }
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }, 650);
 
     // 5. Clean up Stars Animation Loop to free GPU/CPU

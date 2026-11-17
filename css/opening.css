@@ -40,6 +40,15 @@
   visibility: hidden;
 }
 
+/* Lock background scrolling while opening invitation overlay is active */
+html.opening-active,
+body.opening-active {
+  overflow: hidden !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  touch-action: none;
+}
+
 /* Ambient celestial nebula for wide screens surrounding the portrait stage */
 .landing-desktop-scenery {
   position: absolute;
@@ -97,10 +106,10 @@
    ========================================================================== */
 .landing-moon-corona {
   position: absolute;
-  left: 29%;
-  top: 17%;
-  width: 180px;
-  height: 180px;
+  left: 77%;
+  top: 20%;
+  width: 120px;
+  height: 120px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   pointer-events: none;
@@ -474,20 +483,71 @@
 /* ==========================================================================
    8. MONOGRAM AURA & CENTRAL INVITATION CONTENT STACK
    ========================================================================== */
-/* Subtle Golden Breathing Aura behind the artwork's celestial monogram */
+/* Content Stack: Positioned cleanly and centered in the open celestial sky */
+.landing-content-stack {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 13.5%;
+  bottom: 8.5%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 clamp(16px, 4.5vw, 28px);
+  pointer-events: none;
+}
+
+/* Auspicious Ganesha Shlok */
+.landing-shlok {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: clamp(0.78rem, 0.72rem + 0.25vw, 0.92rem);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: #F6E6C5;
+  margin-bottom: clamp(6px, 1vh, 12px);
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.95),
+    0 0 14px rgba(245, 208, 130, 0.5);
+  user-select: none;
+}
+
+/* Exact 3D Embossed Monogram & Couple Names Crest Wrap */
+.landing-emblem-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(270px, 66vw, 340px);
+  max-width: 350px;
+  margin: 0 auto clamp(6px, 1.2vh, 14px);
+}
+
+/* Subtle Golden Breathing Aura behind the celestial monogram */
 .landing-monogram-aura {
   position: absolute;
+  top: 40%;
   left: 50%;
-  top: 36%;
-  width: 290px;
-  height: 290px;
   transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 215, 120, 0.22) 0%, rgba(212, 175, 55, 0.1) 45%, transparent 70%);
-  filter: blur(22px);
+  background: radial-gradient(circle, rgba(255, 220, 140, 0.28) 0%, rgba(212, 175, 55, 0.12) 50%, transparent 72%);
+  filter: blur(18px);
   pointer-events: none;
-  z-index: 2;
+  z-index: 0;
   animation: monogramAuraPulse 5s ease-in-out infinite alternate;
+}
+
+.landing-emblem-img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 25px rgba(245, 208, 130, 0.35));
 }
 
 @keyframes monogramAuraPulse {
@@ -501,22 +561,6 @@
   }
 }
 
-/* Content Stack: Positioned cleanly below the golden monogram */
-.landing-content-stack {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 55.8%;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  text-align: center;
-  padding: 0 clamp(16px, 4.5vw, 28px);
-  pointer-events: none;
-}
-
 /* Lead Announcement Text */
 .landing-invitation-lead {
   font-family: var(--font-display);
@@ -524,12 +568,12 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: #F8EFE2;
+  color: #FFF6E6;
   line-height: 1.55;
-  margin-bottom: clamp(14px, 2.2vh, 22px);
+  margin-bottom: clamp(12px, 1.8vh, 20px);
   text-shadow:
     0 2px 8px rgba(0, 0, 0, 0.95),
-    0 0 14px rgba(0, 0, 0, 0.8);
+    0 0 14px rgba(255, 225, 160, 0.65);
 }
 
 html[lang="hi"] .landing-invitation-lead {
@@ -538,6 +582,10 @@ html[lang="hi"] .landing-invitation-lead {
   text-transform: none;
   letter-spacing: normal !important;
   line-height: 1.5;
+  color: #FFF6E6;
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.95),
+    0 0 14px rgba(255, 225, 160, 0.65);
 }
 
 /* ==========================================================================

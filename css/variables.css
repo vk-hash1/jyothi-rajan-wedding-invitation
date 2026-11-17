@@ -52,6 +52,7 @@
   --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-hindi: 'Noto Serif Devanagari', 'Mangal', 'Devanagari Sangam MN', var(--font-display);
+  --font-script: 'Alex Brush', cursive, var(--font-display);
 
   /* Responsive Fluid Font Sizes */
   --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.8125rem);

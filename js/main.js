@@ -14,6 +14,22 @@ import { CelestialHero } from './celestialHero.js';
 if (typeof window !== 'undefined') {
   window.__weddingConfig = weddingConfig;
   window.__translations = translations;
+
+  // Enforce fresh visit starts at scroll position 0
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  const enforceTop = () => {
+    const opening = document.getElementById('cinematic-opening');
+    if (opening && !opening.classList.contains('is-dismissed')) {
+      document.documentElement.classList.add('opening-active');
+      if (document.body) document.body.classList.add('opening-active');
+      window.scrollTo(0, 0);
+    }
+  };
+
+  window.addEventListener('pageshow', enforceTop);
 }
 
 let activeMusicPlayer = null;
@@ -29,6 +45,14 @@ if (typeof document !== 'undefined') {
  */
 function initWeddingWebsite() {
   const logEntries = [];
+
+  // Guarantee page starts at top (scroll 0)
+  const openingEl = document.getElementById('cinematic-opening');
+  if (openingEl && !openingEl.classList.contains('is-dismissed')) {
+    document.documentElement.classList.add('opening-active');
+    document.body.classList.add('opening-active');
+    window.scrollTo(0, 0);
+  }
 
   try {
     // 1. Initialize Floating Music Player (Zero Autoplay)
@@ -218,7 +242,7 @@ export function applyLanguage(lang) {
   const openingHelper = document.getElementById('opening-helper-text');
   if (openingHelper) openingHelper.textContent = data.opening.helperText;
 
-  const emblemImg = document.querySelector('.opening-emblem-img, .landing-emblem-img');
+  const emblemImg = document.querySelector('.opening-emblem-img, .landing-emblem-img, .landing-monogram-img');
   if (emblemImg) emblemImg.alt = data.opening.emblemAlt;
 
   // 5. Floating Music Player Language Update

@@ -81,6 +81,49 @@ export class MusicPlayer {
       this.isPlaying = false;
       this.updateUI(false);
     });
+
+    // Mobile Background & App-Switching Lifecycle Handlers
+    this.setupLifecycleListeners();
+  }
+
+  /**
+   * Mobile Background & App-Switching Lifecycle Handlers
+   * Immediately pauses music when browser goes to background,
+   * user presses phone Home button, switches apps, or locks the screen.
+   * Keeps music strictly paused when returning (never resumes automatically).
+   */
+  setupLifecycleListeners() {
+    // 1. Page Visibility API (Android Chrome, iOS Safari 7+, Edge, Firefox)
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden || document.visibilityState === 'hidden') {
+        this.handleBackgroundPause('visibilitychange (hidden)');
+      }
+    });
+
+    // 2. pagehide event (Essential for iOS Safari when switching apps, navigating, or closing)
+    window.addEventListener('pagehide', () => {
+      this.handleBackgroundPause('pagehide');
+    });
+
+    // 3. freeze event (Page Lifecycle API on Chromium / Android)
+    document.addEventListener('freeze', () => {
+      this.handleBackgroundPause('freeze');
+    });
+
+    // 4. window blur event (Mobile Chrome & Safari when pulling down notification shade or opening app switcher)
+    window.addEventListener('blur', () => {
+      setTimeout(() => {
+        if (document.hidden || document.visibilityState === 'hidden') {
+          this.handleBackgroundPause('blur (hidden)');
+        }
+      }, 50);
+    });
+  }
+
+  handleBackgroundPause(reason = '') {
+    if (this.isPlaying || (this.audio && !this.audio.paused)) {
+      this.pause();
+    }
   }
 
   async togglePlay() {
